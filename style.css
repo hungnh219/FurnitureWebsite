@@ -1,0 +1,57 @@
+/* reset CSS */
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+header{
+    height: 80px;
+    background-color: antiquewhite;
+    text-align: center;
+    font-size: 32px;
+    font-weight: bold;
+}
+
+main{
+    height: 2000px;
+    background-color: green;
+}
+
+#home-page {
+    height: 20px;
+    background-color: aqua;
+    margin-bottom: 20px;
+}
+
+#products-page {
+    height: 20px;
+    background-color: aqua;
+    margin-bottom: 20px;
+}
+
+#product-detail-page {
+    height: 20px;
+    background-color: aqua;
+    margin-bottom: 20px;
+}
+
+#cart-page {
+    height: 20px;
+    background-color: aqua;
+    margin-bottom: 20px;
+}
+
+#billing-detail-page {
+    height: 20px;
+    background-color: aqua;
+    margin-bottom: 20px;
+}
+
+footer{
+    height: 360px;
+    background-color: red;
+    text-align: center;
+    font-size: 32px;
+    font-weight: bold;
+}
