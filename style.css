@@ -14,7 +14,7 @@ header{
 }
 
 main{
-    height: 2000px;
+    height: 100%;
     background-color: green;
 }
 
@@ -36,17 +36,280 @@ main{
     margin-bottom: 20px;
 }
 
+/* Start: Cart page */
 #cart-page {
-    height: 20px;
-    background-color: aqua;
+    height: 100%;
+    background-color: white;
     margin-bottom: 20px;
 }
 
+#cart-page .cart-title{
+    font-size: 48px;
+    text-align: center;
+    padding: 40px 0px;
+}
+
+#cart-page .cart-products{
+    margin: 0 16%;
+}
+
+#cart-page .cart-products .cart-headings{
+    display: flex;
+    flex-direction: row;
+    padding-bottom: 20px;
+    font-size: 24px;
+    border-bottom-style: solid;
+    border-width: 2px;
+}
+
+#cart-page .cart-headings .product-detail-heading{
+    width: 60%;
+}
+
+#cart-page .cart-headings .product-total-headings{
+    display: flex;
+    flex-direction: row;
+}
+
+#cart-page .product-total-headings .product-price-heading,
+#cart-page .product-total-headings .product-quantity-heading,
+#cart-page .product-total-headings .product-total-heading{
+    width: 120px;
+    text-align: center;
+}
+
+#cart-page .cart-products .cart-product{
+    display: flex;
+    flex-direction: row;
+    padding: 32px 0;
+    border-bottom-style: solid;
+    border-width: 1px;
+}
+
+#cart-page .cart-product .product-detail{
+    width: 60%;
+    display: flex;
+    flex-direction: row;
+}
+
+#cart-page .cart-product .product-image{
+    height: 80px;
+    width: 120px;
+    border-radius: 12px;
+    margin-right: 20px;
+}
+
+#cart-page .cart-product .product-name{
+    font-size: 24px;
+    font-weight: bold;
+    padding-bottom: 12px;
+}
+
+#cart-page .cart-product .product-status{
+    font-size: 16px;
+    text-decoration: underline;
+    color: #2c5c42;
+}
+
+#cart-page .cart-product .product-total{
+    display: flex;
+    flex-direction: row;
+}
+
+#cart-page .product-total .product-price,
+#cart-page .product-total .product-quantity,
+#cart-page .product-total .product-total-price{
+    width: 120px;
+    margin: auto 0px;
+    text-align: center;
+}
+
+#cart-page .cart-products .cart-sub-total{
+    margin-top: 40px;
+    margin-left: 60%;
+    display: flex;
+    flex-direction: row;
+}
+
+#cart-page .cart-sub-total .sub-total-title, 
+#cart-page .cart-sub-total .sub-total-price{
+    display: inline-block;
+    flex-direction: row;
+    padding-right: 80px;
+    padding-bottom: 20px;
+    font-weight: 600;
+}
+
+#cart-page .cart-sub-total .sub-total-note{
+    font-style: italic;
+    width: 140px;
+    opacity: 0.4;
+}
+
+#cart-page .cart-sub-total .check-out-button button{
+    background-color: #93cfa4;
+    padding: 10px 20px;
+    font-weight: 800;
+    border-radius: 12px;
+}
+
+/* End: Cart page */
+
+/* Start: Billing detail page */
 #billing-detail-page {
-    height: 20px;
-    background-color: aqua;
+    height: 100%;
+    background-color: white;
     margin-bottom: 20px;
 }
+
+#billing-detail-page .billing-detail-title{
+    font-size: 48px;
+    text-align: center;
+    padding: 40px 0px;
+}
+
+#billing-detail-page .shipment{
+    height: 100%;
+    margin: 0 16%;
+    display: flex;
+}
+
+#billing-detail-page .customer-information{
+    width: 50%;
+}
+
+#billing-detail-page .customer-information .info-textfield{
+    margin-bottom: 20px;
+}
+
+#billing-detail-page .customer-information .info-textfield label{
+    color: #000;
+    opacity: 0.5;
+}
+
+#billing-detail-page .customer-information .info-textfield input{
+    width: 100%;
+    background-color: #f5f5f5;
+    height: 32px;
+    margin-top: 4px;
+}
+
+#billing-detail-page .customer-information .save-info-checkbox{
+    height: 40px;
+}
+
+#billing-detail-page .customer-information .save-info-checkbox input{
+    margin-right: 10px;
+}
+
+#billing-detail-page .customer-information .save-info-checkbox label{
+    margin: auto 0;
+}
+
+#billing-detail-page .shipment-information{
+    width: 50%;
+    display: inline-block;
+    margin-left: 200px;
+}
+
+#billing-detail-page .shipment-information .shipment-products{
+
+}
+
+#billing-detail-page .shipment-information .shipment-product{
+    display: flex;
+    flex-direction: row;
+    padding: 20px 0;
+    /* border-bottom-style: solid;
+    border-width: 1px; */
+}
+
+#billing-detail-page .shipment-product .shipment-product-image{
+    margin-right: 20px;
+}
+
+#billing-detail-page .shipment-product .shipment-product-name{
+    margin: auto 0;
+    width: 60%;
+}
+
+#billing-detail-page .shipment-product .shipment-product-price{
+    width: 100%;
+    text-align: right;
+    margin: auto 0;
+}
+
+#billing-detail-page .shipment-product .shipment-product-image{
+    height: 50px;
+    border-radius: 12px;
+}
+
+#billing-detail-page .shipment-information .shipment-price{
+    
+}
+
+#billing-detail-page .shipment-price .shipment-subtotal,
+#billing-detail-page .shipment-price .shipment-shipping,
+#billing-detail-page .shipment-price .shipment-total{
+    display: flex;
+    padding: 10px 0;
+}
+
+#billing-detail-page .shipment-price .shipment-shipping{
+    border-top-style: solid;
+    border-bottom-style: solid;
+    border-width: 1px;
+}
+
+#billing-detail-page .shipment-price .shipment-title{
+}
+
+#billing-detail-page .shipment-price .shipment-price{
+    width: 100%;
+    text-align: right;
+}
+
+#billing-detail-page .shipment-information .payment-methods{
+    margin-top: 20px;
+}
+
+#billing-detail-page .shipment-information .voucher{
+    display: flex;
+    width: 100%;
+    margin-top: 20px;
+}
+
+#billing-detail-page .voucher .voucher-input{
+    margin-right: 20px;
+    border-radius: 12px;
+    padding-left: 10px;
+    width: 50%;
+    font-size: 20px;
+}
+
+#billing-detail-page .voucher .voucher-button{
+}
+
+#billing-detail-page .voucher .voucher-button button{
+    background-color: #93cfa4;
+    padding: 8px 20px;
+    font-weight: 800;
+    border-radius: 12px;
+    font-size: 16px;
+    width: 100%;
+}
+
+#billing-detail-page .place-order-button button,
+#billing-detail-page .back-to-cart-button button{
+    width: 40%;
+    background-color: #93cfa4;
+    padding: 10px 16px;
+    font-weight: 800;
+    border-radius: 12px;
+    margin-top: 24px;
+}
+
+/* End: Billing detail page */
 
 footer{
     height: 360px;
