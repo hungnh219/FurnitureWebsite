@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel = "stylesheet" href = "Homepage.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" 
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" 
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+</head>
+<body>
+<section class = "slider">
+    <div class = "dot-container">
+        <div class = "dot"> </div>
+        <div class = "dot"> </div>
+        <div class = "dot"> </div>
+    </div>
+    
+
+<div class = "slider-image">
+    <div class = "slide"> <img src = "Furniture Photos/Background_Photos/Home_Screen/Slider/slider_1.png"> </div>
+    <div class = "slide"> <img src = "Furniture Photos/Background_Photos/Home_Screen/Slider/slider_2.png"> </div>
+    <div class = "slide"> <img src = "Furniture Photos/Background_Photos/Home_Screen/Slider/slider_3.png"> </div>
+</div> 
+</section>
+
+<section class = "best-seller">
+    <div class = "title">Best Selling Products</div>
+    <div class = "products">
+        <div class = "product"> 
+            <img src = "Furniture Photos/Background_Photos/Home_Screen/New_Best_Seller/The Bond Chair.webp">
+            <div class = "desc">Bond chair</br>$1400</div>
+        </div>
+        <div class = "product">
+            <img src = "Furniture Photos/Background_Photos/Home_Screen/New_Best_Seller/The Kenmare Chair.webp">
+            <div class = "desc">Kenmare chair</br>$1400</div>
+        </div>
+        <div class = "product">
+            <img src = "Furniture Photos/Background_Photos/Home_Screen/New_Best_Seller/The Laight Chair.webp">
+            <div class = "desc">Laight chair</br>$1400</div>
+
+        </div>
+        <div class = "product">
+            <img src = "Furniture Photos/Background_Photos/Home_Screen/New_Best_Seller/The Perry Chair.webp">
+            <div class = "desc">Perry chair</br>$1400</div>
+        </div>
+
+    </div>
+
+</section>
+<section class = "information">
+    <ul>
+    <li class = "icon-container">
+        <div class = "icon">
+            <i class ="fas fa-light fa-award fa-2xl"></i>
+        </div>
+        <div class = "text">
+            <strong>   High Quality</strong></br><span style = "font-size: 0.8em; font-family: courier new">Crafted from top materials</span>
+        </div>
+    </li>
+    <li class = "icon-container"> 
+        <div class = "icon">
+            <i class="fa-solid fa-shield-halved fa-2xl"></i>
+        </div>
+        <div class = "text">
+            <strong>  Warranty Protection</strong></br><span style = "font-size: 0.8em; font-family: courier new">Over 2 years</span>
+        </div>
+    </li>
+    <li class = "icon-container"> 
+        <div class = "icon">
+            <i class="fas fa-truck-fast fa-2xl"></i>
+        </div>
+        <div class = "text">
+            <strong>Free Shipping</strong></br><span style = "font-size: 0.8em; font-family: courier new">Order over 150$</span>
+        </div>
+    </li>
+    <li class = "icon-container"> 
+        <div class = "icon">
+            <i class="fas fa-headphones fa-2xl"></i>
+        </div>
+        <div class = "text">
+            <strong>   24/7 Support</strong></br><span style = "font-size: 0.8em; font-family: courier new">Dedicated support</span>
+        </div>
+    </li>
+    
+    </ul>
+
+</section>
+
+<section class = "design">
+    <div class = "title">We help you make </br>Morden Interior Designs</div>
+    <div class = "gallery">
+            <div >
+                 <img src = "Furniture Photos/Background_Photos/Home_Screen/Design/Rectangle 36.png"> 
+            </div>
+            <div> 
+                <img src = "Furniture Photos/Background_Photos/Home_Screen/Design/Rectangle 38.png"> 
+            </div>
+            <div> 
+                <img src = "Furniture Photos/Background_Photos/Home_Screen/Design/Rectangle 39.png"> 
+            </div>
+            <div> 
+                <img src = "Furniture Photos/Background_Photos/Home_Screen/Design/Rectangle 40.png"> 
+            </div>
+            <div> 
+                <img src = "Furniture Photos/Background_Photos/Home_Screen/Design/Rectangle 41.png"> 
+            </div>
+            <div> 
+                <img src = "Furniture Photos/Background_Photos/Home_Screen/Design/Rectangle 37.png"> 
+            </div>
+            <div> 
+                <img src = "Furniture Photos/Background_Photos/Home_Screen/Design/Rectangle 43.png"> 
+            </div>
+            
+            <div> 
+                <img src = "Furniture Photos/Background_Photos/Home_Screen/Design/Rectangle 44.png"> 
+            </div>
+            <div> 
+                <img src = "Furniture Photos/Background_Photos/Home_Screen/Design/Rectangle 45.png"> 
+            </div>
+            <div> 
+                <img src = "Furniture Photos/Background_Photos/Home_Screen/Design/Rectangle 46.png"> 
+            </div>
+            
+    </div>
+
+</section>
+
+</body>
+<script>
+    const imgPosition = document.querySelectorAll(".slider-image img")
+    const imgContainer = document.querySelector('.slider-image')
+    let index = 0;
+    let imgNumber = imgPosition.length
+    let space = 100
+    imgPosition.forEach(function(image, index) {
+        image.style.left = index*space + "%"
+    })
+    function imgSlide() {
+        index++;
+        console.log(index)
+        if(index >= imgNumber)
+        {
+            index = 0;
+            imgPosition.forEach(function(image, index) {
+            image.style.left = index*space + "%"})
+    }
+    imgContainer.style.left = "-" + index*space + "%"
+    
+}
+
+setInterval(imgSlide, 5000)
+
+</script>
+</html>
