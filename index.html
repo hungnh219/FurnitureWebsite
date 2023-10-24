@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
     <title>IE104</title>
 </head>
 <body>
+    
     <header>
         test git push
     </header>
@@ -136,12 +138,14 @@
 
                         <div class="info-textfield info-phone-number">
                             <label>Phone Number:</label><br>
-                            <input type="text"><br>
+                            <input required="" type="text" id="numbers" name="text" autocomplete="off" class = "input" oninput="onPhoneNumberInput()"><br>
+                            <span id="numbers-message"></span>
                         </div>
 
                         <div class="info-textfield info-email">
                             <label>Email:</label><br>
-                            <input type="text"><br>
+                            <input required="" type="text" id="email" name="text" autocomplete="off" class = "input" oninput="onEmailInput()"><br>
+                            <span id="email-message"></span>
                         </div>
 
                         <div class="save-info-checkbox">
