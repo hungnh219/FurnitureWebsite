@@ -621,6 +621,476 @@
 }
 /* End: Shop all */
 
+/* Start: Product detail page */
+
+#product-detail-page .ti-arrow-left {
+    position: absolute;
+    top: 118px;
+    left: 100px;
+    width: 24px;
+    height: 24px;
+    overflow: hidden;
+  }
+  
+#product-detail-page .chair,
+#product-detail-page .slash {
+    position: relative;
+}
+  
+#product-detail-page .chair {
+    line-height: 16px;
+    font-weight: 500;
+    opacity: 0.4;
+}
+  
+#product-detail-page .slash {
+    font-weight: 100;
+}
+  
+#product-detail-page .meryl-lounge-chair {
+    position: relative;
+    line-height: 16px;
+    font-weight: 500;
+    display: inline-block;
+    width: 430px;
+    flex-shrink: 0;
+}
+  
+#product-detail-page .breadcrumbs {
+    top: 179px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 8px;
+    font-size: var(14px);
+}
+  
+#product-detail-page .breadcrumbs,
+#product-detail-page .price,
+#product-detail-page .meryl-lounge-chair1 {
+    position: absolute;
+    left: 100px;
+}
+  
+#product-detail-page .meryl-lounge-chair1 {
+    top: 246px;
+    font-size: 44px;
+    line-height: 56px;
+}
+  
+#product-detail-page .price {
+    top: 344px;
+    font-size: var(24px);
+    letter-spacing: 0.15px;
+    line-height: 32px;
+    font-weight: 100;
+    padding-top: 5px;
+}
+  
+#product-detail-page .ti-star {
+    position: relative;
+    width: 16px;
+    height: 14px;
+    color: yellow;
+}
+  
+#product-detail-page .span {
+    color: var(#a2a3b1);
+}
+
+#product-detail-page .total-ratings {
+    position: relative;
+    line-height: 24px;
+    padding-top: 5px;
+}
+  
+#product-detail-page .ratings {
+    position: absolute;
+    top: 348px;
+    left: 338px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 12px;
+}
+  
+/* #product-detail-page .product-image-child {
+    position: absolute;
+    top: 322.19px;
+    left: 532.52px;
+    border-radius: 90px;
+    background-color: #c4c4c4;
+    filter: blur(124px);
+    width: 105.6px;
+    height: 245.12px;
+    transform: rotate(80.16deg);
+    transform-origin: 0 0;
+    opacity: 0.3;
+} */
+  
+#product-detail-page .product-image-item {
+    position: absolute;
+    top: 85px;
+    left: 397.3px;
+    background: linear-gradient(-89.74deg, #4b8785 54.17%, rgba(75, 135, 133, 0));
+    width: 432.7px;
+    height: 250px;
+    opacity: 0.1;
+}
+  
+#product-detail-page .product-image {
+    position: absolute;
+    top: 302px;
+    left: 604px;
+    width: 844px;
+    height: 469.5px
+}
+  
+#product-detail-page .span1 {
+    font-weight: 100
+}
+  
+#product-detail-page .span2 {
+    font-weight: 500
+}
+  
+#product-detail-page .picture-preview {
+    top: 9px;
+    left: 44px;
+    letter-spacing: 0.15px;
+    line-height: 32px;
+}
+  
+#product-detail-page .b,
+#product-detail-page .picture-preview,
+#product-detail-page .preview {
+    position: absolute;
+}
+  
+#product-detail-page .b {
+    top: 0;
+    left: 0;
+    font-size: var(32px);
+    line-height: 44px;
+    color: var(#17183b);
+}
+  
+#product-detail-page .preview {
+    top: 155px;
+    left: 1268px;
+    width: 90px;
+    height: 44px;
+    font-size: var(24px);
+    color: var(#a2a3b1)
+}
+#product-detail-page .ti-angle-right, 
+#product-detail-page .ti-angle-right {
+    position: relative;
+    width: 24px;
+    height: 24px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+  
+#product-detail-page .arrows {
+    position: absolute;
+    top: 212px;
+    left: 1248px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 80px;
+}
+  
+/* #product-detail-page .left-right-button {
+    border: none;
+    background-color: transparent;
+} */
+  
+/* #product-detail-page .left-right-button:hover {
+    background-color: gray;
+} */
+  
+#product-detail-page .the-gently-curved {
+    position: absolute;
+    top: 422px;
+    left: 100px;
+    line-height: 24px;
+    display: inline-block;
+    width: 440px;
+}
+/* #product-detail-page .color-selection-icon {
+    position: absolute;
+    top: 542px;
+    left: 100px;
+    width: 132px;
+    height: 28px;
+
+} */
+  
+#product-detail-page .product-quantity {
+    position: relative;
+    letter-spacing: 0.02em;
+    line-height: 24px;
+    font-weight: 300;
+
+}
+  
+#product-detail-page .quantity {
+    position: absolute;
+    top: 611px;
+    left: 100px;
+    border-radius: var(4px);
+    border: 1px solid var(#a2a3b1);
+    box-sizing: border-box;
+    height: 52px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 16px;
+    gap: 40px;
+    font-size: 20px;
+  
+}
+
+#product-detail-page .ti-minus,
+#product-detail-page .ti-plus {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    overflow: hidden;
+    flex-shrink: 0;
+  
+}
+  
+/* #product-detail-page .plus-minus-button {
+    border: none;
+    background-color: transparent;
+  
+} */
+  
+/* #product-detail-page .plus-minus-button:hover {
+    background-color: gray
+  
+} */
+  
+#product-detail-page .button1 {
+    position: relative;
+    letter-spacing: 0.1px;
+    line-height: 20px;
+    font-weight: 500;
+    border: none;
+    background-color: transparent;
+}
+  
+#product-detail-page .button {
+    position: absolute;
+    top: 611px;
+    left: 305px;
+    border-radius: var(4px);
+    background-color: var(#3aa39f);
+    height: 52px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 18px 40px;
+    box-sizing: border-box;
+    gap: 16px;
+    color: var(#fff);
+}
+  
+#product-detail-page .button:hover {
+    background-color: #36817f
+}
+  
+#product-detail-page .free-3-5-day {
+    position: absolute;
+    top: 709px;
+    left: 100px;
+    line-height: 24px;
+    display: inline-block;
+    width: 466px;
+}
+
+#product-detail-page .content {
+    position: absolute;
+    display: flex;
+}
+
+#product-detail-page .ti-reload,
+#product-detail-page .ti-heart {
+    padding-right: 10px;
+    padding-top: 3px;
+}
+
+#product-detail-page .ti-reload {
+    padding-left: 24px;
+}
+
+#product-detail-page .share {
+    padding-left: 24px;
+}
+
+#product-detail-page .ti-twitter {
+    padding-left: 5px;
+}
+
+#product-detail-page .ti-printerest {
+    padding-left: 5px;
+}
+
+#product-detail-page .detai-info {
+    display: flex;
+    position: absolute;
+}
+
+#product-detail-page .big-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 844px;
+    height: 461px;
+    object-fit: cover;
+    mix-blend-mode: darken;
+    padding-bottom: 20px;
+}
+
+#product-detail-page .detail-image {
+    top: 761px;
+    left: 665px;
+    width: 800px;
+    position: relative;
+    display: flex;
+}
+#product-detail-page .img4,
+#product-detail-page .img3,
+#product-detail-page .img2,
+#product-detail-page .img1 {
+    display: block;
+    
+}
+
+#product-detail-page .img-child {
+    height: 104px;
+    width: 120px;
+    margin: 10px 12PX;
+    border: 1px solid #000;
+}
+
+
+/* #product-detail-page .img1-item {
+    top: 8px;
+    left: 8px;
+    width: 88px;
+    height: 88px;
+    object-fit: cover;
+}
+  
+#product-detail-page .img1 {
+    left: 0;
+}
+  
+#product-detail-page .img1,
+#product-detail-page .img2
+#product-detail-page .img3,
+#product-detail-page .img3-child,
+#product-detail-page .img4 {
+    position: absolute;
+    top: 0;
+    width: 104px;
+    height: 104px;
+}
+  
+#product-detail-page .img3-child {
+    left: 0;
+    border-radius: var(5px);
+    background-color: var(#fff);
+    border: 2px solid var(#d1d1d8);
+    box-sizing: border-box;
+}
+  
+#product-detail-page .img2,
+#product-detail-page .img3,
+#product-detail-page .img4 {
+    left: 256px;
+}
+  
+#product-detail-page .img2,
+#product-detail-page .img4 {
+    left: 128px;
+}
+  
+#product-detail-page .img4 {
+    left: 384px;
+}
+  
+#product-detail-page .langfjaell-office-chair-with-a-icon {
+    position: absolute;
+    top: 8px;
+    left: 7px;
+    border-radius: var(5px);
+    width: 88px;
+    height: 88px;
+    object-fit: cover;
+}
+  
+#product-detail-page .img5,
+#product-detail-page .product-thumbnails {
+    position: absolute;
+    top: 0;
+    left: 512px;
+    width: 104px;
+    height: 104px;
+}
+  
+#product-detail-page .product-thumbnails {
+    top: 761px;
+    left: 745px;
+    width: 616px;
+} */
+  
+/* #product-detail-page .divider,
+#product-detail-page .header-child {
+    position: absolute;
+    top: 80px;
+    left: 0;
+    background-color: var(#d1d1d8);
+    width: 1448px;
+    height: 1px;
+}
+  
+#product-detail-page .divider {
+    top: 0;
+    left: 1342.42px;
+    background-color: var(#fff);
+    width: 1.01px;
+    height: 80px;
+}
+  
+#product-detail-page .home {
+    position: relative;
+    line-height: 16px;
+    font-weight: 500;
+} */
+
+#product-detail-page .product-detail {
+    position: relative;
+    background-color: var(#fff);
+    width: 100%;
+    height: 923px;
+    overflow: hidden;
+    text-align: left;
+    font-size: var(16px);
+    color: var(#17183b);
+    font-family: var(Inter);
+}
+/* End: Product detail page */
+
 /* Start: Footer */
 .footer-web {
     width: 100%;
