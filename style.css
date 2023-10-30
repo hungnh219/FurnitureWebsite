@@ -73,13 +73,17 @@
 .button.ti-search {
     margin-left: 134px;
     line-height: 81px;
+    cursor: pointer;
 }
 
 .button.ti-shopping-cart {
     margin-left: 15px;
     line-height: 81px;
+    cursor: pointer;
 }
-
+.check-out-btn{
+    cursor: pointer;
+}
 .header .button:hover {
     cursor: pointer;
 }

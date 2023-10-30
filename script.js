@@ -46,3 +46,26 @@ function onPhoneNumberInput() {
     isSdtFilled = document.getElementById('numbers').value.trim() !== ''; // Cập nhật trạng thái nhập liệu số điện thoại
     CheckPhoneNumbers();
 }
+
+function CheckSectionDisplay(num) {
+    var array = ['home-page', 'products-page', 'product-detail-page', 'about-us-page', 'cart-page', 'billing-detail-page', 'shop-all'];
+    
+    for (var i = 0; i < array.length; i++) {
+        if (i === num) {
+            document.getElementById(array[i]).style.display = 'block';
+        } else {
+            document.getElementById(array[i]).style.display = 'none';
+        }
+    }
+}
+// Hide all sections except for homepage section
+/*
+window.addEventListener('load', function() {
+    var sections = document.getElementsByTagName('section');
+    for (var i = 0; i < sections.length; i++) {
+        if (sections[i].id !== 'home-page') {
+            sections[i].style.display = 'none';
+        }
+    }
+});
+*/
