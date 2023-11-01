@@ -53,6 +53,7 @@ function CheckSectionDisplay(num) {
     for (var i = 0; i < array.length; i++) {
         if (i === num) {
             document.getElementById(array[i]).style.display = 'block';
+            document.getElementById(array[i]).scrollIntoView({ behavior: 'smooth', block: 'start' });
         } else {
             document.getElementById(array[i]).style.display = 'none';
         }
