@@ -1163,6 +1163,66 @@
     opacity: 50%;
 }
 /* End: About us page */
+
+/* Start: Profile screen */
+#profile-screen .address-pass,
+#profile-screen .info,
+#profile-screen .name {
+    display: flex;
+    gap: 228px;
+}
+
+#profile-screen .first-name {
+    padding-left: 309px;
+}
+
+#profile-screen .profile-title {
+    color: #B48400;
+    font-family: Inter;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px;
+    padding-left: 309px;
+    padding-bottom: 30px;
+    padding-top: 30px;
+}
+
+#profile-screen .input-text {
+    border: 0.2px solid #000;
+    background: #FFF;
+    width: 342px;
+    height: 38px;
+}
+
+#profile-screen .text {
+    color: #000;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    padding-bottom: 9px;
+}
+
+#profile-screen .email {
+    padding-left: 309px;
+    padding-top: 40px;
+}
+
+#profile-screen .phone-number {
+    padding-top: 40px;
+}
+
+#profile-screen .address {
+    padding-left: 309px;
+    padding-top: 40px;
+}
+
+#profile-screen .password {
+    padding-top: 40px;
+}
+/* End: Profile screen */
 /* Start: Footer */
 .footer-web {
     width: 100%;
