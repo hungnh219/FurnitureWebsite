@@ -127,7 +127,7 @@
 .lable .lable-sort-by {
     padding-top: 45px;
     padding-bottom: 33px;
-    padding-left: 418px;
+    padding-left: 406px;
 }
 
 .lable-sort-by .lable-sort-by-title > p {
@@ -226,22 +226,26 @@
 }
 
 .product-bed {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px; 
     padding-left: 30px;
-}
-
+  }
+  
 .product-1 {
+    text-align: center;
+    /* padding: 6px; */
     float: left;
-    padding: 0 5px 0 5px;
-}
-
+  }
+  
 .product-img {
     width: 269px;
     height: 175px;
-}
-
+  }
+  
 .product-intro {
-    text-align: center;
-}
+    text-align: center; 
+  }
 
 .product-name {
     font-size: 18px;
@@ -1163,6 +1167,270 @@
     opacity: 50%;
 }
 /* End: About us page */
+
+/* Star: Sign up Screen */
+#sign-up-sreen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.login-img img {
+    flex: 1;
+    width: 624px;
+    height: 351px;
+    marGIN: 50px;
+}
+
+.sign-up {
+    padding: 50px;
+    box-sizing: border-box;
+}
+
+.sign-up h2 {
+    text-align: center;
+    font-size: 36px;
+}
+
+.sign-up-info {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch; 
+    padding: 35px 0;
+}
+
+.sign-up-info input {
+    margin-bottom: 10px;
+    padding: 12px;
+    text-align: left;
+    width: 420px;
+    font-size: 18px;
+    color: rgba(0, 0, 0, 0.5);
+    border: 0.4px solid rgba(0, 0, 0, 0.1);
+    outline: none;
+}
+
+.sign-up-button {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch; 
+}
+
+.sign-up-button button {
+    margin-bottom: 10px;
+    padding: 17px;
+    text-align: center;
+    width: 420px;
+    font-size: 18px;
+    border-radius: 9px;
+    border: 0.4px solid rgba(0, 0, 0, 0.7);
+}
+
+.create-account-button button {
+    background-color: #FFE7AD;
+}
+
+.sign-up-gg-button button,
+.sign-up-fb-button button {
+    background-color: #fff;
+}
+
+.sign-up-button button:hover {
+    border-width: 2px;
+}
+
+.login-link {
+    display: flex;
+    text-align: center;
+}
+
+.login-link a {
+    padding-left: 10px;
+    color: #000;
+}
+
+.login-link a:hover {
+    color: rgb(103, 103, 255);
+}
+/* End: Sign up screen */
+
+/* Start: Login screen */
+#login-screen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.login-img img {
+    flex: 1;
+    width: 624px;
+    height: 351px;
+    margin: 50px;
+}
+
+.login {
+    padding: 50px;
+    box-sizing: border-box;
+}
+
+.login h2 {
+    text-align: center;
+    font-size: 36px;
+}
+
+.login-info {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch; 
+    padding: 35px 0;
+}
+
+.login-info input {
+    margin-bottom: 10px;
+    padding: 12px;
+    text-align: left;
+    width: 420px;
+    font-size: 18px;
+    color: rgba(0, 0, 0, 0.5);
+    border: 0.4px solid rgba(0, 0, 0, 0.1);
+    outline: none;
+}
+
+.login-button {
+    display: flex;
+    align-items: center; 
+}
+
+.login-button button {
+    margin-bottom: 10px;
+    padding: 17px;
+    text-align: center;
+    width: 190px;
+    font-size: 18px;
+    border-radius: 9px;
+    border: 0.4px solid rgba(0, 0, 0, 0.7);
+    background-color: #FFE7AD;
+}
+
+.login-button button:hover {
+    border-width: 2px;
+}
+
+.login-button a {
+    margin-left: 117px;
+    text-decoration: none;
+    color: #000;
+}
+
+.sign-up-link {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+
+.sign-up-link a {
+    padding-left: 10px;
+    color: #000;
+}
+
+.sign-up-link a:hover {
+    color: rgb(103, 103, 255);
+}
+/* End: Login screen */
+
+/* Start: Wishlist screen */
+.wishlist {
+    padding-top: 100px;
+}
+
+.wishlist-heading,
+.wishlist-product {
+    width: 80%;
+    margin: auto;
+}
+
+.wishlist-heading {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: 15px;
+    font-size: 24px;
+    line-height: 26px;
+    color: #9C845C;
+    border-bottom-style: solid;
+    border-width: 1px;
+}
+
+.wishlist-heading .wishlist-product-name {
+    margin-left: 291px;
+}
+
+.wishlist-heading .wishlis-product-price {
+    margin-left: 384px;
+}
+
+.wishlist-product {
+    display: flex;
+    flex-direction: row;
+    padding: 60px 0;
+    border-bottom-style: solid;
+    border-width: 1px;
+    align-items: center;
+}
+
+.wishlist-product i {
+    font-size: 20px;
+    font-weight: bold;
+    padding: 3px;
+    border: 1px solid;
+    border-radius: 5px;
+    margin: 0 32px;
+}
+
+.wishlist-product i:hover {
+    color: #9C845C;
+} 
+
+.wishlist-product img {
+    height: auto;
+    width: 164px;
+    margin: 0 35px 0 0;
+
+}
+
+.wishlist-product {
+    font-size: 26px;
+    line-height: 26px;
+    cursor: default;
+}
+
+.wishlish-name-product,
+.wistlish-price {
+    flex: 1; 
+}
+
+.wishlist-product .wishlish-name-product {
+    font-weight: bold;
+    margin: 0 320px 0 0;
+    box-sizing: border-box;
+}
+
+.wishlist-product .wishlist-to-cart {
+    color: #9C845C;
+    padding-bottom: 5px;
+    border-bottom: 1px solid;
+    margin-right: 100px;
+    flex-shrink: 0;
+    cursor: pointer;
+}
+
+.wishlist-product .wishlist-to-cart:hover {
+    border-bottom: none;
+}
+/* End: Wishlist screen */
 
 /* Start: Profile screen */
 #profile-screen .address-pass,
