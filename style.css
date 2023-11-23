@@ -1461,6 +1461,7 @@
     background: #FFF;
     width: 342px;
     height: 38px;
+    opacity: 0.5;
 }
 
 #profile-screen .text {
@@ -1490,7 +1491,229 @@
 #profile-screen .password {
     padding-top: 40px;
 }
+
+#profile-screen .button-profile {
+    width: 220px;
+    height: 56px;
+    background-color: #FFF7E4;
+    border-radius: 9px;
+    color: #000;
+    text-align: center;
+    font-family: Inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 18px;
+}
+
+#profile-screen .update-pass {
+    padding-top: 46px;
+}
+
+#profile-screen .button-update-pass {
+    display: flex;
+    justify-content: center;
+    gap: 54px;
+}
+
+#profile-screen .button-update:hover {
+    background-color: #f2c96a;
+}
+
 /* End: Profile screen */
+
+/* Start: Edit Profile Screen */
+#edit-profile-screen .info,
+#edit-profile-screen .name {
+    display: flex;
+    gap: 228px;
+}
+
+#edit-profile-screen .first-name {
+    padding-left: 309px;
+}
+
+#edit-profile-screen .edit-title {
+    color: #B48400;
+    font-family: Inter;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px;
+    padding-left: 309px;
+    padding-bottom: 30px;
+    padding-top: 30px;
+}
+
+#edit-profile-screen .input-text {
+    border: 0.2px solid #000;
+    background: #FFF;
+    width: 342px;
+    height: 38px;
+    opacity: 0.5;
+}
+
+#edit-profile-screen .text {
+    color: #000;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    padding-bottom: 9px;
+}
+
+#edit-profile-screen .email {
+    padding-left: 309px;
+    padding-top: 40px;
+}
+
+#edit-profile-screen .phone-number {
+    padding-top: 40px;
+}
+
+#edit-profile-screen .address {
+    padding-left: 309px;
+    padding-top: 40px;
+}
+
+
+#edit-profile-screen .button-update {
+    width: 220px;
+    height: 56px;
+    background-color: #FFF7E4;
+    border-radius: 9px;
+    color: #000;
+    text-align: center;
+    font-family: Inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 18px;
+    border: 0.4px solid;
+}
+
+#edit-profile-screen .button-cancel {
+    width: 220px;
+    height: 56px;
+    background-color: white;
+    border-radius: 9px;
+    color: #000;
+    text-align: center;
+    font-family: Inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 18px;
+    border: 0.4px solid;
+}
+
+#edit-profile-screen .update-cancel {
+    padding-top: 46px;
+}
+
+#edit-profile-screen .button-update-cancel {
+    display: flex;
+    justify-content: center;
+    gap: 54px;
+}
+
+#edit-profile-screen .button-update:hover {
+    background-color: #f2c96a;
+}
+/* End: Edit Profile Screen */
+
+/* Start: Changes Password Screen */
+#changes-pass-screen .changes-pass-title {
+    color: #B48400;
+    font-family: Inter;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px;
+    padding-left: 309px;
+    padding-bottom: 30px;
+    padding-top: 30px;
+}
+
+#changes-pass-screen .input-text {
+    border: 0.2px solid #000;
+    background: #FFF;
+    width: 342px;
+    height: 38px;
+    opacity: 0.5;
+}
+
+#changes-pass-screen .password-changes {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    color: #000;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+#changes-pass-screen .password-changes a {
+    color: #000;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+#changes-pass-screen .password-changes a:hover {
+    color: #3aa39f;
+}
+
+#changes-pass-screen .button-update {
+    width: 220px;
+    height: 56px;
+    background-color: #FFF7E4;
+    border-radius: 9px;
+    color: #000;
+    text-align: center;
+    font-family: Inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 18px;
+    border: 0.4px solid;
+}
+
+#changes-pass-screen .button-cancel {
+    width: 220px;
+    height: 56px;
+    background-color: white;
+    border-radius: 9px;
+    color: #000;
+    text-align: center;
+    font-family: Inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 18px;
+    border: 0.4px solid;
+}
+
+#changes-pass-screen .update-cancel {
+    padding-top: 46px;
+}
+
+#changes-pass-screen .button-update-cancel {
+    display: flex;
+    justify-content: center;
+    gap: 54px;
+}
+
+#changes-pass-screen .button-update:hover {
+    background-color: #f2c96a;
+}
+/* End: Changes Password Screen */
 /* Start: Footer */
 .footer-web {
     width: 100%;
