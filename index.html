@@ -33,7 +33,122 @@
 
     <main>
         <section id="home-page">
+            <div class = "slider">
+    <div class = "dot-container">
+        <div class = "dot"> </div>
+        <div class = "dot"> </div>
+        <div class = "dot"> </div>
+    </div>
+    
+
+<div class = "slider-image">
+    <div class = "slide"> <img src = "img/Background_Photos/Home_Screen/Slider/slider_1.png"> </div>
+    <div class = "slide"> <img src = "img/Background_Photos/Home_Screen/Slider/slider_2.png"> </div>
+    <div class = "slide"> <img src = "img/Background_Photos/Home_Screen/Slider/slider_3.png"> </div>
+</div> 
+</div>
+
+<div class = "best-seller">
+    <div class = "title">Best Selling Products</div>
+    <div class = "products">
+        <div class = "product"> 
+            <img src = "img/Background_Photos/Home_Screen/Best_Seller/The Bond Chair.webp">
+            <div class = "desc">Bond chair</br>$1400</div>
+        </div>
+        <div class = "product">
+            <img src = "img/Background_Photos/Home_Screen/Best_Seller/The Kenmare Chair.webp">
+            <div class = "desc">Kenmare chair</br>$1400</div>
+        </div>
+        <div class = "product">
+            <img src = "img/Background_Photos/Home_Screen/Best_Seller/The Laight Chair.webp">
+            <div class = "desc">Laight chair</br>$1400</div>
+
+        </div>
+        <div class = "product">
+            <img src = "img/Background_Photos/Home_Screen/Best_Seller/The Perry Chair.webp">
+            <div class = "desc">Perry chair</br>$1400</div>
+        </div>
+
+    </div>
+
+</div>
+<div class = "information">
+    <ul>
+    <li class = "icon-container">
+        <div class = "icon">
+            <i class ="fas fa-light fa-award fa-2xl"></i>
+        </div>
+        <div class = "text">
+            <strong>   High Quality</strong></br><span style = "font-size: 0.8em; font-family: courier new">Crafted from top materials</span>
+        </div>
+    </li>
+    <li class = "icon-container"> 
+        <div class = "icon">
+            <i class="fa-solid fa-shield-halved fa-2xl"></i>
+        </div>
+        <div class = "text">
+            <strong>  Warranty Protection</strong></br><span style = "font-size: 0.8em; font-family: courier new">Over 2 years</span>
+        </div>
+    </li>
+    <li class = "icon-container"> 
+        <div class = "icon">
+            <i class="fas fa-truck-fast fa-2xl"></i>
+        </div>
+        <div class = "text">
+            <strong>Free Shipping</strong></br><span style = "font-size: 0.8em; font-family: courier new">Order over 150$</span>
+        </div>
+    </li>
+    <li class = "icon-container"> 
+        <div class = "icon">
+            <i class="fas fa-headphones fa-2xl"></i>
+        </div>
+        <div class = "text">
+            <strong>   24/7 Support</strong></br><span style = "font-size: 0.8em; font-family: courier new">Dedicated support</span>
+        </div>
+    </li>
+    
+    </ul>
+
+</div>
+
+<div class = "design">
+    <div class = "title">We help you make </br>Morden Interior Designs</div>
+    <div class = "gallery">
+            <div >
+                 <img src = "img/Background_Photos/Home_Screen/Design/Rectangle 36.png"> 
+            </div>
+            <div> 
+                <img src = "img/Background_Photos/Home_Screen/Design/Rectangle 38.png"> 
+            </div>
+            <div> 
+                <img src = "img/Background_Photos/Home_Screen/Design/Rectangle 39.png"> 
+            </div>
+            <div> 
+                <img src = "img/Background_Photos/Home_Screen/Design/Rectangle 40.png"> 
+            </div>
+            <div> 
+                <img src = "img/Background_Photos/Home_Screen/Design/Rectangle 41.png"> 
+            </div>
+            <div> 
+                <img src = "img/Background_Photos/Home_Screen/Design/Rectangle 37.png"> 
+            </div>
+            <div> 
+                <img src = "img/Background_Photos/Home_Screen/Design/Rectangle 43.png"> 
+            </div>
             
+            <div> 
+                <img src = "img/Background_Photos/Home_Screen/Design/Rectangle 44.png"> 
+            </div>
+            <div> 
+                <img src = "img/Background_Photos/Home_Screen/Design/Rectangle 45.png"> 
+            </div>
+            <div> 
+                <img src = "img/Background_Photos/Home_Screen/Design/Rectangle 46.png"> 
+            </div>
+            
+    </div>
+
+</div>
         </section>
 
         <section id="products-page">
@@ -891,6 +1006,68 @@
                     <p class="button-shop">Shop Dining</p>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <section id = "forget-password-email-screen">
+        <div class = "heading">
+            <p>Forget Password</p>
+        </div>
+
+        <div class = "information">
+            <label for ="email">Email or Phone Number</label>
+            <input type="text" id = "email" name = "email" value = "furnishity@gmail.com">
+        </div>
+        <div>   
+            <button class = "btn-next"> Next </button>
+        </div>
+    </section>
+
+    <section id = "forget-password-verification-screen">
+        <div class = "heading">
+            <p>Forget Password</p>
+        </div>
+
+        <div class = "information">
+            <label for ="code">Enter verification code from your email</label>
+            <input type="text" id = "code" name = "code" value = "______">
+        </div>
+        <div class = "resending-code-text">
+            <p>Resend the code</p>
+        </div>
+        <div>   
+            <button class = "btn-next"> Next </button>
+        </div>
+    </section>
+
+        <section id = "forget-password-set-screen">
+            <div class = "heading">
+                <p>Forget Password</p>
+            </div>
+
+            <div class = "information">
+                <label for="new-password">Enter new password</label>
+                <input type="password" id="new-password" name="new-password" value="new password">
+
+                <label for="confirm-password">Confirm new password</label>
+                <input type="password" id="confirm-password" name="confirm-password" value = "confirm new password">
+            </div>
+            
+            <div>   
+                <button class = "btn-finish"> Finish </button>
+            </div>
+        </section>
+
+    <section id = "forget-password-done-screen">
+        <div class = "message">
+            <p>YOU HAVE SUCCESSFULLY CHANGED YOUR PASSWORD</p>
+        </div>
+        <div class = "icon">
+            <i class="fa-regular fa-circle-check"></i>  
+
+        </div>
+        <div>   
+            <button class = "btn-back"> Back to Home </button>
         </div>
     </section>
 
