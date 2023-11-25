@@ -1143,7 +1143,7 @@
 #about-us-page .members1 {
     display: flex;
     text-align: center;
-    padding-left: 125px;
+    justify-content: center;
 }
 
 #about-us-page .members-info {
@@ -1438,10 +1438,11 @@
 #profile-screen .name {
     display: flex;
     gap: 228px;
+    justify-content: center;
 }
 
 #profile-screen .first-name {
-    padding-left: 309px;
+    /* padding-left: 309px; */
 }
 
 #profile-screen .profile-title {
@@ -1475,7 +1476,7 @@
 }
 
 #profile-screen .email {
-    padding-left: 309px;
+    /* padding-left: 309px; */
     padding-top: 40px;
 }
 
@@ -1484,7 +1485,7 @@
 }
 
 #profile-screen .address {
-    padding-left: 309px;
+    /* padding-left: 309px; */
     padding-top: 40px;
 }
 
@@ -1516,7 +1517,7 @@
     gap: 54px;
 }
 
-#profile-screen .button-update:hover {
+#profile-screen .button-profile:hover {
     background-color: #f2c96a;
 }
 
@@ -1527,10 +1528,11 @@
 #edit-profile-screen .name {
     display: flex;
     gap: 228px;
+    justify-content: center;
 }
 
 #edit-profile-screen .first-name {
-    padding-left: 309px;
+    /* padding-left: 309px; */
 }
 
 #edit-profile-screen .edit-title {
@@ -1564,7 +1566,7 @@
 }
 
 #edit-profile-screen .email {
-    padding-left: 309px;
+    /* padding-left: 309px; */
     padding-top: 40px;
 }
 
@@ -1573,7 +1575,7 @@
 }
 
 #edit-profile-screen .address {
-    padding-left: 309px;
+    padding-left: 304px;
     padding-top: 40px;
 }
 
