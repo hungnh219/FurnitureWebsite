@@ -88,6 +88,172 @@
 
 /* End: Header */
 
+
+/* start: Homepage */
+.slider {
+    max-width: 100%;
+    margin: auto;
+    overflow: hidden;
+    position: relative;
+}
+
+.slider .slider-image {
+    display: flex;
+    width: 100%;
+    height: 675px;
+    position: relative;
+    transition: slide 0.3s ease
+}
+
+.slider .slider-image img {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: contain;
+}
+
+.dot-container {
+    top: 100px;
+    z-index: 1;
+    position: absolute;
+    height: 30px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dot {
+    z-index: 1;
+    height: 12px;
+    width: 12px;
+    background-color: #D8D8D8;
+    border-radius: 50%;
+    margin-right: 12px;
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.dot:hover {
+    background-color: #ABA08C;
+}
+
+
+
+.best-seller {
+    max-width: 100%;
+    margin: auto;
+    overflow: auto;
+    position: relative;
+}
+
+.best-seller .title {
+    margin: 50px 10px;
+    font-size: 30px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    position: relative;
+}
+
+.best-seller .products {
+    margin: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.best-seller .products .product {
+    width: 300px;
+    margin: 5px 10px 30px;
+    box-sizing: border-box;
+}
+
+.best-seller .products .product img {
+    width: 100%;
+    height: auto;
+    justify-content: center;
+    object-fit: cover;
+
+
+}
+
+.best-seller .products .product .desc {
+    font-size: 16px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
+
+
+.information ul {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 250px;
+    align-items: center;
+    border-bottom: 3px solid #333;
+    border-top: 3px solid #333;
+    list-style: none;
+}
+
+.information .icon-container {
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    font-size: 1.4em;
+
+}
+
+.information .icon-container .icon {
+    margin-right: 10px;
+}
+
+.information .icon-container .text {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+
+.design {
+    display: flex;
+    flex-direction: column;
+    margin: 40px 20px 0 20px;
+}
+
+.design .title {
+    margin-bottom: 40px;;
+    font-size: 2em;
+    font-weight: bolder;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    letter-spacing: 0.015em;
+}
+
+.design .gallery {
+    padding: 0;
+    max-width: 100%;
+    margin: auto;
+    display: grid;
+    grid-gap: 15px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-auto-rows: 250px;
+    grid-auto-flow: dense;
+}
+
+.design .gallery div img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+}
+
+/*end: Homepage*/
 /* Start: Product page */
 .background-img  img {
     width: 100%;
@@ -1716,6 +1882,265 @@
     background-color: #f2c96a;
 }
 /* End: Changes Password Screen */
+
+/* start: forget-password-email screen */
+#forget-password-email-screen {
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+    height: 100vh; 
+    transform: translate(-20%, -15%);
+    font-family: 'Inter', 'Times New Roman', Times, serif;
+}
+
+#forget-password-email-screen .heading{
+    font-size: 20px;
+    color: #B48400;
+    font-weight: 400;
+    line-height: 24px;
+    transform: translate(-20%, -30%);
+}
+
+#forget-password-email-screen .information{
+    transform: translate(100%, -10%);
+
+}
+  
+#forget-password-email-screen .information label {
+    display: block;
+    left: 0;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    margin-bottom: 10px; 
+}
+  
+#forget-password-email-screen .information input {
+    width: 340px;
+    height: 40px;
+    padding: 8px;
+    font-size: 16px;
+    font-weight: 200;
+    border: 1px solid #ccc;
+    margin-bottom: 30px;
+}
+
+#forget-password-email-screen .information input:hover {
+    background-color: #FFF7E4;
+}
+
+#forget-password-email-screen .btn-next {
+    width: 80px;
+    border-radius: 4px;
+    width: 180px;
+    height: 50px;
+    background-color: #FFF7E4;
+    border-radius: 9px;
+    color: #000;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 24px;
+    border: 0.5px solid #ccc;
+    transform: translate(200%, -20%);
+    cursor: pointer;
+}
+/* end: forget-password-email screen*/
+
+/* start: forget password - verification code screen */
+#forget-password-verification-screen {
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+    height: 100vh; 
+    transform: translate(-20%, -15%);
+    font-family: 'Inter', 'Times New Roman', Times, serif;
+}
+
+#forget-password-verification-screen .heading{
+    font-size: 20px;
+    color: #B48400;
+    font-weight: 400;
+    line-height: 24px;
+    transform: translate(-20%, -30%);
+}
+
+#forget-password-verification-screen .information{
+    transform: translate(100%, -10%);
+
+}
+  
+#forget-password-verification-screen .information label {
+    display: block;
+    left: 0;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    margin-bottom: 10px; 
+    transform: translate(-15%, -10%);
+
+}
+  
+#forget-password-verification-screen .information input {
+    width: 185px;
+    height: 30px;
+    padding: 8px;
+    font-size: 30px;
+    font-weight: 200;
+    border: 1px solid #ccc;
+    margin-bottom: 30px;
+    letter-spacing: 10px;
+    text-align: center;
+}
+
+#forget-password-verification-screen .information input:hover {
+    background-color: #FFF7E4;
+}
+
+#forget-password-verification-screen .resending-code-text {
+    transform: translate(260%, -120%);
+    font-size: 12px;
+    text-decoration: underline;
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+#forget-password-verification-screen .btn-next {
+    width: 80px;
+    border-radius: 4px;
+    width: 180px;
+    height: 50px;
+    background-color: #FFF7E4;
+    border-radius: 9px;
+    color: #000;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 24px;
+    border: 0.5px solid #ccc;
+    transform: translate(138%, -100%);
+    cursor: pointer;
+}
+/* end: forget-password-verfication screen */
+
+
+/* start: forget-password-set screen*/
+#forget-password-set-screen {
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+    height: 100vh; 
+    transform: translate(-20%, -15%);
+    font-family: 'Inter', 'Times New Roman', Times, serif;
+}
+#forget-password-set-screen .heading{
+    font-size: 20px;
+    color: #B48400;
+    font-weight: 400;
+    line-height: 24px;
+    transform: translate(-20%, -30%);
+}
+
+#forget-password-set-screen .information{
+    transform: translate(100%, -10%);
+
+}
+  
+#forget-password-set-screen .information label {
+    display: block;
+    left: 0;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    margin-bottom: 10px; 
+}
+  
+#forget-password-set-screen .information input {
+    width: 340px;
+    height: 40px;
+    padding: 8px;
+    font-size: 16px;
+    font-weight: 200;
+    border: 1px solid #ccc;
+    margin-bottom: 30px;
+}
+
+#forget-password-set-screen .information input:hover {
+    background-color: #FFF7E4;
+}
+
+#forget-password-set-screen .btn-finish {
+    width: 80px;
+    border-radius: 4px;
+    width: 180px;
+    height: 50px;
+    background-color: #FFF7E4;
+    border-radius: 9px;
+    color: #000;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 24px;
+    border: 0.5px solid #ccc;
+    transform: translate(200%, -20%);
+    cursor: pointer;
+}
+/* end: forget-password-set-screen */
+
+
+/* start: forget-password-done-screen */
+#forget-password-done-screen {
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+    transform: translate(0, -10%);
+    height: 100vh; 
+    font-family: 'Inter', 'Times New Roman', Times, serif;
+}
+
+#forget-password-done-screen .message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#forget-password-done-screen .message p{
+    font-size: 32px;
+    font-weight: bold;
+    margin: auto 15%;
+    text-align: center;
+    letter-spacing: 0.2px;
+}
+
+#forget-password-done-screen .icon{
+    font-size: 100px;
+    padding: 10px;
+    color: #9C845C
+}
+
+#forget-password-done-screen .btn-back {
+    width: 80px;
+    border-radius: 4px;
+    width: 180px;
+    height: 50px;
+    background-color: #FFF7E4;
+    border-radius: 9px;
+    color: #000;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 24px;
+    border: 1px solid #000;
+    cursor: pointer;
+
+}
+/* end: forget-password-done-screen */
+
+
 /* Start: Footer */
 .footer-web {
     width: 100%;
