@@ -29,8 +29,10 @@ function addtocart(curr) {
     let productname=curr.parentElement.parentElement.children[1].textContent.trim();
     let productprice=curr.parentElement.parentElement.children[3].children[0].textContent.trim();
     let productquan=curr.parentElement.parentElement.children[5].children[0].children[1].textContent.trim();
-    let producttotal=parseFloat(productquan)*parseFloat(productprice.slice(1));
-    
+    productprice=productprice.slice(1);
+    productprice=productprice.replace(',','.');
+    let producttotal=parseFloat(productquan)*parseFloat(productprice);
+    console.log(productprice)
     if (localStorage.length!=0 ) {
         products.push(...JSON.parse(localStorage.getItem("products")));
       }
@@ -42,6 +44,7 @@ function addtocart(curr) {
         producttotal:producttotal
       });
       localStorage.setItem("products", JSON.stringify(products));
+      
       getProducts()
 }
 //go to detail product
@@ -101,6 +104,20 @@ function getProducts() {
                         </div>
         </div>
         `
+    }
+}
+
+//increase quantity
+function increasequan(curr) {
+    
+    quantity=curr.parentElement.children[1];
+    quantity.innerHTML=Number(quantity.textContent)+1;
+}
+//decrease quantity
+function decreasequan(curr) {
+    quantity=curr.parentElement.children[1];
+    if(Number(quantity.textContent)>1) {
+        quantity.innerHTML=Number(quantity.textContent)-1;
     }
 }
 
