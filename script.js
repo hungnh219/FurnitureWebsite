@@ -194,9 +194,6 @@ function CheckSectionDisplay(num) {
     }
 }
 
-
-
-
 // Hide all sections except for homepage section
 /*
 window.addEventListener('load', function() {
@@ -208,3 +205,116 @@ window.addEventListener('load', function() {
     }
 });
 */
+
+// Add products 
+function addProduct(productlist){
+    var newProduct = document.createElement("div");
+    newProduct.classList.add("product-1");
+
+    // Tạo phần tử img
+    var img_Product = document.createElement("img");
+    img_Product.src = productlist.image;
+    img_Product.alt = productlist.name;
+    img_Product.classList.add("product-img");
+
+    // Tạo phần tử div mới cho product-intro
+    var productIntro = document.createElement("div");
+    productIntro.classList.add("product-intro");
+
+    // Tạo phần tử p cho product name
+    var productName = document.createElement("p");
+    productName.classList.add("product-name");
+    productName.textContent = productlist.name;
+
+    // Tạo phần tử p cho product cost
+    var productCost = document.createElement("p");
+    productCost.classList.add("product-cost");
+    productCost.textContent ="$"+productlist.price;
+
+    // Gắn các phần tử con vào phần tử cha
+    productIntro.appendChild(productName);
+    productIntro.appendChild(productCost);
+    newProduct.appendChild(img_Product);
+    newProduct.appendChild(productIntro);
+
+    // Tìm phần tử cha có lớp "product-bed"
+    var productBed = document.querySelector(".product-bed");
+
+    // Thêm phần tử mới vào phần tử cha
+    if (productBed) {
+    productBed.appendChild(newProduct);
+    } else {
+    console.error("Element with class 'product-bed' not found.");
+    }
+}
+// Demo data
+const productList = {
+    "1": { "name": 'Product A', "image": './assets/Furniture_Photos/Products_Photos/P0004/1.webp', "price": 1.223},
+    "2": { "name": 'Product B', "image": './assets/Furniture_Photos/Products_Photos/P0005/1.webp', "price": 3.111 },
+    "3": { "name": 'Product C', "image": './assets/Furniture_Photos/Products_Photos/P0006/1.webp', "price": 2.509 },
+    /// n products
+};
+document.addEventListener("DOMContentLoaded", function() {
+    // Gọi hàm addProductToBed trong sự kiện "DOMContentLoaded"
+   for (let key in productList) {
+       if (productList.hasOwnProperty(key)) {
+         const product = productList[key];
+         addProduct(product);
+       }
+     }
+ });
+
+ // Create Bill PDF document
+ function generatePDF(){
+    if (document.getElementById("first-name-input").value == "") {
+        alert("Please enter first name");
+      } else {
+        var doc = new jsPDF();
+    
+        // Set font size and style for "Bill Details"
+        doc.setFontSize(18);
+        doc.setFontStyle("bold");
+    
+        // Calculate the width of the text
+        var textWidth = doc.getStringUnitWidth("Bill Details") * doc.internal.getFontSize();
+    
+        // Calculate the center position of the page with an offset
+        var pageWidth = doc.internal.pageSize.getWidth();
+        var offsetX = 32; // Adjust the value to move the text to the right
+        var centerX = (pageWidth - textWidth) / 2 + offsetX;
+    
+        // Center the "Bill Details" text
+        doc.text(centerX, 20, "Bill Details");
+    
+        // Reset font size and style for other text
+        doc.setFontSize(11);
+        doc.setFontStyle("normal");
+    
+        var fullName = document.getElementById("last-name-input").value + " " + document.getElementById("first-name-input").value;
+
+    // Display
+        doc.text(pageWidth - 60, 40, "Brand: " + "Furnishity Store");
+        doc.text(pageWidth - 75, 45, "University of Information and Technology");
+        doc.text(pageWidth - 60, 50, "Phone Number: " + "0987654321");
+        doc.text(pageWidth - 60, 55, "Website: " + "www.furnishity.com");
+        doc.text(10, 60, "Full Name: " + fullName);
+        doc.text(10, 65, "Address: " + document.getElementById("address-input").value);
+        doc.text(10, 70, "Apartment: "+ document.getElementById("info-apartment-input").value);
+        doc.text(10, 75, "Town/City: "+ document.getElementById("info-city-input").value);
+        doc.text(10, 80, "Phone Number: "+ document.getElementById("numbers").value);
+        doc.text(10, 85, "Email: "+ document.getElementById("email").value);
+        doc.text(10, 95, "Product Name");
+        doc.text(100, 95, "Quantity")
+        doc.text(190, 95, "Price");
+        var productName = document.querySelector('.shipment-product-name').textContent;
+        var productPrice = document.querySelector('.shipment-product-price').textContent;
+        doc.text(10, 105, productName);
+        doc.text(105, 105, "1");
+        doc.text(190, 105, productPrice);
+        // Draw a line below the labels
+        var lineY = 97; // Adjust the value to position the line
+        var lineWidth = 190; // Adjust the value to set the width of the line
+        doc.line(10, lineY, 10 + lineWidth, lineY);
+        doc.save("invoice.pdf");
+      }
+}

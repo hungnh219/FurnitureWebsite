@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <script src="script.js"></script>
     <link rel="stylesheet" href="./assets/fonts/themify-icons/themify-icons.css">
     <title>IE104</title>
@@ -917,27 +919,27 @@
                     <div class="customer-information">
                         <div class="info-textfield info-first-name">
                             <label>First name: </label><br>
-                            <input type="text"><br>
+                            <input type="text" id="first-name-input"><br>
                         </div>
                         
                         <div class="info-textfield info-last-name">
                             <label>Last name:</label><br>
-                            <input type="text"><br>
+                            <input type="text" id="last-name-input"><br>
                         </div>
 
                         <div class="info-textfield info-address">
                             <label>Street Address:</label><br>
-                            <input type="text"><br>
+                            <input type="text" id="address-input"><br>
                         </div>
 
                         <div class="info-textfield info-apartment">
                             <label>Apartment:</label><br>
-                            <input type="text"><br>
+                            <input type="text" id="info-apartment-input"><br>
                         </div>
 
                         <div class="info-textfield info-city">
                             <label>Town/City:</label><br>
-                            <input type="text"><br>
+                            <input type="text" id="info-city-input"><br>
                         </div>
 
                         <div class="info-textfield info-phone-number">
@@ -1000,7 +1002,7 @@
                         </div>
 
                         <div class="place-order-button">
-                            <button>Place order</button>
+                            <button onclick="generatePDF()">Place order</button>
                         </div>
 
                         <div class="back-to-cart-button">
