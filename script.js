@@ -22,6 +22,10 @@ const imgPosition = document.querySelectorAll(".slider-image img")
 
     setInterval(imgSlide, 5000)
 
+
+
+
+
 //add product to localStorage
 function addtocart(curr) {
     let products=[];
@@ -32,20 +36,26 @@ function addtocart(curr) {
     productprice=productprice.slice(1);
     productprice=productprice.replace(',','.');
     let producttotal=parseFloat(productquan)*parseFloat(productprice);
-    console.log(productprice)
     if (localStorage.length!=0 ) {
         products.push(...JSON.parse(localStorage.getItem("products")));
       }
-      products.push({
-        img:img,
-        productname:productname,
-        productprice:productprice,
-        productquan:productquan,
-        producttotal:producttotal
-      });
-      localStorage.setItem("products", JSON.stringify(products));
-      
-      getProducts()
+    
+    let product={
+    img:img,
+    productname:productname,
+    productprice:productprice,
+    productquan:productquan,
+    producttotal:producttotal
+    };
+    let isExist=products.some(x=>x.img==product.img&&x.productname==product.productname&&x.productprice==product.productprice);
+    if(!isExist) {
+        products.push(product);  
+    }
+    else alert("This product has been added to cart")
+     
+    localStorage.setItem("products", JSON.stringify(products));
+    
+    getProducts()
 }
 //go to detail product
 function goToDetailProduct(curr) {
