@@ -25,10 +25,10 @@ const imgPosition = document.querySelectorAll(".slider-image img")
 //add product to localStorage
 function addtocart(curr) {
     let products=[];
-    let img=curr.parentElement.children[5].children[0].src;
-    let productname=curr.parentElement.children[2].textContent;
-    let productprice=curr.parentElement.children[3].textContent;
-    let productquan=curr.parentElement.children[10].children[1].textContent;
+    let img=curr.parentElement.parentElement.children[2].children[0].src;
+    let productname=curr.parentElement.parentElement.children[1].textContent.trim();
+    let productprice=curr.parentElement.parentElement.children[3].children[0].textContent.trim();
+    let productquan=curr.parentElement.parentElement.children[5].children[0].children[1].textContent.trim();
     let producttotal=parseFloat(productquan)*parseFloat(productprice.slice(1));
     
     if (localStorage.length!=0 ) {
@@ -44,7 +44,10 @@ function addtocart(curr) {
       localStorage.setItem("products", JSON.stringify(products));
       getProducts()
 }
-
+//go to detail product
+function goToDetailProduct(curr) {
+    
+}
 
 //get product from localStorage
 function getProducts() {
