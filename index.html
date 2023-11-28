@@ -571,7 +571,7 @@
                     </div>
         
                     <div class="info-password">
-                        <input type="text" value="Password">
+                        <input type="password" value="Password">
                     </div>
         
                 </div>
@@ -614,7 +614,7 @@
                     </div>
         
                     <div class="info-password">
-                        <input type="text" value="Password">
+                        <input type="password" value="Password">
                     </div>
         
                 </div>
@@ -826,9 +826,52 @@
 
                 <div class="products-detail">
                     <table class="detail-info">
-                        td*
+                        <thead>
+                            <tr>
+                                <td>Product Name</td>
+                                <td>Quantity</td>
+                                <td>Category</td>
+                                <td>Price</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="product-info">
+                                <td class="Product name">The Chelsea</td>
+                                <td class="Quantity">10</td>
+                                <td class="Category">100</td>
+                                <td class="Price">3,725$</td>
+                                <td class="product-actions">
+                                    <button class="delete-button" onclick="toggleModalStaff()">Delete</button>
+                                    <button class="changes-button" onclick="toggleModalStaff()">Changes</button>                                </td>
+                            </tr>
+                            <tr class="product-info-row">
+                                <td class="Product name">The Arsenal</td>
+                                <td class="Quantity">20</td>
+                                <td class="Category">200</td>
+                                <td class="Price">4,725$</td>
+                                <td class="product-actions">
+                                    <button class="delete-button" onclick="toggleModalStaff()">Delete</button>
+                                    <button class="changes-button" onclick="toggleModalStaff()">Changes</button>
+                                </td>
+                            </tr>
+                        </tbody>
                     </table>
                 </div>
+            </div>
+        </section>
+
+        <section id="products-management-details">
+            <div class="management-menu">
+                <ul>
+                    <li><a href="">Transportation management</a></li>
+                    <li><a href="">Products management</a></li>
+                    <li><a href="">Revenue management</a></li>
+                    <li><a href="">User management</a></li>
+                </ul>
+            </div>
+
+            <div class="products-main">
+                
             </div>
         </section>
 
