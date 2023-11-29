@@ -89,7 +89,7 @@ function getProducts() {
                                 <img src=${product.img} alt="" class="product-image">
                                 <div>
                                     <p class="product-name">${product.productname}</p>
-                                    <p class="product-status">Remove</p>
+                                    <button><p class="product-status">Remove</p></button>
                                 </div>
                             </div>
 
