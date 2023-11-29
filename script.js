@@ -210,7 +210,9 @@ window.addEventListener('load', function() {
 function addProduct(productlist){
     var newProduct = document.createElement("div");
     newProduct.classList.add("product-1");
-
+    newProduct.addEventListener("click", function(e){
+        CheckSectionDisplay(2);
+    });
     // Tạo phần tử img
     var img_Product = document.createElement("img");
     img_Product.src = productlist.image;
