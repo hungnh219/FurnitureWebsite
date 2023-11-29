@@ -58,15 +58,12 @@ function addtocart(curr) {
     
     getProducts()
 }
-//go to detail product
-function goToDetailProduct(curr) {
-    
-}
+
 
 //get product from localStorage
 function getProducts() {
     document.getElementsByClassName('cart-products')[0].innerHTML='';
-    if(localStorage.length==0) {
+    if(localStorage.length==0 || JSON.parse(localStorage.getItem('products')).length==0) {
         document.getElementsByClassName('cart-products')[0].innerHTML+='<div style="font-size: 48px;text-align: center;padding: 75px 0px;">Empty</div>'
     }
     else {
@@ -90,7 +87,7 @@ function getProducts() {
                                 <img src=${product.img} alt="" class="product-image">
                                 <div>
                                     <p class="product-name">${product.productname}</p>
-                                    <button><p class="product-status">Remove</p></button>
+                                    <button onclick="removeProduct(this)"><p class="product-status">Remove</p></button>
                                 </div>
                             </div>
 
@@ -116,6 +113,15 @@ function getProducts() {
         </div>
         `
     }
+    console.log(JSON.parse(localStorage.getItem('products')).length)
+}
+
+function removeProduct(curr) {
+    products=[];
+    products=JSON.parse(localStorage.getItem("products"))
+    products=products.filter(product=>product.img!=curr.parentElement.parentElement.children[0].src);
+    localStorage.setItem('products',JSON.stringify(products))
+    getProducts();
 }
 
 //increase quantity
