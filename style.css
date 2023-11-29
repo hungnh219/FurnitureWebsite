@@ -162,6 +162,7 @@ html {
     border: none;
     font-family: monospace;
     font-weight: bold;
+    cursor: pointer;
 }
 .slider .dots{
     position: absolute;
