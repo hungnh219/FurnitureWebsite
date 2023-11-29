@@ -201,7 +201,7 @@ function CheckSectionDisplay(num) {
 }
 
 // Hide all sections except for homepage section
-/*
+
 window.addEventListener('load', function() {
     var sections = document.getElementsByTagName('section');
     for (var i = 0; i < sections.length; i++) {
@@ -210,13 +210,15 @@ window.addEventListener('load', function() {
         }
     }
 });
-*/
+
 
 // Add products 
 function addProduct(productlist){
     var newProduct = document.createElement("div");
     newProduct.classList.add("product-1");
-
+    newProduct.addEventListener("click", function(e){
+        CheckSectionDisplay(2);
+    });
     // Tạo phần tử img
     var img_Product = document.createElement("img");
     img_Product.src = productlist.image;
@@ -324,3 +326,14 @@ document.addEventListener("DOMContentLoaded", function() {
         doc.save("invoice.pdf");
       }
 }
+// Change Header color
+window.addEventListener('scroll', function() {
+    var header = document.querySelector('.header-web');
+    var scrollPosition = window.scrollY;
+
+    if (scrollPosition > 0) {
+        header.classList.add('scrolled');
+    } else {
+        header.classList.remove('scrolled');
+    }
+});
