@@ -195,7 +195,7 @@ function CheckSectionDisplay(num) {
 }
 
 // Hide all sections except for homepage section
-/*
+
 window.addEventListener('load', function() {
     var sections = document.getElementsByTagName('section');
     for (var i = 0; i < sections.length; i++) {
@@ -204,7 +204,7 @@ window.addEventListener('load', function() {
         }
     }
 });
-*/
+
 
 // Add products 
 function addProduct(productlist){
@@ -320,3 +320,14 @@ document.addEventListener("DOMContentLoaded", function() {
         doc.save("invoice.pdf");
       }
 }
+// Change Header color
+window.addEventListener('scroll', function() {
+    var header = document.querySelector('.header-web');
+    var scrollPosition = window.scrollY;
+
+    if (scrollPosition > 0) {
+        header.classList.add('scrolled');
+    } else {
+        header.classList.remove('scrolled');
+    }
+});
