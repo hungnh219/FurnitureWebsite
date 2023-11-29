@@ -27,6 +27,7 @@ const imgPosition = document.querySelectorAll(".slider-image img")
 
 
 //add product to localStorage
+
 function addtocart(curr) {
     let products=[];
     let img=curr.parentElement.parentElement.children[2].children[0].src;
@@ -329,5 +330,17 @@ window.addEventListener('scroll', function() {
         header.classList.add('scrolled');
     } else {
         header.classList.remove('scrolled');
+    }
+});
+
+// Scroll button
+
+window.addEventListener("scroll", function() {
+    const toTop = document.querySelector(".to-top");
+    var scrollTop = window.scrollY;
+    if(scrollTop > 0) {
+        toTop.classList.add('active');
+    } else {
+        toTop.classList.remove('active');
     }
 });

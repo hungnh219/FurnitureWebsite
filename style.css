@@ -4,7 +4,33 @@
     margin: 0;
     box-sizing: border-box;
 }
-
+/*to-top button */
+.to-top{
+    background-color: #333333;
+    position: fixed;
+    bottom: 16px;
+    right: 32px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 1.5em;
+    color: white;
+    opacity: 0;
+    pointer-events: none;
+    transition: all .4s;
+}
+.to-top.active{
+    bottom: 32px;
+    pointer-events: auto;
+    opacity: 1;
+}
+html {
+    scroll-behavior: smooth;
+}
 /* Start: Header */
 .header-web {
     width: 100%;
@@ -2304,7 +2330,7 @@
     height: 300px;
     padding: 105px 120px 0 120px;
     background-color: #ffffff;
-    position: relative;
+    position: inherit;
     bottom: 0;
 }
 
