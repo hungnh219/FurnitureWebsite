@@ -34,11 +34,14 @@ html {
 }
 /* Start: Header */
 #navigation {
-    position: relative;
+    position: fixed;
+    width: 100%;
+    /* position: relative; */
     display: flex;
     height: 80px;
     justify-content: space-between;
     align-items: center;
+    background-color: #fff;
     padding: 0 148px;
     z-index: 1;
 }
