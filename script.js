@@ -296,15 +296,18 @@ document.addEventListener("DOMContentLoaded", function() {
         var centerX = (pageWidth - textWidth) / 2 + offsetX;
     
         // Center the "Bill Details" text
-        doc.text(centerX, 20, "Bill Details");
-    
+        doc.text(centerX, 30, "Bill Details");
+        doc.setFontSize(25);
+        var textWidthLogo = doc.getStringUnitWidth("Furnishity.") * doc.internal.getFontSize();
+        doc.text(10, 10,"Furnishity.");
         // Reset font size and style for other text
         doc.setFontSize(11);
         doc.setFontStyle("normal");
-    
+        
         var fullName = document.getElementById("last-name-input").value + " " + document.getElementById("first-name-input").value;
 
     // Display
+        
         doc.text(pageWidth - 60, 40, "Brand: " + "Furnishity Store");
         doc.text(pageWidth - 75, 45, "University of Information and Technology");
         doc.text(pageWidth - 60, 50, "Phone Number: " + "0987654321");
@@ -314,7 +317,7 @@ document.addEventListener("DOMContentLoaded", function() {
         doc.text(10, 70, "Apartment: "+ document.getElementById("info-apartment-input").value);
         doc.text(10, 75, "Town/City: "+ document.getElementById("info-city-input").value);
         doc.text(10, 80, "Phone Number: "+ document.getElementById("numbers").value);
-        doc.text(10, 85, "Email: "+ document.getElementById("email").value);
+        doc.text(10, 85, "Email: "+ document.getElementById("email-field").value);
         doc.text(10, 95, "Product Name");
         doc.text(100, 95, "Quantity")
         doc.text(190, 95, "Price");
