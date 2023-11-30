@@ -388,15 +388,18 @@ html {
     position: absolute;
     width: 188px;
     display: none;
+    
 }
 
 .lable-sort-by li:hover .lable-subnav {
     display: block;
+    
 }
 
 .lable-subnav li:hover a {
     color: #000;
     background-color: #ccc;
+    
 }
 
 .lable-subnav li a{
@@ -488,6 +491,8 @@ html {
     border-right: 1px solid #555;
     border-left: 1px solid #555;
     display: none;
+    transition: 0.5s ease;
+    opacity: 0;
 }
 
 .vertical-subnav > li > a {
@@ -504,6 +509,7 @@ html {
 
 #product-category li:hover .vertical-subnav {
     display: block;
+    opacity: 1;
 }
 
 .vertical-subnav li:hover a {
@@ -678,6 +684,26 @@ html {
 }
 #cart-page .cart-sub-total .check-out-button button:hover {
     border: 2px solid #fff;
+}
+
+.cart .empty-cart{
+    width: 30em;
+    height: auto;
+    display: block;
+}
+.cart p{
+    font-size: 40px;
+    color:rgb(97, 14, 14); 
+    font-family: monospace;
+    vertical-align: middle;
+}
+.cart {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
 }
 /* End: Cart page */
 

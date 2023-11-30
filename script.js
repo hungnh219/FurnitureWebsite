@@ -64,7 +64,13 @@ function addtocart(curr) {
 function getProducts() {
     document.getElementsByClassName('cart-products')[0].innerHTML='';
     if(localStorage.length==0 || JSON.parse(localStorage.getItem('products')).length==0) {
-        document.getElementsByClassName('cart-products')[0].innerHTML+='<div style="font-size: 48px;text-align: center;padding: 75px 0px;">Empty</div>'
+        document.getElementsByClassName('cart-products')[0].innerHTML+=`
+        
+        <div class="cart">
+        <img class="empty-cart" src="./img/Cart empty/cart-empty.png" alt="Empty Cart image">
+        <p>Your cart is empty</p>
+        </div>
+        `
     }
     else {
         let total=0;
