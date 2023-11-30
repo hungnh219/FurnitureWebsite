@@ -880,7 +880,9 @@ html {
 /* End: Shop all */
 
 /* Start: Product detail page */
-
+#product-detail-page{
+    padding-top: 6em;
+}
 #product-detail-page .ti-arrow-left {
     width: 24px;
     height: 24px;
@@ -1095,12 +1097,15 @@ html {
 }
 
 #product-detail-page .big-image {
-    width: 844px;
-    height: 461px;
+    position: relative;
+    max-width: 844px;
+    max-height: 461px;
     flex-shrink: 0;
     float: right;
     padding-right: 82px;
     padding-bottom: 40px;
+    width: 100%;
+    height: 100%;
 }
 
 #product-detail-page .content-detail-image {
