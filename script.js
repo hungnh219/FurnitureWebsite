@@ -91,7 +91,7 @@ function getProducts() {
             <div class="cart-product">
                             <div class="product-detail">
                                 <img src=${product.img} alt="" class="product-image">
-                                <div>
+                                <div class="product-item">
                                     <p class="product-name">${product.productname}</p>
                                     <button onclick="removeProduct(this)"><p class="product-status">Remove</p></button>
                                 </div>
@@ -99,8 +99,17 @@ function getProducts() {
 
                             <div class="product-total">
                                 <div class="product-price">${product.productprice}</div>
-                                <div class="product-quantity">${product.productquan}</div>
+                                <div class="cart-add-minus-button">
+                                <button class="ti-minus" onclick="decreasequan(this)"></button>
+                                <div class="quantity">${product.productquan}</div>
+                                <button class="ti-plus" onclick="increasequan(this)"></button>
+                                </div>
+            
                                 <div class="product-total-price">$${product.producttotal}</div>
+
+                                <button class="trash-icon" onclick="removeProduct(this)">
+                                <img src="./img/Cart empty/delete.png" alt="trash icon">
+                                </button>
                             </div>
             </div>`
         })
