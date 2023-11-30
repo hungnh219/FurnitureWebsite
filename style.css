@@ -2332,6 +2332,47 @@ html {
     display: flex;
 }
 
+#products-management-details .products-main {
+    margin-top: 15vh;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#products-management-details .product-details input {
+    width: 220px;
+    height: 22px;
+    color: rgba(0, 0, 0, 0.5);
+    box-sizing: border-box; 
+    border: 0.5px solid rgba(0, 0, 0, 0.1);
+}
+
+#products-management-details .product-details {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+}
+
+#products-management-details .product-details > div {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+.name,
+.price,
+.photos,
+.material,
+.width,
+.height,
+.depth,
+.weight {
+    margin-right: 4em;
+    margin-left: 4em;
+}
+
 #products-management-details .management-menu {
     margin-left: 10%; 
     margin-top: 10vh;
