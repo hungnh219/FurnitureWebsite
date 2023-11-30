@@ -1,26 +1,3 @@
-//script for slider homepage
-const imgPosition = document.querySelectorAll(".slider-image img")
-    const imgContainer = document.querySelector('.slider-image')
-    let index = 0;
-    let imgNumber = imgPosition.length
-    let space = 100
-    imgPosition.forEach(function(image, index) {
-        image.style.left = index*space + "%"
-    })
-    function imgSlide() {
-        index++;
-        console.log(index)
-        if(index >= imgNumber)
-        {
-            index = 0;
-            imgPosition.forEach(function(image, index) {
-            image.style.left = index*space + "%"})
-    }
-    imgContainer.style.left = "-" + index*space + "%"
-    
-}
-
-    setInterval(imgSlide, 5000)
 
 
 
@@ -93,21 +70,20 @@ function getProducts() {
                                 <img src=${product.img} alt="" class="product-image">
                                 <div class="product-item">
                                     <p class="product-name">${product.productname}</p>
-                                    <button onclick="removeProduct(this)"><p class="product-status">Remove</p></button>
                                 </div>
                             </div>
 
                             <div class="product-total">
                                 <div class="product-price">${product.productprice}</div>
                                 <div class="cart-add-minus-button">
-                                <button class="ti-minus" onclick="decreasequan(this)"></button>
-                                <div class="quantity">${product.productquan}</div>
-                                <button class="ti-plus" onclick="increasequan(this)"></button>
+                                <button class="ti-minus" onclick="decreaseproduct('${product.productname}')"></button>
+                                <div class="quantity" data-productname="${product.productname}">${product.productquan}</div>
+                                <button class="ti-plus" onclick="increaseproduct('${product.productname}')"></button>
                                 </div>
             
                                 <div class="product-total-price">$${product.producttotal}</div>
 
-                                <button class="trash-icon" onclick="removeProduct(this)">
+                                <button class="trash-icon" onclick="removeCart('${product.productname}')">
                                 <img src="./img/Cart empty/delete.png" alt="trash icon">
                                 </button>
                             </div>
@@ -138,10 +114,16 @@ function removeProduct(curr) {
     localStorage.setItem('products',JSON.stringify(products))
     getProducts();
 }
+function removeCart(productt){
+    products=[];
+    products=JSON.parse(localStorage.getItem("products"))
+    products=products.filter(product=>product.productname!=productt);
+    localStorage.setItem('products',JSON.stringify(products))
+    getProducts();
+}
 
 //increase quantity
 function increasequan(curr) {
-    
     quantity=curr.parentElement.children[1];
     quantity.innerHTML=Number(quantity.textContent)+1;
 }
@@ -152,11 +134,46 @@ function decreasequan(curr) {
         quantity.innerHTML=Number(quantity.textContent)-1;
     }
 }
+function increaseproduct(curr) {
+    const cartList = JSON.parse(localStorage.getItem("products"));
+    const quantityElement = document.querySelector(".quantity");
+    const currentQuantity = parseInt(quantityElement.textContent);
+    const updatedQuantity = currentQuantity + 1;
+    quantityElement.textContent = updatedQuantity;
 
+    const productToUpdate = cartList.find(product => product.productname === curr);
+    productToUpdate.productquan = updatedQuantity;
+    productToUpdate.producttotal = (updatedQuantity*parseFloat(productToUpdate.productprice));
+    quantityElement.innerHTML.textContent = updatedQuantity;
+    localStorage.setItem("products", JSON.stringify(cartList));
+    console.log(productToUpdate.productprice);
+    getProducts();
+    
+}
+//decrease quantity
+function decreaseproduct(curr) {
+    const cartList = JSON.parse(localStorage.getItem("products"));
+    const quantityElement = document.querySelector(".quantity");
+    const currentQuantity = parseInt(quantityElement.textContent);
+    const updatedQuantity = currentQuantity - 1;
+    if(updatedQuantity <= 0 )
+    {
+        removeCart(curr);
+    } else{
+        quantityElement.textContent = updatedQuantity;
+        const productToUpdate = cartList.find(product => product.productname === curr);
+        productToUpdate.productquan = updatedQuantity;
+        productToUpdate.producttotal = (updatedQuantity*parseFloat(productToUpdate.productprice));
+        quantityElement.innerHTML.textContent = updatedQuantity;
+        localStorage.setItem("products", JSON.stringify(cartList));
+        getProducts();
+    }
+    
+}
 // Check email
 var isEmailFilled = false; // Trạng thái nhập liệu email
 function checkEmail() {
-    var email = document.getElementById('email').value;
+    var email = document.getElementById('email-field').value;
     var pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     var emailMessage = document.getElementById('email-message');
     
@@ -173,7 +190,7 @@ function checkEmail() {
     }
 }
 function onEmailInput() {
-isEmailFilled = document.getElementById('email').value.trim() !== ''; // Cập nhật trạng thái nhập liệu email
+isEmailFilled = document.getElementById('email-field').value.trim() !== ''; // Cập nhật trạng thái nhập liệu email
 checkEmail();
 }
 // Check phone numbers
