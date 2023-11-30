@@ -246,48 +246,7 @@ window.addEventListener('load', function() {
 
 
 // Add products 
-function addProduct(productlist){
-    var newProduct = document.createElement("div");
-    newProduct.classList.add("product-1");
-    newProduct.addEventListener("click", function(e){
-        CheckSectionDisplay(2);
-    });
-    // Tạo phần tử img
-    var img_Product = document.createElement("img");
-    img_Product.src = productlist.image;
-    img_Product.alt = productlist.name;
-    img_Product.classList.add("product-img");
 
-    // Tạo phần tử div mới cho product-intro
-    var productIntro = document.createElement("div");
-    productIntro.classList.add("product-intro");
-
-    // Tạo phần tử p cho product name
-    var productName = document.createElement("p");
-    productName.classList.add("product-name");
-    productName.textContent = productlist.name;
-
-    // Tạo phần tử p cho product cost
-    var productCost = document.createElement("p");
-    productCost.classList.add("product-cost");
-    productCost.textContent ="$"+productlist.price;
-
-    // Gắn các phần tử con vào phần tử cha
-    productIntro.appendChild(productName);
-    productIntro.appendChild(productCost);
-    newProduct.appendChild(img_Product);
-    newProduct.appendChild(productIntro);
-
-    // Tìm phần tử cha có lớp "product-bed"
-    var productBed = document.querySelector(".product-bed");
-
-    // Thêm phần tử mới vào phần tử cha
-    if (productBed) {
-    productBed.appendChild(newProduct);
-    } else {
-    console.error("Element with class 'product-bed' not found.");
-    }
-}
 // Demo data
 const productList = {
     "1": { "name": 'Product A', "image": './assets/Furniture_Photos/Products_Photos/P0004/1.webp', "price": 1.223},
@@ -295,15 +254,27 @@ const productList = {
     "3": { "name": 'Product C', "image": './assets/Furniture_Photos/Products_Photos/P0006/1.webp', "price": 2.509 },
     /// n products
 };
+const productListnew = JSON.stringify(productList);
+localStorage.setItem("productList", productListnew);
 document.addEventListener("DOMContentLoaded", function() {
-    // Gọi hàm addProductToBed trong sự kiện "DOMContentLoaded"
-   for (let key in productList) {
-       if (productList.hasOwnProperty(key)) {
-         const product = productList[key];
-         addProduct(product);
-       }
-     }
+    addProduct();
  });
+ function addProduct(){
+    const itemList = JSON.parse(localStorage.getItem("productList"));
+    for (let key in itemList) {
+        if (itemList.hasOwnProperty(key)) {
+            const product = itemList[key];
+            document.getElementsByClassName('product-bed')[0].innerHTML += `
+                <div class="product-1" onclick="CheckSectionDisplay(2)">
+                    <img src="${product.image}" alt="The Eldridge Bed" class="product-img">
+                    <div class="product-intro">
+                        <p class="product-name">${product.name}</p>
+                        <p class="product-cost">$${product.price}</p>
+                    </div>
+                </div>`;
+        }
+    }
+ }
 
  // Create Bill PDF document
  function generatePDF(){
