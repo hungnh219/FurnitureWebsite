@@ -244,6 +244,17 @@ window.addEventListener('load', function() {
     }
 });
 
+// Open Search Box
+const searchBtn = document.querySelector('.search-button-navigation');
+const searchInput = document.querySelector('#search');
+
+searchBtn.addEventListener('click', () => {
+    if (searchInput.style.opacity === '0') {
+        searchInput.style.opacity = '1';
+    } else {
+        searchInput.style.opacity = '0';
+    }
+})
 
 // Add products 
 
