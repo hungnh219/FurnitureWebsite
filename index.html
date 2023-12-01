@@ -13,7 +13,7 @@
 <body>  
     
     <header>
-        <section id="navigation">
+        <div class="header-web">
             <div class="logo-navigation">
                 <a href="">Furnishity.</a>
             </div>
@@ -22,10 +22,10 @@
                 <ul>
                     <li class="navigation-attribute">
                         <div class="text-navigation">
-                            <a href="">Home</a>
-                            <a href="">Products</a>
-                            <a href="">Blog</a>
-                            <a href="">About us</a>
+                            <a href="#" onclick="CheckSectionDisplay(0)">Home</a>
+                            <a href="#" onclick="CheckSectionDisplay(1)">Products</a>
+                            <a href="#" onclick="CheckSectionDisplay()">Blog</a>
+                            <a href="#" onclick="CheckSectionDisplay(3)">About us</a>
                         </div>
     
                         <div class="icon-navigation"> 
@@ -37,12 +37,12 @@
                             </div>  
                             
                             <div class="cart-box"> 
-                                <button class="cart-button-navigation">
+                                <button class="cart-button-navigation" onclick="CheckSectionDisplay(4)">
                                     <i class="fa-solid fa-cart-shopping" style="color: #000000;"></i>
                                 </button>
                             </div>
     
-                            <div class="heart-box">
+                            <div class="heart-box" onclick="CheckSectionDisplay(8)">
                                 <button class="heart-button-navigation">
                                     <i class="fa-regular fa-heart" style="color: #000000;"></i>
                                 </button>
@@ -52,9 +52,9 @@
                                 <button class="user-button-navigation">
                                     <i class="fa-regular fa-user" style="color: #000000;"></i>
                                 </button>
-                                <ul class="ti-user-attribute">
-                                    <li class="profile-page">
-                                        <a href="">My profile</a>
+                                <ul class="ti-user-attribute" >
+                                    <li class="profile-page" >
+                                        <a href="#" onclick="CheckSectionDisplay(4)" >My profile</a>
                                     </li>
                                     <li class="my-order">
                                         <a href="">My order</a>
@@ -68,7 +68,8 @@
                     </li>
                 </ul>
             </div>
-        </section>
+        </div>
+            
     </header>
 
     <main>

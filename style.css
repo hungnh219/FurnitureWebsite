@@ -33,7 +33,7 @@ html {
     scroll-behavior: smooth;
 }
 /* Start: Header */
-#navigation {
+.header-web {
     position: fixed;
     width: 100%;
     /* position: relative; */
@@ -41,12 +41,16 @@ html {
     height: 80px;
     justify-content: space-between;
     align-items: center;
-    background-color: #fff;
+    /* background-color: #fff; */
     padding: 0 148px;
     z-index: 1;
+    background-color: rgba(255, 255, 255, 0.55);
+    transition: background-color 0.4s;
 }
-
-#navigation .logo-navigation a {
+.header-web.scrolled{
+    background-color: #e3e0e0;
+}
+.header-web .logo-navigation a {
     text-decoration: none;
     font-size: 32px;
     font-weight: 600;
@@ -54,16 +58,16 @@ html {
     color: #000;
 }
 
-#navigation .list-navigation .navigation-attribute {
+.header-web .list-navigation .navigation-attribute {
     display: flex;
     align-items: center;
 }
 
-#navigation .list-navigation li {
+.header-web .list-navigation li {
     list-style-type: none;
 }
 
-#navigation .list-navigation a {
+.header-web .list-navigation a {
     text-decoration: none;
     font-size: 16px;
     font-weight: 550;
@@ -71,22 +75,23 @@ html {
     color: #000;
 }
 
-#navigation .text-navigation a {
+.header-web .text-navigation a {
     margin-right: 44px;
 }
 
-#navigation .list-navigation .icon-navigation {
+.header-web .list-navigation .icon-navigation {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-#navigation .icon-navigation div {
+.header-web .icon-navigation div {
     margin-right: 40px;
     position: relative;
 }
 
 .search-box {
+    
     background-color: transparent;
     width: 211px;
     height: 32px;
@@ -97,6 +102,7 @@ html {
 }
 
 #search {
+    
     width: 100%;
     height: 100%;
     background-color: #FFF7E4;
@@ -119,6 +125,7 @@ html {
     border: none;
     outline: none;
     background-color: transparent;
+    cursor: pointer;
 }
 
 .cart-button-navigation,
@@ -130,6 +137,7 @@ html {
     background-color: transparent;
     border: none;
     outline: none;
+    cursor: pointer;
 }
 
 .text-navigation a {
