@@ -202,7 +202,7 @@ window.addEventListener('scroll', function() {
 
 // Open Search Box
 const searchBtn = document.querySelector('.search-button-navigation');
-const searchInput = document.querySelector('#search');
+const searchInput = document.querySelector('.search-box #search');
 
 searchBtn.addEventListener('click', () => {
     if (searchInput.style.opacity === '0') {
@@ -216,6 +216,10 @@ searchBtn.addEventListener('click', () => {
 function goTo(x) {
     location.href=x;   
    }
+
+function goToDetailProduct(x, id) {
+    location.href=x+ "?id=" + id;
+}
 
 
 
