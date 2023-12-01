@@ -48,6 +48,7 @@
     font-weight: 550;
     line-height: 32px;
     color: #000;
+    
 }
 
 #navigation .text-navigation a {
@@ -98,6 +99,7 @@
     border: none;
     outline: none;
     background-color: transparent;
+    cursor: pointer;
 }
 
 .cart-button-navigation,
@@ -109,6 +111,7 @@
     background-color: transparent;
     border: none;
     outline: none;
+    cursor: pointer;
 }
 
 .text-navigation a {
