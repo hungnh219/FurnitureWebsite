@@ -35,7 +35,7 @@ function getProducts() {
                             </div>
 
                             <div class="product-total">
-                                <div class="product-price">${product.productprice}</div>
+                                <div class="product-price">$${product.productprice}</div>
                                 <div class="cart-add-minus-button">
                                 <button class="ti-minus" onclick="decreaseproduct('${product.productname}')"></button>
                                 <div class="quantity" data-productname="${product.productname}">${product.productquan}</div>
@@ -85,6 +85,28 @@ function removeCart(productt){
 //increase Product
 function increaseproduct(curr) {
     const cartList = JSON.parse(localStorage.getItem("products"));
+    const quantityElements = document.getElementsByClassName("quantity");
+
+    for (let i = 0; i < quantityElements.length; i++) {
+        const quantityElement = quantityElements[i];
+        const productName = quantityElement.dataset.productname;
+
+        if (productName === curr) {
+            const currentQuantity = parseInt(quantityElement.textContent);
+            const updatedQuantity = currentQuantity + 1;
+            quantityElement.textContent = updatedQuantity;
+
+            const productToUpdate = cartList.find(product => product.productname === curr);
+            productToUpdate.productquan = updatedQuantity;
+            productToUpdate.producttotal = updatedQuantity * parseFloat(productToUpdate.productprice);
+        }
+    }
+
+    localStorage.setItem("products", JSON.stringify(cartList));
+    getProducts();
+}
+function increaseproduct1(curr) {
+    const cartList = JSON.parse(localStorage.getItem("products"));
     const quantityElement = document.querySelector(".quantity");
     const currentQuantity = parseInt(quantityElement.textContent);
     const updatedQuantity = currentQuantity + 1;
@@ -102,20 +124,29 @@ function increaseproduct(curr) {
 //decrease product
 function decreaseproduct(curr) {
     const cartList = JSON.parse(localStorage.getItem("products"));
-    const quantityElement = document.querySelector(".quantity");
-    const currentQuantity = parseInt(quantityElement.textContent);
-    const updatedQuantity = currentQuantity - 1;
-    if(updatedQuantity <= 0 )
-    {
-        removeCart(curr);
-    } else{
-        quantityElement.textContent = updatedQuantity;
-        const productToUpdate = cartList.find(product => product.productname === curr);
-        productToUpdate.productquan = updatedQuantity;
-        productToUpdate.producttotal = (updatedQuantity*parseFloat(productToUpdate.productprice));
-        quantityElement.innerHTML.textContent = updatedQuantity;
-        localStorage.setItem("products", JSON.stringify(cartList));
-        getProducts();
+    const quantityElements = document.getElementsByClassName("quantity");
+
+    for (let i = 0; i < quantityElements.length; i++) {
+        const quantityElement = quantityElements[i];
+        const productName = quantityElement.dataset.productname;
+
+        if (productName === curr) {
+            const currentQuantity = parseInt(quantityElement.textContent);
+            const updatedQuantity = currentQuantity - 1;
+
+            if (updatedQuantity <= 0) {
+                removeCart(curr);
+            } else {
+                quantityElement.textContent = updatedQuantity;
+
+                const productToUpdate = cartList.find(product => product.productname === curr);
+                productToUpdate.productquan = updatedQuantity;
+                productToUpdate.producttotal = updatedQuantity * parseFloat(productToUpdate.productprice);
+            }
+        }
     }
+
+    localStorage.setItem("products", JSON.stringify(cartList));
+    getProducts();
     
 }

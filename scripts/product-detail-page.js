@@ -32,7 +32,7 @@ window.onload = function() {
                 <div class="text-nav">
                     <div class="blur-text">Sofa</div>
                     <p>/</p>
-                    <div class="normal-text">The Chelsea</div>
+                    <div class="normal-text">${product.name}</div>
                 </div>
             </div>
             <div class="move-left-right">

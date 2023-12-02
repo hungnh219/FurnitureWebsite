@@ -1,6 +1,29 @@
+function addItemtoBill(){
+    const products = JSON.parse(localStorage.getItem('products'));
+    let total = 0;
+    products.forEach(product => {
+        var path = product.img + "/1.webp";
+        total+=product.producttotal;
+        document.getElementsByClassName('shipment-products')[0].innerHTML+=`
+        <div class="shipment-product">
+                                <img src="${product.img}" alt="" class="shipment-product-image">
+                                <p class="shipment-product-name">${product.productname}</p>
+                                <p class="quantity-product">x${product.productquan}</p>
+                                <div class="shipment-product-price">$${product.producttotal}</div>
+                            </div>
+        `
+    });
+    const priceElements = document.querySelectorAll(".shipment-price.shipment-subtotal-price");
+    for (let i = 0; i < priceElements.length; i++) {
+        if (i !== 1) {
+            priceElements[i].textContent = "$" + total;
+        }
+    }
+}
 
-
-
+document.addEventListener("DOMContentLoaded", function() {
+    addItemtoBill();
+})
 
 
 
@@ -95,33 +118,33 @@ function onPhoneNumberInput() {
 // Add products 
 
 // Demo data
-const productList = {
-    "1": { "name": 'Product A', "image": './assets/Furniture_Photos/Products_Photos/P0004/1.webp', "price": 1.223},
-    "2": { "name": 'Product B', "image": './assets/Furniture_Photos/Products_Photos/P0005/1.webp', "price": 3.111 },
-    "3": { "name": 'Product C', "image": './assets/Furniture_Photos/Products_Photos/P0006/1.webp', "price": 2.509 },
-    /// n products
-};
-const productListnew = JSON.stringify(productList);
-localStorage.setItem("productList", productListnew);
-document.addEventListener("DOMContentLoaded", function() {
-    addProduct();
- });
- function addProduct(){
-    const itemList = JSON.parse(localStorage.getItem("productList"));
-    for (let key in itemList) {
-        if (itemList.hasOwnProperty(key)) {
-            const product = itemList[key];
-            document.getElementsByClassName('product-bed')[0].innerHTML += `
-                <div class="product-1" onclick="CheckSectionDisplay(2)">
-                    <img src="${product.image}" alt="The Eldridge Bed" class="product-img">
-                    <div class="product-intro">
-                        <p class="product-name">${product.name}</p>
-                        <p class="product-cost">$${product.price}</p>
-                    </div>
-                </div>`;
-        }
-    }
- }
+// const productList = {
+//     "1": { "name": 'Product A', "image": './assets/Furniture_Photos/Products_Photos/P0004/1.webp', "price": 1.223},
+//     "2": { "name": 'Product B', "image": './assets/Furniture_Photos/Products_Photos/P0005/1.webp', "price": 3.111 },
+//     "3": { "name": 'Product C', "image": './assets/Furniture_Photos/Products_Photos/P0006/1.webp', "price": 2.509 },
+//     /// n products
+// };
+// const productListnew = JSON.stringify(productList);
+// localStorage.setItem("productList", productListnew);
+// document.addEventListener("DOMContentLoaded", function() {
+//     addProduct();
+//  });
+//  function addProduct(){
+//     const itemList = JSON.parse(localStorage.getItem("productList"));
+//     for (let key in itemList) {
+//         if (itemList.hasOwnProperty(key)) {
+//             const product = itemList[key];
+//             document.getElementsByClassName('product-bed')[0].innerHTML += `
+//                 <div class="product-1" onclick="CheckSectionDisplay(2)">
+//                     <img src="${product.image}" alt="The Eldridge Bed" class="product-img">
+//                     <div class="product-intro">
+//                         <p class="product-name">${product.name}</p>
+//                         <p class="product-cost">$${product.price}</p>
+//                     </div>
+//                 </div>`;
+//         }
+//     }
+//  }
 
  // Create Bill PDF document
  function generatePDF(){
@@ -168,11 +191,22 @@ document.addEventListener("DOMContentLoaded", function() {
         doc.text(10, 95, "Product Name");
         doc.text(100, 95, "Quantity")
         doc.text(190, 95, "Price");
-        var productName = document.querySelector('.shipment-product-name').textContent;
-        var productPrice = document.querySelector('.shipment-product-price').textContent;
-        doc.text(10, 105, productName);
-        doc.text(105, 105, "1");
-        doc.text(190, 105, productPrice);
+        var productNames = document.querySelectorAll('.shipment-product-name');
+        var productPrices = document.querySelectorAll('.shipment-product-price');
+        var productQuantities = document.querySelectorAll('.quantity-product');
+        var startY = 105; // Vị trí bắt đầu để vẽ nội dung trong file PDF
+
+        // Lặp qua danh sách sản phẩm và thêm nội dung vào file PDF
+        for (var i = 0; i < productNames.length; i++) {
+        var productName = productNames[i].textContent;
+        var productPrice = productPrices[i].textContent;
+        var productQuantity = productQuantities[i].textContent;
+        doc.text(10, startY, productName);
+        doc.text(105, startY, productQuantity);
+        doc.text(190, startY, productPrice);
+
+        startY += 10; // Tăng vị trí Y để vẽ nội dung của sản phẩm tiếp theo
+        }
         // Draw a line below the labels
         var lineY = 97; // Adjust the value to position the line
         var lineWidth = 190; // Adjust the value to set the width of the line
