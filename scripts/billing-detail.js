@@ -215,6 +215,18 @@ function onPhoneNumberInput() {
       }
 }
 
+//show bank
+function show_bank() {
 
-
-
+}
+radio_bank=document.getElementsByClassName('payment-methods')[0].children[0];
+screen_bank=document.getElementById("pay-by-card-screen")
+function show_bank() {
+    if(radio_bank.checked) {
+        screen_bank.style.display='flex'
+    }
+}
+function close_screen_bank() {
+    screen_bank.style.display='none'
+    radio_bank.checked=false
+}

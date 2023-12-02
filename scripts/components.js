@@ -13,7 +13,7 @@ function addHeader() {
                         <div class="text-navigation">
                             <a href="#" onclick="goTo('home-page.html')">Home</a>
                             <a href="#" onclick="goTo('shop-all.html')">Products</a>
-                            <a href="#">Blog</a>
+                            <a href="#" onclick="goTo('blog.html')">Blog</a>
                             <a href="#" onclick="goTo('about-us-page.html')">About us</a>
                         </div>
 
@@ -217,6 +217,8 @@ function goTo(x) {
     location.href=x;   
    }
 
+
+// go to detailProduct   
 function goToDetailProduct(x, id) {
     location.href=x+ "?id=" + id;
 }
