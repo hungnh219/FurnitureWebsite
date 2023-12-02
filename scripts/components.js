@@ -43,13 +43,13 @@ function addHeader() {
                                 </button>
                                 <ul class="ti-user-attribute">
                                     <li class="profile-page">
-                                        <a href="#">My profile</a>
+                                        <a href="#" onclick="goTo('profile-screen.html')">My profile</a>
                                     </li>
                                     <li class="my-order">
-                                        <a href="#">My order</a>
+                                        <a href="#" onclick="goTo('profile-screen.html')">My order</a>
                                     </li>
                                     <li class="log-out">
-                                        <button>Logout</button>
+                                        <button onclick="goTo('login-screen.html')">Logout</button>
                                     </li>
                                 </ul>
                             </div>

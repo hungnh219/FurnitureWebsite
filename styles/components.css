@@ -15,7 +15,7 @@
     height: 80px;
     justify-content: space-between;
     align-items: center;
-    background-color: rgba(255, 255, 255, 0.4);
+    background-color: rgba(255, 255, 255onclick="goTo('about-us-page.html')", 0.4);
     padding: 0 148px;
     z-index: 1;
 }
@@ -157,13 +157,14 @@
 }
 
 .ti-user-attribute {
-    display: none;
     position: absolute;
     background-color: #fff;
     top: 100%; 
     right: 0;
     box-shadow: 0 2px 4px 2px #ccc;
     border-radius: 7px;
+    display: none;
+
 }
 
 .ti-user-attribute li {
@@ -182,6 +183,10 @@
 }
 
 .user-button-navigation:hover + .ti-user-attribute {
+    display: block;
+}
+
+.ti-user-attribute:hover{
     display: block;
 }
 /* End: Header */

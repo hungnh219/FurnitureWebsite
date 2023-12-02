@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function() {
     for (let key in itemList) {
         if (itemList.hasOwnProperty(key)) {
             const product = itemList[key];
-            var path = product.imgDirect + "/1.webp";
+            var path ="../" + product.imgDirect + "/1.webp";
             document.getElementsByClassName('product-bed')[0].innerHTML += `
                 <div class="product-1" onclick="goToDetailProduct('product-detail-page.html',${product.id})">
                     <img src="${path}" alt="${product.name}" class="product-img">

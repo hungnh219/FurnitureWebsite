@@ -24,14 +24,14 @@
     font-size: 36px;
 }
 
-.login-info {
+.account-info {
     display: flex;
     flex-direction: column;
     align-items: stretch; 
     padding: 35px 0;
 }
 
-.login-info input {
+.account-info input {
     margin-bottom: 10px;
     padding: 12px;
     text-align: left;

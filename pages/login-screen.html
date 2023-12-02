@@ -26,14 +26,14 @@
         
                 <h2>Login</h2>
         
-                <div class="login-info">
+                <div class="account-info">
         
                     <div class="info-email">
-                        <input type="text" value="Email">
+                        <input type="text" placeholder="Email">
                     </div>
         
                     <div class="info-password">
-                        <input type="password" value="Password">
+                        <input type="password" placeholder="Password">
                     </div>
         
                 </div>
@@ -41,7 +41,7 @@
                 <div class="login-button">
         
                     <div class="-account-button">
-                        <button>Login</button>
+                        <button onclick="loginButton()">Login</button>
                     </div>
         
                     <a href="">Forget password?</a>
@@ -50,7 +50,7 @@
         
                 <div class="sign-up-link">
                     <p>Don't have a account?</p>
-                    <a href="">Sign up</a>
+                    <a href="#" onclick="goTo('sign-up-screen.html')">Sign up</a>
                 </div>
             </div>
         </section>
@@ -58,6 +58,7 @@
     </main>
 
     <script>addFooter()</script>
+    <script src="../scripts/login.js"></script>
 </body>
 
 </html>

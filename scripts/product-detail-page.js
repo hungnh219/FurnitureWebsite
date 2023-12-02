@@ -8,11 +8,11 @@ window.onload = function() {
             const product = itemList[key];
             
             if(product.id == id) {
-            var path1 = product.imgDirect + "/1.webp";
-            var path2 = product.imgDirect + "/2.webp";
-            var path3 = product.imgDirect + "/3.webp";
-            var path4 = product.imgDirect + "/4.webp";
-            var path5 = product.imgDirect + "/5.webp";
+            var path1 = "../" + product.imgDirect + "/1.webp";
+            var path2 = "../" + product.imgDirect + "/2.webp";
+            var path3 = "../" + product.imgDirect + "/3.webp";
+            var path4 = "../" + product.imgDirect + "/4.webp";
+            var path5 = "../" + product.imgDirect + "/5.webp";
             document.getElementsByClassName('item-detail')[0].innerHTML += `
             <div class="navigation-product-detail">
             <div class="navigation-bar">
