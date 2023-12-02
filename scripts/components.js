@@ -32,7 +32,7 @@ function addHeader() {
                             </div>
 
                             <div class="heart-box">
-                                <button class="heart-button-navigation" onclick="goTo('wishlist-screen.html')">
+                                <button class="heart-button-navigation" onclick="goTo('wishlist-page.html')">
                                     <i class="fa-regular fa-heart" style="color: #000000;"></i>
                                 </button>
                             </div>
@@ -43,13 +43,13 @@ function addHeader() {
                                 </button>
                                 <ul class="ti-user-attribute">
                                     <li class="profile-page">
-                                        <a href="#" onclick="goTo('profile-screen.html')">My profile</a>
+                                        <a href="#" onclick="goTo('profile-page.html')">My profile</a>
                                     </li>
                                     <li class="my-order">
-                                        <a href="#" onclick="goTo('profile-screen.html')">My order</a>
+                                        <a href="#" onclick="goTo('profile-page.html')">My order</a>
                                     </li>
                                     <li class="log-out">
-                                        <button onclick="goTo('login-screen.html')">Logout</button>
+                                        <button onclick="goTo('login-page.html')">Logout</button>
                                     </li>
                                 </ul>
                             </div>
