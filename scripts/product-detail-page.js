@@ -16,7 +16,7 @@ window.onload = function() {
             document.getElementsByClassName('item-detail')[0].innerHTML += `
             <div class="navigation-product-detail">
             <div class="navigation-bar">
-                <i class="ti-arrow-left"></i>
+                <i class="ti-arrow-left" onclick="goBack()"></i>
                 <br>
                 <br>
                 <div class="image-number">
@@ -105,19 +105,19 @@ window.onload = function() {
 
                 <div class="detail-image">
                     <div class="border-first-img">
-                        <img class="first-img" src="${path2}" alt="${product.name}">
+                        <img class="first-img" onclick = "switchImg(event,'${path1}')" src="${path1}" alt="${product.name}">
                     </div>
                     <div class="border-others-img">
-                        <img class="others-img" src="${path1}" alt="${product.name}">
+                        <img class="others-img" onclick = "switchImg(event,'${path2}')" src="${path2}" alt="${product.name}">
                     </div>
                     <div class="border-others-img">
-                        <img class="others-img" src="${path3}" alt="${product.name}">
+                        <img class="others-img" onclick = "switchImg(event,'${path3}')" src="${path3}" alt="${product.name}">
                     </div>
                     <div class="border-others-img">
-                        <img class="others-img" src="${path4}" alt="${product.name}">
+                        <img class="others-img" onclick = "switchImg(event,'${path4}')" src="${path4}" alt="${product.name}">
                     </div>
                     <div class="border-others-img">
-                        <img class="others-img" src="${path5}" alt="${product.name}">
+                        <img class="others-img" onclick = "switchImg(event,'${path5}')" src="${path5}" alt="${product.name}">
                     </div>
                 </div>
             </div>
@@ -216,3 +216,43 @@ function decreasequan(curr) {
         quantity.innerHTML=Number(quantity.textContent)-1;
     }
 }
+// go back
+function goBack() {
+    window.history.back();
+}
+
+// Change image
+function switchImg(event,source) {
+    document.querySelector('.big-image').src = source;
+    var clickedImg = event.target;
+    var clickedDiv = clickedImg.parentNode;
+    var firstDiv = document.querySelector('.border-first-img');
+    var otherDivs = document.querySelectorAll('.border-others-img');
+    var bigNumberDiv = document.querySelector('.big-number');
+
+    // Xác định số thứ tự của phần tử được nhấp vào
+    var newNumber;
+    if (clickedDiv === firstDiv) {
+        newNumber = '01';
+    } else {
+        newNumber = (Array.from(otherDivs).indexOf(clickedDiv) + 2).toString().padStart(2, '0');
+    }
+
+    // Cập nhật số thứ tự trong big-number
+    bigNumberDiv.textContent = newNumber;
+    for (var i = 0; i < otherDivs.length; i++) {
+        if(clickedDiv !== firstDiv){
+            firstDiv.style.border = '2px solid grey';
+            if (otherDivs[i] !== clickedDiv) {
+                otherDivs[i].style.border = '2px solid grey';
+                } else {
+                otherDivs[i].style.border = '2px solid #3AA39F';
+                }
+        } else{
+            firstDiv.style.border = '2px solid #3AA39F'
+        }
+    }
+    
+}
+
+

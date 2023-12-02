@@ -7,10 +7,15 @@
     height: 24px;
     flex-shrink: 0;
     padding-left: 100px;
+    cursor: pointer;
 }
 
 #product-detail-page .text-nav {
     display: flex;
+}
+#product-detail-page .ti-arrow-left:hover{
+    cursor: pointer;
+    opacity: 0.5;
 }
 
 #product-detail-page .normal-text {
@@ -280,6 +285,7 @@
     background: #FFF;
     align-items: center;
     margin-left: 53px;
+    cursor: pointer;
 }
 
 #product-detail-page .others-img {
@@ -302,6 +308,7 @@
     align-items: center;
     display: flex;
     margin-left: 24px;
+    cursor: pointer;
 }
 
 #product-detail-page .warranty {
