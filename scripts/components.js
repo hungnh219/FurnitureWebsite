@@ -217,6 +217,8 @@ function goTo(x) {
     location.href=x;   
    }
 
+
+// go to detailProduct   
 function goToDetailProduct(x, id) {
     location.href=x+ "?id=" + id;
 }
