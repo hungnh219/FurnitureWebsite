@@ -60,6 +60,18 @@ function addHeader() {
         </section>
     </header>
     `)
+
+    // Open Search Box
+const searchBtn = document.querySelector('.search-button-navigation');
+const searchInput = document.querySelector('.search-box #search');
+
+searchBtn.addEventListener('click', () => {
+    if (searchInput.style.opacity === '0') {
+        searchInput.style.opacity = '1';
+    } else {
+        searchInput.style.opacity = '0';
+    }
+})
 }
 
 // add footer
@@ -198,19 +210,6 @@ window.addEventListener('scroll', function() {
         header.classList.remove('scrolled');
     }
 });
-
-
-// Open Search Box
-const searchBtn = document.querySelector('.search-button-navigation');
-const searchInput = document.querySelector('.search-box #search');
-
-searchBtn.addEventListener('click', () => {
-    if (searchInput.style.opacity === '0') {
-        searchInput.style.opacity = '1';
-    } else {
-        searchInput.style.opacity = '0';
-    }
-})
 
 //change page
 function goTo(x) {
