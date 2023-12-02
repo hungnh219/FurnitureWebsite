@@ -30,6 +30,6 @@ function checkAccount(userName, password) {
     }
     else {
         // thông báo username, password sai
-        alert('Co gi do sai sai!')
+        alert('Co gi do sai sai!');
     }
 }
