@@ -114,6 +114,7 @@
 .product-img:hover {
     transform: scale(0.9);
     transition: transform 0.5s ease-in-out;
+    cursor: pointer;
 }
 
 .product-intro {
