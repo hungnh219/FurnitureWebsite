@@ -86,4 +86,24 @@
 .wishlist-product .wishlist-to-cart:hover {
     border-bottom: none;
 }
+
+.cart .empty-cart{
+    width: 30em;
+    height: auto;
+    display: block;
+}
+.cart p{
+    font-size: 40px;
+    color:rgb(97, 14, 14); 
+    font-family: monospace;
+    vertical-align: middle;
+}
+.cart {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
 /* End: Wishlist screen */

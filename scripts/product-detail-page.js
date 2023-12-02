@@ -40,7 +40,7 @@ window.onload = function() {
                 <i class="ti-angle-right"></i>
             </div>
             </div>
-
+ 
             <div class="product-name">
                 ${product.name}
             </div>
@@ -94,7 +94,7 @@ window.onload = function() {
             </div>
 
             <div class="content-detail-image">
-                <i class="ti-heart"></i> Add to wishlist 
+                <i class="ti-heart" onclick="addToWishList(this)"></i> Add to wishlist 
                 <i class="ti-reload"></i> Add to Compare 
                 <div class="share">Share Product: 
                     <i class="ti-share"></i>
@@ -183,7 +183,7 @@ function addtocart(curr) {
     productprice=productprice.slice(1);
     productprice=productprice.replace(',','.');
     let producttotal=parseFloat(productquan)*parseFloat(productprice);
-    if (localStorage.length!=0 ) {
+    if (localStorage.getItem("products")) {
         products.push(...JSON.parse(localStorage.getItem("products")));
       }
     
@@ -215,4 +215,30 @@ function decreasequan(curr) {
     if(Number(quantity.textContent)>1) {
         quantity.innerHTML=Number(quantity.textContent)-1;
     }
+}
+//add to wishlist
+function addToWishList(curr) {
+    let products=[];
+    let img=curr.parentElement.parentElement.children[2].children[0].src;
+
+    let productname=curr.parentElement.parentElement.children[1].textContent.trim();
+    let productprice=curr.parentElement.parentElement.children[3].children[0].textContent.trim();
+    
+    if (localStorage.getItem("WishList")) {
+        products.push(...JSON.parse(localStorage.getItem("WishList")));
+      }
+    
+    let product={
+    img:img,
+    productname:productname,
+    productprice:productprice,
+    };
+    let isExist=products.some(x=>x.img==product.img&&x.productname==product.productname&&x.productprice==product.productprice);
+    if(!isExist) {
+        products.push(product);  
+    }
+    else alert("This product has been added to cart")
+     
+    localStorage.setItem("WishList", JSON.stringify(products));
+    
 }

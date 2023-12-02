@@ -1,7 +1,13 @@
 //get product from localStorage
 function getProducts() {
     document.getElementsByClassName('cart-products')[0].innerHTML='';
-    if(localStorage.length==0 || JSON.parse(localStorage.getItem('products')).length==0) {
+    try {
+        a=JSON.parse(localStorage.getItem('products')).length==0
+    }
+    catch(err) {
+        a=true
+    }
+    if(a) { 
         document.getElementsByClassName('cart-products')[0].innerHTML+=`
         
         <div class="cart">
@@ -23,6 +29,7 @@ function getProducts() {
                 </div>
         `
         let products=JSON.parse(localStorage.getItem("products"));
+        console.log(products)
         products.forEach(product => {
             total+=product.producttotal;
             document.getElementsByClassName('cart-products')[0].innerHTML+=`
@@ -65,7 +72,7 @@ function getProducts() {
         </div>
         `
     }
-    console.log(JSON.parse(localStorage.getItem('products')).length)
+  
 }
 
 //get product every load
