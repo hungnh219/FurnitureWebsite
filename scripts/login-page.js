@@ -10,6 +10,12 @@ function loginButton() {
     console.log(userName, password);
 
     checkAccount(userName, password);
+    
+    // if (preCheckAccount(userName, password)) {
+    // } else {
+    //     //alert('Co gi do sai sai!');
+    // }
+    
 }
 
 // kiem tra account truoc khi goi api
@@ -18,6 +24,15 @@ function loginButton() {
 // mat khau du 8 ki tu hay khong
 // ....
 function preCheckAccount(userName, password) {
+    if (userName == '' || password == '') {
+        alert('Username and Password can\'t be blank');
+        return false;
+    } else if (!isValidGmail(userName)) {
+        alert('Invalid Gmail!');
+        return false;
+    } else if (!isValidPassword(password)) {
+        return false;
+    }
     return true;
 }
 
@@ -30,6 +45,6 @@ function checkAccount(userName, password) {
     }
     else {
         // thông báo username, password sai
-        alert('Co gi do sai sai!');
+        alert('There\'s something wrong!');
     }
 }
