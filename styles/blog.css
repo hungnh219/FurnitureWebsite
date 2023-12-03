@@ -18,12 +18,12 @@ body, html {
 
 
 .welcome {
-    font-family: 'ruluko', sans-serif;
-    margin: 40px 340px;;
-    font-size: 20px;
+    font-family: 'Ruluko', sans-serif;
+    margin: 70px 280px 30px;
+    font-size: 30px;
     text-align: center;
     letter-spacing: 0.015em;
-    line-height: 26px;
+    line-height: 50px;
 }
 
 
@@ -104,10 +104,11 @@ h3 {
     font-weight: 500;
 }
 
-@media only screen and (min-width: 741px) and (max-width: 1240px){
+@media only screen and (min-width: 740px) and (max-width: 1239px){
    
     #blog .welcome {
         margin: 70px 50px 20px;
+        list-style: 20px;
     }
 
     #blog .our-blogs li {
@@ -115,24 +116,25 @@ h3 {
     }
 }
 
-@media only screen and (max-width: 740px) { 
+@media only screen and (max-width: 739px) { 
    
     #blog .welcome {
-        margin: 50px 20px 10px;
-        font-size: 15px;
+        margin: 30px 20px 20px;
+        font-size: 12px;
+        line-height: 20px;
     }
 
     #blog .our-blogs li {
-        margin: 0 20px 20px;
+        margin: 0 20px 10px;
     }
 
     #blog .our-blogs li h2 {
-        font-size: 18px;
-        line-height: 24px;
+        font-size: 14px;
+        line-height: 20px;
     }
 
     #blog .our-blogs li h3,  #blog .our-blogs li p {
-        font-size: 12px;
+        font-size: 10px;
         line-height: 24px;
         margin: 0;
     }
