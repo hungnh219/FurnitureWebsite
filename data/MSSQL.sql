@@ -1,14 +1,19 @@
-﻿create database FurnitureWebsite;
+﻿USE master
+GO
+
+IF  EXISTS (
+	SELECT name 
+		FROM sys.databases 
+		WHERE name = 'FurnitureWebsite'
+)
+DROP DATABASE FurnitureWebsite
+GO
+
+create database FurnitureWebsite;
 go
 use FurnitureWebsite
 go
-/* 
-use master
-go
-drop database FurnitureWebsite
-*/
 
- 
 create table PRODUCTS(
 	ID      	int identity,
 	Name    	varchar(250) 	unique ,
@@ -31,6 +36,7 @@ create table USERS(
     PassWord	varchar(250)	,
     FirstName	varchar(30)		,
     LastName	varchar(70)		,
+	Address    	varchar(1000)	,
     Phone		varchar(20)		,
     Mail		varchar(50)		,
     RegDate		date			default (convert(date, getdate())),
@@ -169,8 +175,8 @@ create table USER_VOUCHER(
 create table ARGUMENTS(
 	RegAge				int				default 18,
     MinPaid				decimal(10, 2)	default 0,
-    RatingUpper			int				default 5,
-    RatingLower			int				default 0
+    RatingUpper			float			default 5.0,
+    RatingLower			float			default 0.0
 );
 go
 
@@ -303,7 +309,7 @@ SET NOCOUNT ON;
      
     SELECT *
     FROM PRODUCTS a
-    WHERE a.Name LIKE @Name;
+    WHERE a.Name LIKE '%' + @Name + '%' ;
 END;
 GO
 
@@ -321,6 +327,53 @@ SET NOCOUNT ON;
 END;
 GO
 
+CREATE PROCEDURE sp_GetSortProductByNameASC
+AS
+BEGIN
+SET NOCOUNT ON;
+     
+    SELECT *
+    FROM PRODUCTS 
+    ORDER BY Name ASC
+
+END;
+GO
+
+CREATE PROCEDURE sp_GetSortProductByNameDESC
+AS
+BEGIN
+SET NOCOUNT ON;
+     
+    SELECT *
+    FROM PRODUCTS 
+    ORDER BY Name DESC
+
+END;
+GO
+
+CREATE PROCEDURE sp_GetSortProductByPriceASC
+AS
+BEGIN
+SET NOCOUNT ON;
+     
+    SELECT *
+    FROM PRODUCTS 
+    ORDER BY Price ASC
+
+END;
+GO
+
+CREATE PROCEDURE sp_GetSortProductByPriceDESC
+AS
+BEGIN
+SET NOCOUNT ON;
+     
+    SELECT *
+    FROM PRODUCTS 
+    ORDER BY Price DESC
+
+END;
+GO
 -- ----- USER ----- --
 
 CREATE TRIGGER trg_CheckAge
@@ -351,6 +404,7 @@ CREATE PROCEDURE sp_InsertUser(
     @PassWord	varchar(250)	,
     @FirstName	varchar(30)		,
     @LastName	varchar(70)		,
+	@Address	varchar(1000)	,
     @Phone		varchar(20)		,
     @Mail		varchar(50)		,
     @BirthYear	int				
@@ -358,11 +412,34 @@ CREATE PROCEDURE sp_InsertUser(
 AS
 BEGIN
 SET NOCOUNT ON;
-	 
+
 	INSERT INTO USERS (UserName, PassWord, FirstName, LastName,
-						Phone, Mail, BirthYear)
+						Address, Phone, Mail, BirthYear)
 	VALUES (@UserName, @PassWord, @FirstName, @LastName,
-						@Phone, @Mail, @BirthYear);
+						@Address, @Phone, @Mail, @BirthYear);
+
+END;
+GO
+
+CREATE PROCEDURE sp_UserLogin(
+	@UserName	varchar(25)		,
+    @PassWord	varchar(250)			
+)
+AS
+BEGIN
+SET NOCOUNT ON;
+	 
+	IF EXISTS(
+		SELECT 1
+		FROM USERS 
+		WHERE UserName = @UserName
+			AND PassWord = @PassWord
+		) BEGIN
+		RETURN 1
+		END
+	ELSE BEGIN
+		RETURN 0
+	END
 END;
 GO
 
@@ -374,6 +451,7 @@ CREATE PROCEDURE sp_UpdateUser(
     @PassWord	varchar(250)	,
     @FirstName	varchar(30)		,
     @LastName	varchar(70)		,
+	@Address	varchar(1000)	,
     @Phone		varchar(20)		,
     @Mail		varchar(50)		,
     @RegDate		date			,
@@ -388,6 +466,7 @@ SET NOCOUNT ON;
         PassWord = @PassWord	,
 		FirstName = @FirstName	,
 		LastName = @LastName	,
+		Address = @Address		,
 		Phone = @Phone		,
 		Mail = @Mail		,
 		RegDate = @RegDate		,
@@ -678,7 +757,7 @@ SET NOCOUNT ON;
      
     SELECT * 
     FROM VOUCHERS a
-    WHERE a.Name LIKE @Name;
+    WHERE a.Name LIKE '%' + @Name + '%';
 END;
 GO
 
@@ -757,7 +836,7 @@ SET NOCOUNT ON;
      
     SELECT * 
     FROM TAGS a
-    WHERE a.Name LIKE @Name;
+    WHERE a.Name LIKE '%' + @Name + '%';
 END;
 GO
 
@@ -839,7 +918,7 @@ SET NOCOUNT ON;
      
     SELECT * 
     FROM COLOURS a
-    WHERE a.Name LIKE @Name;
+    WHERE a.Name LIKE '%' + @Name + '%';
 END;
 GO
 
@@ -918,7 +997,7 @@ SET NOCOUNT ON;
      
     SELECT * 
     FROM ROLES a
-    WHERE a.Name LIKE @Name;
+    WHERE a.Name LIKE '%' + @Name + '%';
 END;
 GO
 
@@ -997,7 +1076,7 @@ SET NOCOUNT ON;
      
     SELECT * 
     FROM PERMISSIONS a
-    WHERE a.Name LIKE @Name;
+    WHERE a.Name LIKE '%' + @Name + '%';
 END;
 GO
 
@@ -1155,8 +1234,8 @@ AS
 BEGIN
     SET NOCOUNT ON;
 
-    DECLARE @MinRaing INT;
-	DECLARE @MaxRaing INT;
+    DECLARE @MinRaing float;
+	DECLARE @MaxRaing float;
 
 	SELECT @MinRaing = RatingLower,
 			@MaxRaing = RatingUpper
@@ -1165,7 +1244,8 @@ BEGIN
     IF EXISTS (
         SELECT 1
         FROM inserted
-        WHERE Rating BETWEEN @MinRaing AND @MaxRaing
+        WHERE Rating < @MinRaing 
+			OR Rating > @MaxRaing
     )
     BEGIN
         ROLLBACK;
@@ -1341,7 +1421,9 @@ AS
 BEGIN
 SET NOCOUNT ON;
      
-    SELECT * FROM LIKE_PRODUCT a
+    SELECT * 
+	FROM LIKE_PRODUCT a
+		INNER JOIN PRODUCTS b ON a.ProductID = b.ID
     WHERE a.UserID = @UserID;
 END;
 GO
@@ -1968,8 +2050,8 @@ GO
 CREATE PROCEDURE sp_UpdateArgument(
 	@RegAge				int			,
     @MinPaid				decimal(10, 2),
-    @RatingUpper			int			,
-    @RatingLower			int					
+    @RatingUpper			float			,
+    @RatingLower			float					
 )
 AS
 BEGIN
@@ -1990,8 +2072,8 @@ SET NOCOUNT ON;
 	UPDATE ARGUMENTS
 	SET RegAge = 18	,
 		MinPaid = 0	,
-        RatingUpper = 5	,
-        RatingLower = 0	;	
+        RatingUpper = 5.0	,
+        RatingLower = 0.0	;	
 END;
 GO
 
@@ -2101,6 +2183,22 @@ SET NOCOUNT ON;
     WHERE a.VoucherID = @VoucherID;
 END;
 GO
+
+-- ----- MULTIPLE TABLE ----- --
+
+CREATE PROCEDURE sp_GetUserProductAndReceipt(
+	@UserId		int
+)
+AS
+BEGIN
+SET NOCOUNT ON;
+
+	SELECT * FROM RECEIPTS a
+		INNER JOIN RECEIPT_DETAIL b ON a.ID = b.ReceiptID
+		INNER JOIN PRODUCTS c ON b.ProductID = c.ID
+	WHERE a.UserID = @UserId
+	ORDER BY a.ID ASC,
+			c.Name ASC
 
 -- Add DATA
 
@@ -2334,15 +2432,15 @@ VALUES
 	('User');
 GO
 
-INSERT INTO USERS (UserName,PassWord,FirstName,LastName,Phone,Mail,RegDate,BirthYear)
+INSERT INTO USERS (UserName,PassWord,FirstName,LastName,Address,Phone,Mail,RegDate,BirthYear)
 VALUES
-	('admin','hehehe','Hưng','Nguyễn Hoàng',948582732,'21520895gm.uit.edu.vn','2023-11-01 00:00:00',2003),
-	('tan','tan','Tân','Đặng Huỳnh Vĩnh ',948582733,'21520442gm.uit.edu.vn','2023-11-02 00:00:00',2003),
-	('hoang','hoang','Hoàng','Nguyễn Huy',948582734,'21522093gm.uit.edu.vn','2023-11-03 00:00:00',2003),
-	('nhu','nhu','Như','Trần Thị Tâm',948582735,'21521247gm.uit.edu.vn','2023-11-04 00:00:00',2003),
-	('nhan','nhan','Nhân','Đỗ Trọng',948582736,'21521214gm.uit.edu.vn','2023-11-05 00:00:00',2003),
-	('thanh','thanh','Thành','Lê Nam',948582737,'21522596gm.uit.edu.vn','2023-11-06 00:00:00',2003),
-	('kha','kha','Kha','Nguyễn Viết',948582738,'21520949gm.uit.edu.vn','2023-11-07 00:00:00',2003);
+	('admin','hehehe','Hưng','Nguyễn Hoàng','Ở',948582732,'21520895gm.uit.edu.vn','2023-11-01 00:00:00',2003),
+	('tan','tan','Tân','Đặng Huỳnh Vĩnh ','đâu',948582733,'21520442gm.uit.edu.vn','2023-11-02 00:00:00',2003),
+	('hoang','hoang','Hoàng','Nguyễn Huy','cơ ',948582734,'21522093gm.uit.edu.vn','2023-11-03 00:00:00',2003),
+	('nhu','nhu','Như','Trần Thị Tâm','tôi',948582735,'21521247gm.uit.edu.vn','2023-11-04 00:00:00',2003),
+	('nhan','nhan','Nhân','Đỗ Trọng','cũng',948582736,'21521214gm.uit.edu.vn','2023-11-05 00:00:00',2003),
+	('thanh','thanh','Thành','Lê Nam','không',948582737,'21522596gm.uit.edu.vn','2023-11-06 00:00:00',2003),
+	('kha','kha','Kha','Nguyễn Viết','biết',948582738,'21520949gm.uit.edu.vn','2023-11-07 00:00:00',2003);
 GO
 
 INSERT INTO RECEIPTS (Date,Paid,UserID,Status)
@@ -2419,4 +2517,26 @@ VALUES
 	(6,19,'Good'),
 	(6,20,'Good'),
 	(6,40,'Good');
+GO
+
+INSERT INTO COMMENTS (UserID,ProductID,Content,Rating)
+VALUES
+	(1,3,'Good',0.0),
+	(1,4,'Good',0.5),
+	(1,2,'Good',1.0),
+	(2,6,'Good',1.5),
+	(2,24,'Good',2.0),
+	(2,26,'Good',2.5),
+	(3,35,'Good',3.0),
+	(3,45,'Good',3.5),
+	(3,32,'Good',4.0),
+	(4,2,'Good',4.5),
+	(4,10,'Good',5.0),
+	(4,12,'Good',0.0),
+	(5,15,'Good',0.5),
+	(5,16,'Good',1.0),
+	(5,17,'Good',1.5),
+	(6,19,'Good',2.0),
+	(6,20,'Good',2.5),
+	(6,40,'Good',3.0);
 GO
