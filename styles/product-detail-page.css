@@ -544,10 +544,6 @@
 
 /* Responsive Phone */
 @media only screen and (max-width: 739px) {
-    #product-detail-page {
-        /* justify-content: center; */
-    }
-
     #product-detail-page .navigation-bar{
         display: none;
     }
@@ -567,13 +563,63 @@
         padding-left: 100px;
     }
 
+    #product-detail-page .product-rate {
+        display: flex;
+        padding-left: 99px;
+        padding-top: 0px;
+    }
+
+    #product-detail-page .product-price {
+        font-family: Inter;
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 32px;
+        letter-spacing: 0.15px;
+        padding-left: 100px;
+        padding-top: 20px;
+    }
+
+    #product-detail-page .quantity-add-product {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #product-detail-page .add-product {
+        padding-left: 100px;
+        padding-top: 20px;
+    }
+
     #product-detail-page .price-rate{
-        width: 80%;
+        width: 100%;
+        display:inline-block
+    }
+
+    #product-detail-page .content-detail-image {
+        display: flex;
+        padding-left: 98px;
+        display: none;
+    }
+
+    #product-detail-page .product-notes {
+        font-family: Inter;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 24px;
+        padding-left: 98px;
+        padding-top: 60px;
+        padding-bottom: 0px;
     }
 
     #product-detail-page .about-product {
         padding-top: 30px;
-        width: 80%;
+        width: 99%;
+    }
+
+    #product-detail-page .warranty,
+    #product-detail-page .highlights {
+        display: none;
     }
 }
 /* End: Product detail page */
