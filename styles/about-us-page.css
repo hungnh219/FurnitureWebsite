@@ -130,4 +130,85 @@
     font-size: 16px;
     opacity: 50%;
 }
+
+/* Responsive Ipad */
+@media only screen and (min-width: 740px) and (max-width: 1023px) {
+    #about-us-page .about-us-info {
+        font-size: 17px;
+    }
+
+    #about-us-page .members-image {
+        width: 300px;
+        height: 300px;
+        padding-right: 20px;
+    }
+
+    #about-us-page .members-info {
+        justify-content: center;
+    }
+}
+
+/* Responsive Phone */
+
+@media only screen and (max-width: 739px) {
+    #about-us-page .about-us-image {
+        text-align: center;
+    }
+
+    #about-us-page .introduce {
+        text-align: center;
+        font-size: 42px;
+        padding-bottom: 20px;
+        padding-top: 50px;
+    }
+
+    #about-us-page .about-us-info {
+        font-size: 12px;
+    }
+
+    #about-us-page .number {
+        font-size: 25px;
+        font-family: cursive;
+        padding-bottom: 0px;
+    }
+
+    #about-us-page .other-info {
+        display: flex;
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+
+    #about-us-page .members-image {
+        width: 200px;
+        height: 210px;
+    }
+
+    #about-us-page .members-name {
+        font-size: 19px;
+    }
+
+    #about-us-page .big-word {
+        font-size: 16px;
+        font-family: Arial, Helvetica, sans-serif;
+        padding-bottom: 5px;
+    }
+
+    #about-us-page .small-word {
+        font-size: 11px;
+        font-family: Arial, Helvetica, sans-serif;
+        opacity: 50%;
+    }
+
+    #about-us-page .ti-headphone-alt,
+    #about-us-page .ti-check,
+    #about-us-page .ti-truck,
+    #about-us-page .ti-cup {
+    font-size: 30px;
+    padding-right: 10px;
+    }
+
+    #about-us-page .members-info {
+        padding-left: 10px;
+    }
+}
 /* End: About us page */

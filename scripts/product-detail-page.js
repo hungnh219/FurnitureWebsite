@@ -16,7 +16,7 @@ window.onload = function() {
             document.getElementsByClassName('item-detail')[0].innerHTML += `
             <div class="navigation-product-detail">
             <div class="navigation-bar">
-                <i class="ti-arrow-left"></i>
+                <i class="ti-arrow-left" onclick="goBack()"></i>
                 <br>
                 <br>
                 <div class="image-number">
@@ -36,11 +36,11 @@ window.onload = function() {
                 </div>
             </div>
             <div class="move-left-right">
-                <i class="ti-angle-left"></i>
-                <i class="ti-angle-right"></i>
+                <i class="ti-angle-left" onclick="prevImg()"></i>
+                <i class="ti-angle-right" onclick="nextImg()"></i>
             </div>
             </div>
-
+ 
             <div class="product-name">
                 ${product.name}
             </div>
@@ -70,7 +70,7 @@ window.onload = function() {
                 </div>
             </div>
 
-            <div class="about-product">
+            <div class="about-product" >
                 ${product.info}
             </div>
 
@@ -84,7 +84,9 @@ window.onload = function() {
                     <button class="add-product-button" >
                         Add to Cart
                     </button>
+                    <div class="notification" >This product has been added to cart</div>
                 </div>
+                
             </div>
 
             <div class="product-notes">
@@ -94,7 +96,8 @@ window.onload = function() {
             </div>
 
             <div class="content-detail-image">
-                <i class="ti-heart"></i> Add to wishlist 
+                <i class="ti-heart" onclick="addToWishList(this)"></i> Add to wishlist 
+                <div class="notification_wishlist" >This product has been added to wishlist</div>
                 <i class="ti-reload"></i> Add to Compare 
                 <div class="share">Share Product: 
                     <i class="ti-share"></i>
@@ -104,20 +107,20 @@ window.onload = function() {
                 </div>
 
                 <div class="detail-image">
-                    <div class="border-first-img">
-                        <img class="first-img" src="${path2}" alt="${product.name}">
+                    <div class="border-others-img">
+                        <img class="first-img" onclick = "switchImg(event,'${path1}')" src="${path1}" alt="${product.name}">
                     </div>
                     <div class="border-others-img">
-                        <img class="others-img" src="${path1}" alt="${product.name}">
+                        <img class="others-img" onclick = "switchImg(event,'${path2}')" src="${path2}" alt="${product.name}">
                     </div>
                     <div class="border-others-img">
-                        <img class="others-img" src="${path3}" alt="${product.name}">
+                        <img class="others-img" onclick = "switchImg(event,'${path3}')" src="${path3}" alt="${product.name}">
                     </div>
                     <div class="border-others-img">
-                        <img class="others-img" src="${path4}" alt="${product.name}">
+                        <img class="others-img" onclick = "switchImg(event,'${path4}')" src="${path4}" alt="${product.name}">
                     </div>
                     <div class="border-others-img">
-                        <img class="others-img" src="${path5}" alt="${product.name}">
+                        <img class="others-img" onclick = "switchImg(event,'${path5}')" src="${path5}" alt="${product.name}">
                     </div>
                 </div>
             </div>
@@ -183,7 +186,7 @@ function addtocart(curr) {
     productprice=productprice.slice(1);
     productprice=productprice.replace(',','.');
     let producttotal=parseFloat(productquan)*parseFloat(productprice);
-    if (localStorage.length!=0 ) {
+    if (localStorage.getItem("products")) {
         products.push(...JSON.parse(localStorage.getItem("products")));
       }
     
@@ -198,7 +201,7 @@ function addtocart(curr) {
     if(!isExist) {
         products.push(product);  
     }
-    else alert("This product has been added to cart")
+    else show_notification()
      
     localStorage.setItem("products", JSON.stringify(products));
     
@@ -215,4 +218,106 @@ function decreasequan(curr) {
     if(Number(quantity.textContent)>1) {
         quantity.innerHTML=Number(quantity.textContent)-1;
     }
+}
+
+// go back
+function goBack() {
+    window.history.back();
+}
+
+// Change image
+function switchImg(event,source) {
+    document.querySelector('.big-image').src = source;
+    var borderImgs = document.querySelectorAll('.border-others-img');
+    var bigNumberDiv = document.querySelector('.big-number');
+    borderImgs.forEach(function(borderImg) {
+        borderImg.style.border = '2px solid grey';
+        borderImg.style.boxShadow = 'none';
+    });
+
+    var selectedImg = event.target;
+    selectedImg.parentElement.style.border = '2px solid #3AA39F';
+    selectedImg.parentElement.style.boxShadow ='10px 10px 20px grey';
+    selectedImg.parentElement.style.transition = '0.3s';
+    var newNumber;
+    var clickedDiv = selectedImg.parentNode;
+    newNumber = (Array.from(borderImgs).indexOf(clickedDiv) + 1).toString().padStart(2, '0');
+    bigNumberDiv.textContent = newNumber;
+}
+var currentImage = 1;
+var totalImages = 5;
+function prevImg() {
+    currentImage--;
+    if (currentImage < 1) {
+        currentImage = totalImages;
+    }
+    var prevImg = document.querySelector(`.border-others-img:nth-child(${currentImage}) img`);
+    switchImg({ target: prevImg }, prevImg.getAttribute('src'));
+        
+}
+function nextImg() {
+    currentImage++;
+    if (currentImage > totalImages) {
+        currentImage = 1;
+    }
+    var nextImg = document.querySelector(`.border-others-img:nth-child(${currentImage}) img`);
+    switchImg({ target: nextImg }, nextImg.getAttribute('src'));
+}
+//add to wishlist
+function addToWishList(curr) {
+    let products=[];
+    let img=curr.parentElement.parentElement.children[2].children[0].src;
+
+    let productname=curr.parentElement.parentElement.children[1].textContent.trim();
+    let productprice=curr.parentElement.parentElement.children[3].children[0].textContent.trim();
+    
+    if (localStorage.getItem("WishList")) {
+        products.push(...JSON.parse(localStorage.getItem("WishList")));
+      }
+    
+    let product={
+    img:img,
+    productname:productname,
+    productprice:productprice,
+    };
+    let isExist=products.some(x=>x.img==product.img&&x.productname==product.productname&&x.productprice==product.productprice);
+    if(!isExist) {
+        products.push(product);  
+    }
+    else show_notification_wishlist()
+     
+    localStorage.setItem("WishList", JSON.stringify(products));
+    
+}
+
+//show notification
+function show_notification() {
+    notification=document.getElementsByClassName('notification')[0]
+    notification.style.display='flex'
+    setTimeout(() => {
+        close_notification()
+    }, 2000);
+}
+
+//close notification
+function close_notification() {
+    notification=document.getElementsByClassName('notification')[0]
+    notification.style.display='none'
+//    location.reload()
+}
+
+//show notification wishlist
+function show_notification_wishlist() {
+    notification=document.getElementsByClassName('notification_wishlist')[0]
+    notification.style.display='flex'
+    setTimeout(() => {
+        close_notification_wishlist()
+    }, 2000);
+}
+
+//close notification wishlist
+function close_notification_wishlist() {
+    notification=document.getElementsByClassName('notification_wishlist')[0]
+    notification.style.display='none'
+//    location.reload()
 }

@@ -32,7 +32,7 @@ function addHeader() {
                             </div>
 
                             <div class="heart-box">
-                                <button class="heart-button-navigation" onclick="goTo('wishlist-screen.html')">
+                                <button class="heart-button-navigation" onclick="goTo('wishlist-page.html')">
                                     <i class="fa-regular fa-heart" style="color: #000000;"></i>
                                 </button>
                             </div>
@@ -43,13 +43,13 @@ function addHeader() {
                                 </button>
                                 <ul class="ti-user-attribute">
                                     <li class="profile-page">
-                                        <a href="#" onclick="goTo('profile-screen.html')">My profile</a>
+                                        <a href="#" onclick="goTo('profile-page.html')">My profile</a>
                                     </li>
                                     <li class="my-order">
-                                        <a href="#" onclick="goTo('profile-screen.html')">My order</a>
+                                        <a href="#" onclick="goTo('profile-page.html')">My order</a>
                                     </li>
                                     <li class="log-out">
-                                        <button onclick="goTo('login-screen.html')">Logout</button>
+                                        <button onclick="goTo('login-page.html')">Logout</button>
                                     </li>
                                 </ul>
                             </div>
@@ -60,6 +60,18 @@ function addHeader() {
         </section>
     </header>
     `)
+
+    // Open Search Box
+const searchBtn = document.querySelector('.search-button-navigation');
+const searchInput = document.querySelector('.search-box #search');
+
+searchBtn.addEventListener('click', () => {
+    if (searchInput.style.opacity === '0') {
+        searchInput.style.opacity = '1';
+    } else {
+        searchInput.style.opacity = '0';
+    }
+})
 }
 
 // add footer
@@ -198,19 +210,6 @@ window.addEventListener('scroll', function() {
         header.classList.remove('scrolled');
     }
 });
-
-
-// Open Search Box
-const searchBtn = document.querySelector('.search-button-navigation');
-const searchInput = document.querySelector('.search-box #search');
-
-searchBtn.addEventListener('click', () => {
-    if (searchInput.style.opacity === '0') {
-        searchInput.style.opacity = '1';
-    } else {
-        searchInput.style.opacity = '0';
-    }
-})
 
 //change page
 function goTo(x) {

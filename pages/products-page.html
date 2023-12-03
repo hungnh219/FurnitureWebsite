@@ -18,46 +18,23 @@
     
     <script>addHeader()</script>
     <main>
-
-        <section id="products-page">
+        <section id="product-screen">
             <div class="background-img">
                 <img src="../assets/Furniture_Photos/Background_Photos/Bedroom_Screen/Main_Photo/Bed.webp" alt="Bedroom">
             </div>
     
-            <div class="lable">
-                <p class="lable-text">CATEGORY</p>
-                <div class="lable-source">
-                    <a href="">BEDROOM</a>
-                    <a href=""></a>
-                </div>
-                <div class="lable-sort-by">
-                    <div class="lable-sort-by-title">
-                        <p>Sort by:</p> 
-                    </div>
-                    <ul>
-                        <li>
-                            <a href="">
-                                Name: A-Z
-                                <i class="ti-angle-down"></i>
-                            </a>
-                            <ul class="lable-subnav">
-                                <li><a href="">Best Seller</a></li>
-                                <li><a href="">Price: Low-High</a></li>
-                                <li><a href="">Price: High-Low</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="product">
-                <div class="vertical-navigation">
-                    <ul id="product-category">
+            <div class="product-wrap">
+    
+                <div class="product-category">
+                    <p>CATEGORY</p>
+                    <ul class="product-category-nav">
                         <li>
                             <a href="">
                                 BEDROOM
                                 <i class="ti-angle-down"></i>
                             </a>
-                            <ul class="vertical-subnav">
+    
+                            <ul class="product-category-subnav">
                                 <li><a href="">Beds</a></li>
                                 <li><a href="">Nightstands & Dressers</a></li>
                                 <li><a href="">Accent Tables</a></li>
@@ -70,7 +47,8 @@
                                 LIVING ROOM
                                 <i class="ti-angle-down"></i>
                             </a>
-                            <ul class="vertical-subnav">
+    
+                            <ul class="product-category-subnav">
                                 <li><a href="">Sofas</a></li>
                                 <li><a href="">Sectionals</a></li>
                                 <li><a href="">Accent Tables </a></li>
@@ -82,52 +60,69 @@
                         <li><a href="">DINING</a></li>
                     </ul>
                 </div>
-                
-                <div class="product-bed">
-                    <!-- <div class="product-1" onclick="goTo('product-detail-page.html')">
-                        <img src="../assets/Furniture_Photos/Products_Photos/P0007/1.webp" alt="The Eldridge Bed" class="product-img">
-                        <div class="product-intro">
-                            <p class="product-name">The Eldridge Bed</p>
-                            <p class="product-cost">$3,885</p>
-                        </div>
-                    </div>
-                    <div class="product-1"> 
-                        <img src="../assets/Furniture_Photos/Products_Photos/P0008/1.webp" alt="The Essex Bed" class="product-img">
-                        <div class="product-intro">
-                            <p class="product-name">The Essex Bed</p>
-                            <p class="product-cost">$3,885</p>
-                        </div>
-                    </div>
-                    <div class="product-1">
-                        <img src="../assets/Furniture_Photos/Products_Photos/P0009/1.webp" alt="The Kent Bed" class="product-img">
-                        <div class="product-intro">
-                            <p class="product-name">The Kent Bed</p>
-                            <p class="product-cost">$3,885</p>
-                        </div>
-                    </div>
     
-                    <div class="product-1">
-                        <img src="../assets/Furniture_Photos/Products_Photos/P0010/1.webp" alt="The Smith Bed" class="product-img">
-                        <div class="product-intro">
-                            <p class="product-name">The Smith Bed</p>
-                            <p class="product-cost">$3,885</p>
+                <div class="product-box">
+                    <div class="product-box-header">
+                        <div class="product-name-room">
+                            <a href="">BEDROOM</a>
+                        </div>
+                        <div class="product-sort-by">
+                            <p>Sort by</p>
+                            <select name="sortby" id="sort-by">
+                                <option value="Best Seller">Best Seller</option>
+                                <option value="Low-High">Price: Low-High</option>
+                                <option value="High-Low">Price: High-Low</option>
+                            </select>
                         </div>
                     </div>
-                    <div class="product-1">
-                        <img src="../assets/Furniture_Photos/Products_Photos/P0011/1.webp" alt="The Thompson Canopy Bed" class="product-img">
-                        <div class="product-intro">
-                            <p class="product-name">The Thompson Canopy Bed</p>
-                            <p class="product-cost">$3,885</p>
+                    
+                    <div class="product-box-detail">
+                        <!-- <div class="product-1">
+                            <img src="../assets/Furniture_Photos/Products_Photos/P0007/1.webp" alt="The Eldridge Bed" class="product-img">
+                            <div class="product-intro"> 
+                                <p class="product-name">The Eldridge Bed</p>
+                                <p class="product-cost">$3,885</p>
+                            </div>
                         </div>
+                        <div class="product-1">
+                            <img src="../assets/Furniture_Photos/Products_Photos/P0008/1.webp" alt="The Essex Bed" class="product-img">
+                            <div class="product-intro">
+                                <p class="product-name">The Essex Bed</p>
+                                <p class="product-cost">$3,885</p>
+                            </div>
+                        </div>
+                        <div class="product-1">
+                            <img src="../assets/Furniture_Photos/Products_Photos/P0009/1.webp" alt="The Kent Bed" class="product-img">
+                            <div class="product-intro">
+                                <p class="product-name">The Kent Bed</p>
+                                <p class="product-cost">$3,885</p>
+                            </div>
+                        </div>
+        
+                        <div class="product-1">
+                            <img src="../assets/Furniture_Photos/Products_Photos/P0010/1.webp" alt="The Smith Bed" class="product-img">
+                            <div class="product-intro">
+                                <p class="product-name">The Smith Bed</p>
+                                <p class="product-cost">$3,885</p>
+                            </div>
+                        </div>
+                        <div class="product-1">
+                            <img src="../assets/Furniture_Photos/Products_Photos/P0011/1.webp" alt="The Thompson Canopy Bed" class="product-img">
+                            <div class="product-intro">
+                                <p class="product-name">The Thompson Canopy Bed</p>
+                                <p class="product-cost">$3,885</p>
+                            </div>
+                        </div>
+                        <div class="product-1">
+                            <img src="../assets/Furniture_Photos/Products_Photos/P0012/1.webp" alt="The Wythe Bed" class="product-img">
+                            <div class="product-intro">
+                                <p class="product-name">The Wythe Bed</p>
+                                <p class="product-cost">$3,885</p>
+                            </div>
+                        </div> -->
                     </div>
-                    <div class="product-1">
-                        <img src="../assets/Furniture_Photos/Products_Photos/P0012/1.webp" alt="The Wythe Bed" class="product-img">
-                        <div class="product-intro">
-                            <p class="product-name">The Wythe Bed</p>
-                            <p class="product-cost">$3,885</p>
-                        </div>
-                    </div> -->
                 </div>
+    
             </div>
     
             <div class="sample">

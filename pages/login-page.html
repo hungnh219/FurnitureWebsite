@@ -9,58 +9,48 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="../assets/fonts/themify-icons/themify-icons.css">
     <link rel="stylesheet" href="../styles/components.css">
-    <link rel="stylesheet" href="../styles/sign-up-sreen.css">
+    <link rel="stylesheet" href="../styles/login-page.css">
     <title>IE104</title>
 </head>
 <body>  
-
+    
     <script>addHeader()</script>
 
     <main>
 
-        <section id="sign-up-sreen">
+        <section id="login-screen">
             <div class="login-img">
                 <img src="../assets/Furniture_Photos/Background_Photos/Login.png" alt="">
             </div>
-            <div class="sign-up">
+            <div class="login">
         
-                <h2>Create an account</h2>
+                <h2>Login</h2>
         
-                <div class="sign-up-info">
-        
-                    <div class="info-name">
-                        <input type="text" value="Name">
-                    </div>
+                <div class="account-info">
         
                     <div class="info-email">
-                        <input type="text" value="Email">
+                        <input type="text" placeholder="Email">
                     </div>
         
                     <div class="info-password">
-                        <input type="password" value="Password">
+                        <input type="password" placeholder="Password">
                     </div>
         
                 </div>
                 
-                <div class="sign-up-button">
+                <div class="login-button">
         
-                    <div class="create-account-button">
-                        <button>Create Account</button>
+                    <div class="-account-button">
+                        <button onclick="loginButton()">Login</button>
                     </div>
         
-                    <div class="sign-up-gg-button">
-                        <button><i class="ti-google"></i>Sign up with Google</button>
-                    </div>
-        
-                    <div class="sign-up-fb-button">
-                        <button><i class="ti-facebook"></i>Sign up with Facebook</button>
-                    </div>
+                    <a href="">Forget password?</a>
         
                 </div>
         
-                <div class="login-link">
-                    <p>Already have account?</p>
-                    <a href="#" onclick="goTo('login-screen.html')">Login</a>
+                <div class="sign-up-link">
+                    <p>Don't have a account?</p>
+                    <a href="#" onclick="goTo('sign-up-screen.html')">Sign up</a>
                 </div>
             </div>
         </section>
@@ -68,6 +58,7 @@
     </main>
 
     <script>addFooter()</script>
+    <script src="../scripts/login.js"></script>
 </body>
 
 </html>
