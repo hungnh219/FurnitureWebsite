@@ -425,4 +425,76 @@
     border-right:10px solid transparent ;
     border-bottom: 10px solid #FFF7E4;
 }
+
+/* Responsive Ipad */
+@media only screen and (min-width: 740px) and (max-width: 1023px) {
+    #product-detail-page {
+        justify-content: center;
+    }
+
+    #product-detail-page .navigation-bar{
+        display: none;
+    }
+
+    #product-detail-page .move-left-right{
+        color: white;
+        padding-top: 0%;
+    }
+
+    #product-detail-page .about-product {
+        padding-top: 30px;
+        width: 80%;
+    }
+
+    #product-detail-page .price-rate{
+        width: 80%;
+    }
+
+    #product-detail-page .big-image {
+        width: 100%;
+        padding-bottom: 0%;
+        padding-top: 20px;
+        padding-right: 80px;
+        max-width: 90%;
+    }
+
+    #product-detail-page .detail-image{
+        display: none;
+    }
+}
+
+/* Responsive Phone */
+@media only screen and (max-width: 739px) {
+    #product-detail-page {
+        /* justify-content: center; */
+    }
+
+    #product-detail-page .navigation-bar{
+        display: none;
+    }
+
+    #product-detail-page .detail-image{
+        display: none;
+    }
+
+    #product-detail-page .move-left-right{
+        color: white;
+        padding-top: 0%;
+    }
+
+    #product-detail-page .big-image {
+        padding-bottom: 0%;
+        padding-top: 20px;
+        padding-left: 100px;
+    }
+
+    #product-detail-page .price-rate{
+        width: 80%;
+    }
+
+    #product-detail-page .about-product {
+        padding-top: 30px;
+        width: 80%;
+    }
+}
 /* End: Product detail page */
