@@ -432,7 +432,7 @@
         justify-content: center;
     }
 
-    #product-detail-page .navigation-bar{
+    #product-detail-page .about-us-info{
         display: none;
     }
 
@@ -446,20 +446,99 @@
         width: 80%;
     }
 
+    #product-detail-page .small-number,
+    #product-detail-page .big-number{
+        display: none;
+    }
+
+    #product-detail-page .about-product {
+        font-family: Inter;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 24px;
+        padding-top: 47px;
+        padding-left: 100px;
+        padding-bottom: 60px;
+    }
+    
+    #product-detail-page .product-notes {
+        font-family: Inter;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 24px;
+        padding-left: 98px;
+        padding-top: 35px;
+        padding-bottom: 63px;
+    }
+
     #product-detail-page .price-rate{
         width: 80%;
+    }
+
+    #product-detail-page .add-minus-button {
+        display: flex;
+        height: 36px;
+        padding: 16px;
+        align-items: center;
+        gap: 30px;
+        margin-left: 100px;
+        margin-right: 122px;
+        border-radius: 4px;
+        border: 1px solid gray;
+    }
+
+    #product-detail-page .add-product-button {
+        width: 161px;
+        height: 37px;
+        background-color: #FFF7E4;
+        border-radius: 9px;
+        color: #000;
+        text-align: center;
+        font-family: Inter;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 18px;
+    }
+
+    #product-detail-page .content-detail-image {
+        display: flex;
+        padding-left: 98px;
+        font-size: 14px;
     }
 
     #product-detail-page .big-image {
         width: 100%;
         padding-bottom: 0%;
         padding-top: 20px;
-        padding-right: 80px;
+        padding-right: 210px;
         max-width: 90%;
     }
 
     #product-detail-page .detail-image{
         display: none;
+    }
+
+    #product-detail-page .blur-text-wh {
+        color: #919191;
+        font-family: Inter;
+        font-size: 15px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 20px;
+        padding-right: 120px;
+        padding-left: 98px;
+    }
+
+    #product-detail-page .normal-text-wh {
+        color: #17183B;
+        font-family: Inter;
+        font-size: 15px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 20px;
     }
 }
 
