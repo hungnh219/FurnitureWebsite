@@ -70,7 +70,7 @@ window.onload = function() {
                 </div>
             </div>
 
-            <div class="about-product">
+            <div class="about-product" >
                 ${product.info}
             </div>
 
@@ -84,7 +84,9 @@ window.onload = function() {
                     <button class="add-product-button" >
                         Add to Cart
                     </button>
+                    <div class="notification" >This product has been added to cart</div>
                 </div>
+                
             </div>
 
             <div class="product-notes">
@@ -95,6 +97,7 @@ window.onload = function() {
 
             <div class="content-detail-image">
                 <i class="ti-heart" onclick="addToWishList(this)"></i> Add to wishlist 
+                <div class="notification_wishlist" >This product has been added to wishlist</div>
                 <i class="ti-reload"></i> Add to Compare 
                 <div class="share">Share Product: 
                     <i class="ti-share"></i>
@@ -198,7 +201,7 @@ function addtocart(curr) {
     if(!isExist) {
         products.push(product);  
     }
-    else alert("This product has been added to cart")
+    else show_notification()
      
     localStorage.setItem("products", JSON.stringify(products));
     
@@ -281,8 +284,40 @@ function addToWishList(curr) {
     if(!isExist) {
         products.push(product);  
     }
-    else alert("This product has been added to cart")
+    else show_notification_wishlist()
      
     localStorage.setItem("WishList", JSON.stringify(products));
     
+}
+
+//show notification
+function show_notification() {
+    notification=document.getElementsByClassName('notification')[0]
+    notification.style.display='flex'
+    setTimeout(() => {
+        close_notification()
+    }, 2000);
+}
+
+//close notification
+function close_notification() {
+    notification=document.getElementsByClassName('notification')[0]
+    notification.style.display='none'
+//    location.reload()
+}
+
+//show notification wishlist
+function show_notification_wishlist() {
+    notification=document.getElementsByClassName('notification_wishlist')[0]
+    notification.style.display='flex'
+    setTimeout(() => {
+        close_notification_wishlist()
+    }, 2000);
+}
+
+//close notification wishlist
+function close_notification_wishlist() {
+    notification=document.getElementsByClassName('notification_wishlist')[0]
+    notification.style.display='none'
+//    location.reload()
 }

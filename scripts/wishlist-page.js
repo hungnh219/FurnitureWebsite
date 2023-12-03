@@ -32,7 +32,8 @@ function getProducts() {
                     <img src="${product.img}" alt="The Chelsea">
                     <p class="wishlish-name-product">${product.productname}</p>
                     <p class="wistlish-price">${product.productprice}</p>
-                    <p class="wishlist-to-cart" onclick="addtocart('${product.img}','${product.productname}','${product.productprice}')">Add to cart</p>
+                    <p class="wishlist-to-cart" onclick="addtocart(this,'${product.img}','${product.productname}','${product.productprice}')">Add to cart</p>
+                    <div class="notification" >This product has been added to cart</div>
             </div>
             `
         })
@@ -58,7 +59,7 @@ window.addEventListener('load', function() {
 
 
 //add to cart
-function addtocart(p_img,p_name,p_price) {
+function addtocart(curr,p_img,p_name,p_price) {
     let products=[];
     let img=p_img
     let productname=p_name
@@ -82,8 +83,29 @@ function addtocart(p_img,p_name,p_price) {
     if(!isExist) {
         products.push(product);  
     }
-    else alert("This product has been added to cart")
+    else show_notification(curr)
      
     localStorage.setItem("products", JSON.stringify(products));
     
+}
+
+//show notification
+function show_notification(curr) {
+    curr=curr.parentElement.children[5]
+
+    // notification=document.getElementsByClassName('notification')[0]
+    // notification.style.display='flex'
+    curr.style.display='flex'
+    setTimeout(() => {
+        close_notification(curr)
+    }, 2000);
+}
+
+//close notification
+function close_notification(curr) {
+    curr=curr.parentElement.children[5]
+    curr.style.display='none'
+    // notification=document.getElementsByClassName('notification')[0]
+    // notification.style.display='none'
+//    location.reload()
 }
