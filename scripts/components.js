@@ -46,7 +46,7 @@ function addHeader() {
                                         <a href="#" onclick="goTo('profile-page.html')">My profile</a>
                                     </li>
                                     <li class="my-order">
-                                        <a href="#" onclick="goTo('profile-page.html')">My order</a>
+                                        <a href="#" onclick="goTo('my-order-page.html')">My order</a>
                                     </li>
                                     <li class="log-out">
                                         <button onclick="goTo('login-page.html')">Logout</button>
@@ -154,7 +154,7 @@ function addFooter() {
                     <h2>Stay Updated</h2>
                     <ul>
                         <li>
-                            <a href="javascript:void(0)">Enter your email</a>
+                            <a href="javascript:void(0)">Enter your email</a> 
                         </li>
                         <i class="ti-check"></i>
                     </ul>
@@ -222,13 +222,46 @@ function goToDetailProduct(x, id) {
     location.href=x+ "?id=" + id;
 }
 
+// check valid gmail
+function isValidGmail(gmail) {
+    if (!gmail.endsWith('@gmail.com')) {
+        return false;
+    } else if (gmail.startsWith('@')) {
+        return false;
+    }
 
+    return true;
+}
 
+// check valid password
+function isValidPassword(password) {
+    if (password.length < 8) {
+        alert('Password must be at least 8 characters!');
+        return false;
+    }
 
+    if (!/[a-zA-Z]/.test(password)) {
+        alert('Password must contain at least one letter!');
+        return false;
+    }
 
+    if (!/\d/.test(password)) {
+        alert('Password must contain at least one digit!');
+        return false;
+    }
 
+    if (/[^a-zA-Z0-9]/.test(password)) {
+        alert('Password can\'t contain special characters!');
+        return false;
+    }
 
+    if (!/[A-Z]/.test(password)) {
+        alert('Password must contain at least one uppercase letter!');
+        return false;
+    }
 
+    return true;
+}
 
 
 // function removeProduct(curr) {

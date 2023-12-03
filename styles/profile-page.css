@@ -1,4 +1,7 @@
 /* Start: Profile screen */
+#profile-screen {
+    padding-top: 100px;
+}
 #profile-screen .address-pass,
 #profile-screen .info,
 #profile-screen .name {
@@ -8,7 +11,7 @@
 }
 
 #profile-screen .first-name {
-    /* padding-left: 309px; */
+    /* padding-left: 309px;  */
 }
 
 #profile-screen .profile-title {
