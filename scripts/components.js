@@ -4,20 +4,25 @@ function addHeader() {
     <header>
         <section id="navigation">
             <div class="logo-navigation">
-                <a href="#" onclick="goTo('home-page.html')">Furnishity.</a>
+                <a href="">Furnishity.</a>
             </div>
 
             <div class="list-navigation">
                 <ul>
                     <li class="navigation-attribute">
                         <div class="text-navigation">
-                            <a href="#" onclick="goTo('home-page.html')">Home</a>
-                            <a href="#" onclick="goTo('shop-all.html')">Products</a>
-                            <a href="#" onclick="goTo('blog.html')">Blog</a>
-                            <a href="#" onclick="goTo('about-us-page.html')">About us</a>
+                            <a href="">Home</a>
+                            <a href="">Products</a>
+                            <a href="">Blog</a>
+                            <a href="">About us</a>
                         </div>
 
                         <div class="icon-navigation"> 
+
+                            <div class="menu">
+                                <i class="fa-solid fa-bars" style="color: #000000;"></i>
+                            </div>
+
                             <div class="search-box">
                                 <input type="text" id="search" placeholder="Search">
                                 <button class="search-button-navigation">
@@ -25,14 +30,14 @@ function addHeader() {
                                 </button>
                             </div>  
                             
-                            <div class="cart-box" onclick="goTo('cart-page.html')"> 
+                            <div class="cart-box"> 
                                 <button class="cart-button-navigation">
                                     <i class="fa-solid fa-cart-shopping" style="color: #000000;"></i>
                                 </button>
                             </div>
 
                             <div class="heart-box">
-                                <button class="heart-button-navigation" onclick="goTo('wishlist-page.html')">
+                                <button class="heart-button-navigation">
                                     <i class="fa-regular fa-heart" style="color: #000000;"></i>
                                 </button>
                             </div>
@@ -43,13 +48,13 @@ function addHeader() {
                                 </button>
                                 <ul class="ti-user-attribute">
                                     <li class="profile-page">
-                                        <a href="#" onclick="goTo('profile-page.html')">My profile</a>
+                                        <a href="">My profile</a>
                                     </li>
                                     <li class="my-order">
-                                        <a href="#" onclick="goTo('my-order-page.html')">My order</a>
+                                        <a href="">My order</a>
                                     </li>
                                     <li class="log-out">
-                                        <button onclick="goTo('login-page.html')">Logout</button>
+                                        <button>Logout</button>
                                     </li>
                                 </ul>
                             </div>
@@ -72,93 +77,67 @@ searchBtn.addEventListener('click', () => {
         searchInput.style.opacity = '0';
     }
 })
+/////
+$(document).ready(function() {
+    $('.fa-solid.fa-bars').click(function() {
+        $('.text-navigation').slideToggle();
+    })
+})
+
 }
 
 // add footer
 function addFooter() {
     document.write(`
     <footer>
-        <div class="footer-web">
-            <div class="footer-row">
-                <div class="footer-part a">
-                    <h2>Furnishity</h2>
-                    <p>We sell over 3000+ branded products since 2018</p>
-                    <ul class="footer-a">
-                        <li>
-                            <a href="javascript:void(0)">
-                                <i class="ti-mobile"></i>
-                                0987654321
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://uit.edu.vn">
-                                <i class="ti-location-pin"></i>
-                                University of Information and Technology
-                            </a>
-                        </li>
-                        <li>
-                            <a href="home-page.html">
-                                <i class="ti-world"></i>
-                                www.furnishity.com
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+        <div class="footer-furnishity">
+            <h3>Furnishity.</h3>
+            <p>
+                Worldwide furniture store since 2020. 
+                We sell over 1000+ branded products on our website
+            </p>
+            <div class="footer-phone-number">
+                <i class="fa-solid fa-phone" style="color: #000000;"></i>
+                0987654321
+            </div>
+            <div class="footer-address">
+                <i class="fa-solid fa-location-dot" style="color: #000000;"></i>
+                University of Information and Technology
+            </div>
+            <div class="footer-web-site">
+                <i class="fa-solid fa-globe" style="color: #000000;"></i>
+                www.furnishity.com
+            </div>
+        </div>
 
-                <div class="footer-part b">
-                    <h2>Menu</h2>
-                    <ul class="footer-b">
-                        <li>
-                            <a href="#" onclick="goTo('shop-all.html')">
-                                Products
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0)" >
-                                Blog
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#"onclick="goTo('about-us-page.html')">
-                                About us
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+        <div class="footer-menu">
+            <h3>Menu</h3>
+            <p>Products</p>
+            <p>Blog</p>
+            <p>About us</p>
+        </div>
 
-                <div class="footer-part c">
-                    <h2>Stay Connected</h2>
-                    <ul class="footer-a">
-                        <li>
-                            <a href="https://facebook.com">
-                                <i class="ti-facebook"></i>
-                                Facebook
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://www.instagram.com/">
-                                <i class="ti-instagram"></i>
-                                Instagram
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://twitter.com/">
-                                <i class="ti-twitter-alt"></i>
-                                Twitter
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+        <div class="footer-connect">
+            <h3>Stay Connected</h3>
+            <div class="footer-fb">
+                <i class="fa-brands fa-facebook" style="color: #000000;"></i>
+                Facebook
+            </div>
+            <div class="footer-ig">
+                <i class="fa-brands fa-square-instagram" style="color: #000000;"></i>
+                Instagram
+            </div>
+            <div class="fotter-tw">
+                <i class="fa-brands fa-twitter" style="color: #000000;"></i>
+                Twitter
+            </div>
+        </div>
 
-                <div class="footer-part d">
-                    <h2>Stay Updated</h2>
-                    <ul>
-                        <li>
-                            <a href="javascript:void(0)">Enter your email</a> 
-                        </li>
-                        <i class="ti-check"></i>
-                    </ul>
-                </div>
+        <div class="footer-update">
+            <h3>Stay update</h3>
+            <div class="footer-mail">
+                <input type="text" placeholder="Email">
+                <i class="fa-solid fa-paper-plane" style="color: #000000;"></i>
             </div>
         </div>
     </footer>
