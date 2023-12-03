@@ -17,14 +17,14 @@ go
 create table PRODUCTS(
 	ID      	int identity,
 	Name    	varchar(250) 	unique ,
-	Info    	varchar(1000)	,
-	Price   	int         	,
-    Material	varchar(30)		,
-	Width		float			,
-    Height		float			,
-    Depth		float			,
-    Weight		float			,
-	ImgDirect	varchar(250)	,
+	Info    	varchar(1000)	NOT NULL,
+	Price   	decimal(10, 2)  NOT NULL,
+    Material	varchar(30)		NOT NULL,
+	Width		float			NOT NULL,
+    Height		float			NOT NULL,
+    Depth		float			NOT NULL,
+    Weight		float			NOT NULL,
+	ImgDirect	varchar(250)	NOT NULL,
 	primary key (ID),
 	check (Price >= 0)
 );
@@ -32,25 +32,25 @@ create table PRODUCTS(
  
 create table USERS(
 	ID			int identity,
-    UserName	varchar(25)		unique ,
-    PassWord	varchar(250)	,
-    FirstName	varchar(30)		,
-    LastName	varchar(70)		,
-	Address    	varchar(1000)	,
-    Phone		varchar(20)		,
-    Mail		varchar(50)		,
-    RegDate		date			default (convert(date, getdate())),
-    BirthYear	int				,
+    UserName	varchar(25)		unique NOT NULL,
+    PassWord	varchar(250)	NOT NULL,
+    FirstName	varchar(30)		NOT NULL,
+    LastName	varchar(70)		NOT NULL,
+	Address    	varchar(1000)	NOT NULL,
+    Phone		varchar(20)		NOT NULL,
+    Mail		varchar(50)		NOT NULL,
+    RegDate		date			default (convert(date, getdate())) NOT NULL,
+    BirthYear	int				NOT NULL,
     primary key (ID),
 );
 
  
 create table RECEIPTS(
 	ID			int identity,
-	Date 		date 			default (convert(date, getdate())),
-	Paid		int         	default 0,
-	UserID		int 	,
-	Status		varchar(25)		default 'Shopping',
+	Date 		date 			default (convert(date, getdate())) NOT NULL,
+	Paid		decimal(10, 2)  default 0 NOT NULL,
+	UserID		int 			NOT NULL,
+	Status		varchar(25)		default 'Shopping' NOT NULL,
 	check(Status in('Shopping', 'Pending', 'Delivering', 'Complete', 'Cancelled')),
     primary key (ID),
 	check (Paid >= 0)
@@ -58,50 +58,50 @@ create table RECEIPTS(
 
  
 create table VOUCHERS(
-	ID			int identity,
-	Name		varchar(250)	unique ,
-	Type		varchar(25)		default 'Percentage',
-	Value		decimal(10, 2) 	,
-	ValidDate	date			,
+	ID			varchar(15)		default '1',
+	Name		varchar(250)	unique NOT NULL,
+	Type		varchar(25)		default 'Percentage' NOT NULL,
+	Value		decimal(10, 2) 	NOT NULL,
+	ValidDate	date			NOT NULL,
 	check(Type in('Percentage', 'Value')),
-	primary key (ID),
-	check(Value > 0)
+	check(Value > 0),
+	primary key (ID)
 );
 
  
 create table TAGS(
 	ID		int identity,
-	Name	varchar(250)	unique ,
+	Name	varchar(250)	unique NOT NULL,
     primary key (ID)
 );
 
  
 create table COLOURS(
 	ID		int identity,
-    Name	varchar(250)	unique ,
-    Barcode	varchar(10)		unique ,
+    Name	varchar(250)	unique NOT NULL,
+    Barcode	varchar(10)		unique NOT NULL,
     primary key (ID)
 );
 
  
 create table ROLES(
-	ID		int identity,
-    Name	varchar(250)	unique ,
+	ID		int identity	NOT NULL,
+    Name	varchar(250)	unique NOT NULL,
     primary key (ID)
 );
 
  
 create table PERMISSIONS(
-	ID		int identity,
-    Name	varchar(250)	unique ,
+	ID		int identity	NOT NULL,
+    Name	varchar(250)	unique NOT NULL,
     primary key (ID)
 );
 
  
 create table REVENUES(
-	Year	int		default (year(getdate()))	,
-    Month	int		default (month(getdate()))	,
-    Value	int		default 0					,
+	Year	int				default (year(getdate()))	NOT NULL,
+    Month	int				default (month(getdate()))	NOT NULL,
+    Value	decimal(10, 2)	default 0 NOT NULL,
     primary key (Year, Month),
 	check (Value >= 0)
 );
@@ -111,8 +111,8 @@ create table COMMENTS(
     UserID		int		,
     ProductID	int				,
     Content		varchar(1000)	,
-    Date		datetime2(0)		default (getdate()),
-    Rating		float			,
+    Date		datetime2(0)		default (getdate()) NOT NULL,
+    Rating		float			NOT NULL,
     primary key (UserID, ProductID)
 );
 
@@ -121,7 +121,7 @@ create table LIKE_PRODUCT(
     UserID		int		,
     ProductID	int				,
     Content		varchar(1000)	,
-    Date		date			default (convert(date, getdate())),
+    Date		date			default (convert(date, getdate())) NOT NULL,
     primary key (UserID, ProductID)
 );
 
@@ -135,7 +135,7 @@ create table PRODUCT_TAG(
  
 create table RECEIPT_VOUCHER(
 	ReceiptID	int	,
-    VoucherID	int	,
+    VoucherID	varchar(15)	,
     primary key (ReceiptID, VoucherID)
 );
 
@@ -143,7 +143,7 @@ create table RECEIPT_VOUCHER(
 create table RECEIPT_DETAIL(
 	ReceiptID	int	,
     ProductID	int	,
-    Amount		int			default 1,
+    Amount		int			default 1 NOT NULL,
     ColourID	int	,
     primary key (ReceiptID, ProductID, ColourID),
 	check (Amount >= 0)
@@ -162,14 +162,6 @@ create table ROLE_PERMISSION(
     PermissionID		int	,
     primary key (RoleID, PermissionID)
 );
-
-create table USER_VOUCHER(
-	UserID				int	,
-    VoucherID			int	,
-	Amount				int default 1,
-    primary key (UserID, VoucherID),
-	check (Amount >= 0)
-)
 
  
 create table ARGUMENTS(
@@ -213,11 +205,6 @@ alter table LIKE_PRODUCT
 add foreign key (ProductID)		references PRODUCTS(ID);
 alter table LIKE_PRODUCT
 add foreign key (UserID)		references USERS(ID);
-alter table USER_VOUCHER
-add foreign key (UserID)		references USERS(ID);
-alter table USER_VOUCHER
-add foreign key (VoucherID)		references VOUCHERS(ID);
-
 go
 
 -- ---- PRODUCT ----- --
@@ -675,7 +662,40 @@ GO
 
 -- ----- VOUCHER ----- --
 
- 
+create trigger trg_GenerateID
+on VOUCHERS
+after insert
+as
+begin
+	SET NOCOUNT ON;
+    DECLARE @Counter INT = 0;
+    DECLARE @RandomString VARCHAR(15) = '1';
+    DECLARE @Temp INT = 0;
+
+	WHILE EXISTS(
+		SELECT *
+		FROM VOUCHERS a
+		WHERE a.ID = @RandomString
+		)
+	BEGIN
+		SELECT @RandomString = ''
+		WHILE @Counter < 10
+		BEGIN
+			SET @Temp = FLOOR(RAND() * 36) + 65;
+			IF @Temp <= 90
+				SET @RandomString = @RandomString + CHAR(@Temp);
+			ELSE 
+				SET @RandomString = @RandomString + CHAR(@Temp - 91 + 48);
+			SET @Counter = @Counter + 1;
+		END
+	END
+
+	update VOUCHERS
+	set ID = @RandomString
+	where ID = '1'
+end;
+go
+
 CREATE PROCEDURE sp_InsertVoucher(
 	@Name		varchar(250)	,
 	@Type      	varchar(25)		,
@@ -2046,7 +2066,6 @@ GO
 
 -- ----- ARGUMENT ----- --
 
- 
 CREATE PROCEDURE sp_UpdateArgument(
 	@RegAge				int			,
     @MinPaid				decimal(10, 2),
@@ -2077,113 +2096,6 @@ SET NOCOUNT ON;
 END;
 GO
 
--- ----- USER_VOUCHER ----- --
-
-CREATE PROCEDURE sp_InsertUser_Voucher(
-	@UserID	int	,
-    @VoucherID	int	
-)
-AS
-BEGIN
-SET NOCOUNT ON;
-	 
-	INSERT INTO USER_VOUCHER (UserID, VoucherID)
-	VALUES (@UserID, @VoucherID);
-END;
-GO
-
- 
-CREATE PROCEDURE sp_UpdateUser_Voucher(
-	@UserIDUp	int		,
-    @VoucherIDUp	int		,
-	@UserID	int	,
-    @VoucherID	int				
-)
-AS
-BEGIN
-SET NOCOUNT ON;	
-    UPDATE User_VOUCHER
-	SET VoucherID = @VoucherID	,
-		UserID = @UserID			
-    WHERE VoucherID = @VoucherIDUp
-		AND UserID = @UserIDUp;
-END;
-GO
-
- 
-CREATE PROCEDURE sp_DeleteUser_Voucher(
-	@VoucherIDDel	int		,
-    @UserIDDel	int		      
-)
-AS
-BEGIN
-SET NOCOUNT ON;
-    DELETE FROM User_VOUCHER 
-    WHERE VoucherID = @VoucherIDDel
-		AND UserID	 = @UserIDDel;
-END;
-GO
-
- 
-CREATE PROCEDURE sp_DeleteUser_VoucherByVoucherID(
-    @VoucherIDDel	int		      
-)
-AS
-BEGIN
-SET NOCOUNT ON;
-    DELETE FROM User_VOUCHER 
-    WHERE @VoucherIDDel = VoucherID;
-END;
-GO
-
- 
-CREATE PROCEDURE sp_DeleteUser_VoucherByUserID(
-    @UserIDDel	int		      
-)
-AS
-BEGIN
-SET NOCOUNT ON;
-    DELETE FROM User_VOUCHER 
-    WHERE UserID = @UserIDDel;
-END;
-GO
-
- 
-CREATE PROCEDURE sp_GetAllUser_Voucher
-AS
-BEGIN
-SET NOCOUNT ON;
-     
-    SELECT * FROM User_VOUCHER;
-END;
-GO
-
- 
-CREATE PROCEDURE sp_GetUser_VoucherByUserID(
-	@UserID		int
-)
-AS
-BEGIN
-SET NOCOUNT ON;
-     
-    SELECT * FROM User_VOUCHER a
-    WHERE a.UserID = @UserID;
-END;
-GO
-
- 
-CREATE PROCEDURE sp_GetUser_VoucherByVoucherID(
-	@VoucherID		int
-)
-AS
-BEGIN
-SET NOCOUNT ON;
-     
-    SELECT * FROM User_VOUCHER a
-    WHERE a.VoucherID = @VoucherID;
-END;
-GO
-
 -- ----- MULTIPLE TABLE ----- --
 
 CREATE PROCEDURE sp_GetUserProductAndReceipt(
@@ -2199,6 +2111,22 @@ SET NOCOUNT ON;
 	WHERE a.UserID = @UserId
 	ORDER BY a.ID ASC,
 			c.Name ASC
+END
+GO
+
+CREATE PROCEDURE sp_GetProductsByTagName(
+	@TagName		varchar(250)
+)
+AS
+BEGIN
+SET NOCOUNT ON;
+     
+    SELECT * FROM TAGS a
+		INNER JOIN PRODUCT_TAG b ON b.TagID = a.ID
+		INNER JOIN PRODUCTS c ON b.ProductID = c.ID
+    WHERE a.Name LIKE '%' + @TagName + '%';
+END;
+GO
 
 -- Add DATA
 
@@ -2206,55 +2134,55 @@ INSERT INTO ARGUMENTS DEFAULT VALUES;
 
 INSERT INTO PRODUCTS (Name,Info,Price,Material,Width,Height,Depth,Weight,ImgDirect)
 VALUES
-	('The Bank Console Table','A striking design statement, The Bank is handcrafted of solid American white oak. Designed with a distinctive overlap, the faceted, conical legs add sculptural sensibility, supporting a white oak veneer top with carved beveled edging.',3150,'Natural Oak',60.0,20.0,30.0,60.0,'/assets/Furniture_Photos/Products_Photos/P0001'),
-	('The Bowery Table','Modern lines meet plush comfort in this beautifully tailored coffee table ottoman. With a movable solid ash table and subtle detailing throughout, The Bowery is a study in elegant yet functional design.',1675,'Driftwood',47.0,30.0,16.0,47.0,'/assets/Furniture_Photos/Products_Photos/P0002'),
-	('The Morro Table','Artisanal woodworking gives The Morro its shapely form and minimalist design. Handcrafted with solid ash wood, each table harmoniously nests together or stands alone, adding an artful presence to any room.',735,'Driftwood',50.0,30.0,30.0,40.0,'/assets/Furniture_Photos/Products_Photos/P0003'),
-	('The Reade Console Table','A delicate balance of commanding proportions, The Reade’s handcrafted column legs and intricately designed tabletop create an unforgettable sculptural statement. Expertly crafted of solid ash wood and finished with exquisite artisanship.',2475,'Pecan',60.0,21.0,30.0,72.0,'/assets/Furniture_Photos/Products_Photos/P0004'),
-	('The Reade Demilune Console Table','A delicate balance of commanding proportions, The Reade’s handcrafted column legs and intricately designed tabletop create an unforgettable sculptural statement. Expertly crafted of solid ash wood and finished with exquisite artisanship.',1950,'Pecan',42.0,21.0,30.0,50.0,'/assets/Furniture_Photos/Products_Photos/P0005'),
-	('The Vestry Table','Handcrafted of solid oak, The Vestry’s organic shape and soft curvature display an expansive statement of natural materiality. Designed to artfully nest together or stand alone in graceful proportion.',1775,'Pecan Oak',40.0,27.0,26.0,48.0,'/assets/Furniture_Photos/Products_Photos/P0006'),
-	('The Eldridge Bed','Lushly cushioned and upholstered all around, The Eldridge offers an enveloping experience. Its low, linear silhouette with extended headboard is softened by rounded corners traced with subtle flange seaming.',3885,'Agate',100.0,36.5,70.0,82.0,'/assets/Furniture_Photos/Products_Photos/P0007'),
-	('The Essex Bed','Clean lines, classic proportions, and subtle tailoring–the elegance of The Essex lies in its simplicity. A tapered headboard and sleek legs lend a modern edge to this striking shape.',2225,'Pecan',70.0,50.0,80.0,76.0,'/assets/Furniture_Photos/Products_Photos/P0008'),
-	('The Kent Bed','Marrying soft curves with tailored understatement, The Kent’s classic profile gives center stage to its meticulous detailing—from the headboard’s inset curvature to its rounded foot rail.',3250,'Pecan',70.0,42.0,90.0,50.0,'/assets/Furniture_Photos/Products_Photos/P0009'),
-	('The Smith Bed','With marked curvature and oversized stature, The Smith references the bold sophistication of 1970s Italian design. Sumptuous lines and a sheltering headboard embrace, accentuated by a solid wood plinth base that gives its low profile a floating effect.',3675,'Whitewash',80.0,40.0,70.0,80.0,'/assets/Furniture_Photos/Products_Photos/P0010'),
-	('The Thompson Canopy Bed','An organic, refined silhouette that allows natural materiality and subtle tailoring to shine. The Thompson makes an elegant statement in any bedroom.',3850,'Handwaxed Ash',80.0,84.0,95.0,75.0,'/assets/Furniture_Photos/Products_Photos/P0011'),
-	('The Wythe Bed','Featuring a down-filled headboard, The Wythe’s ultra-cool low profile belies its cozy comfort. Flange seams provide the perfect finishing touches to this modern shape.',2675,'Oyster',70.0,40.0,90.0,84.0,'/assets/Furniture_Photos/Products_Photos/P0012'),
-	('The Chelsea Ottoman','With fluid lines and sensual curves, The Chelsea Ottomans pay tribute to the softer side of mid-century design. The playful silhouettes sit atop recessed legs for an elegant floating effect.',985,'Charcoal',30.0,25.0,20.0,25.0,'/assets/Furniture_Photos/Products_Photos/P0013'),
-	('The Franklin Bench','Tailored in rich texture with a versatile design, The Franklin is beautifully timeless and effortlessly comfortable. Slipcovered in linen for a casual yet elegant addition to any room.',1075,'Dew',60.0,17.0,17.0,35.0,'/assets/Furniture_Photos/Products_Photos/P0014'),
-	('The Franklin Ottoman','Tailored in rich texture with a versatile design, The Franklin is beautifully timeless and effortlessly comfortable. Slipcovered in linen for a casual yet elegant addition to any room.',450,'Chambray',17.0,17.0,17.0,20.0,'/assets/Furniture_Photos/Products_Photos/P0015'),
-	('The Mulberry Ottoman','A sculptural pedestal base and plush seat make The Mulberry a versatile design statement. Expertly crafted with a solid ash wood base and tailored detailing.',575,'Driftwood',16.5,16.5,18.0,15.0,'/assets/Furniture_Photos/Products_Photos/P0016'),
-	('The Reyes Bench','Modern lines meet mixed materials in this sleek and minimal bench. The Reyes is expertly crafted with solid ash wood and delicate brass inset detailing. An optional seat cushion upholstered in soft nubuck leather adds textural interest.',1150,'Sail',60.0,18.0,16.25,40.0,'/assets/Furniture_Photos/Products_Photos/P0017'),
-	('The Bond Chair','A stylish nod to mod, The Bond balances generous proportions with its contemporary profile. Luxe, down-filled comfort makes it an everyday luxury.',2115,'Camel',38.0,34.0,29.0,30.0,'/assets/Furniture_Photos/Products_Photos/P0018'),
-	('The Chrystie Chair','Nodding to tradition, The Chrystie is a compelling take on the classic wingback. A high back and narrow sides slope seamlessly into low arms, while the canted seat back and angled back legs enhance its elegant lines.',1815,'Greywash',29.0,36.0,38.0,34.0,'/assets/Furniture_Photos/Products_Photos/P0019'),
-	('The Dune Chair and a Half','The Dune Chair and a Half invites relaxation into your living space with its deep seat, soft cushioning, and easy-to-clean slipcover. It’s hand-finished with flange seams, lending a touch of polished elegance to the laid-back design.',1975,'Creme',48.0,38.0,34.0,42.0,'/assets/Furniture_Photos/Products_Photos/P0020'),
-	('The Kenmare Chair','Designed with an organic ebb and flow, The Kenmare’s playful contours display artisanal craftsmanship in a petite silhouette. The handcarved solid ash frame lends a mixed material appeal to its contemporary design.',1650,'Driftwood',27.0,27.0,28.0,20.0,'/assets/Furniture_Photos/Products_Photos/P0021'),
-	('The Laight Chair','A contemporary take on the slipper chair, The Laight is defined by embracing curves and petite proportions. The playful silhouette offers considerable comfort with its wraparound back, bubbled seat, and lathe-turned legs.',1985,'Pecan',31.0,26.0,29.0,30.0,'/assets/Furniture_Photos/Products_Photos/P0022'),
-	('The Perry Chair','A nod to iconic midcentury design, The Perry Chair marries sophistication, craftsmanship, and comfort. The curved silhouette is timeless in feel, while the petite proportions make it perfect as a pair.',1850,'Coffee',32.0,32.0,32.0,40.0,'/assets/Furniture_Photos/Products_Photos/P0023'),
-	('The Clinton 1-Drawer Nightstand','Handcrafted of solid ash with an optional leather-clad inlay, The Clinton celebrates luxe materiality in functional form. Artistry is on display—from the rounded corners and custom drawer pulls to the fully finished interiors and hand-shaped legs.',1975,'Pecan Ash',27.0,15.0,22.0,20.0,'/assets/Furniture_Photos/Products_Photos/P0024'),
-	('The Clinton 2-Drawer Nightstand','Handcrafted of solid ash with an optional leather-clad inlay, The Clinton celebrates luxe materiality in functional form. Artistry is on display—from the rounded corners and custom drawer pulls to the fully finished interiors and hand-shaped legs.',2085,'Pecan Ash ',27.0,15.0,22.0,25.0,'/assets/Furniture_Photos/Products_Photos/P0025'),
-	('The Clinton 3-Drawer Dresser','Handcrafted of solid ash with an optional leather-clad inlay, The Clinton celebrates luxe materiality in functional form. Artistry is on display—from the rounded corners and custom drawer pulls to the fully finished interiors and hand-shaped legs.',2900,'Whitewash Ash',30.0,18.0,35.0,30.0,'/assets/Furniture_Photos/Products_Photos/P0026'),
-	('The Clinton 5-Drawer Dresser','Handcrafted of solid ash with an optional leather-clad inlay, The Clinton celebrates luxe materiality in functional form. Artistry is on display—from the rounded corners and custom drawer pulls to the fully finished interiors and hand-shaped legs.',3950,'Whitewash Ash',36.0,18.0,35.0,36.0,'/assets/Furniture_Photos/Products_Photos/P0027'),
-	('The Rivington 2-Drawer Nightstand','Inspired by the organic forms and bold contours of Postmodern design, The Rivington adds understated elegance. Sinuous curves coalesce with straight lines, highlighted by the defined grain of cerused white oak.',2215,'White Cerused Oak',27.0,15.0,47.5,30.0,'/assets/Furniture_Photos/Products_Photos/P0028'),
-	('The Rivington 5-Drawer Dresser','Inspired by the organic forms and bold contours of Postmodern design, The Rivington adds understated elegance. Sinuous curves coalesce with straight lines, highlighted by the defined grain of cerused white oak.',4125,'White Cerused Oak',36.0,21.0,47.5,40.0,'/assets/Furniture_Photos/Products_Photos/P0029'),
-	('The Allen Dining Chair','The hand-carved frame and natural materiality give The Allen an organic, refined silhouette. Expertly crafted of solid ash wood and paired with tailored upholstery for casual comfort.',485,'Driftwood',19.0,22.0,33.0,19.5,'/assets/Furniture_Photos/Products_Photos/P0030'),
-	('The Bedford Dining Table','Stunning in its simplicity, The Bedford’s subtle curves and timeless silhouette create a statement of elegance. Expertly crafted of solid ash wood and finished with exquisite artisanship.',2450,'Whitewash',80.0,40.0,30.0,96.0,'/assets/Furniture_Photos/Products_Photos/P0031'),
-	('The Delancey Stool','Mixed materiality and a beautifully curved frame give The Delancey a handcrafted design inspired by midcentury forms. Expertly crafted from solid ash with a roomy, plush seat for elevated comfort.',865,'Charcoal',18.0,20.0,37.0,20.0,'/assets/Furniture_Photos/Products_Photos/P0032'),
-	('The Jane Dining Chair','Playful contours and a bold, mixed material aesthetic give The Jane a stylish form that’s designed for lingering. Its elegantly curved back and refined curved legs add sculptural appeal.',755,'Pecan',21.0,22.0,29.5,19.5,'/assets/Furniture_Photos/Products_Photos/P0033'),
-	('The Reade Dining Table','A delicate balance of commanding proportions, The Reade’s handcrafted column legs and intricately designed tabletop create an unforgettable sculptural statement. Expertly crafted of solid ash wood and finished with exquisite artisanship.',4275,'Whitewash',72.0,40.0,30.0,96.0,'/assets/Furniture_Photos/Products_Photos/P0034'),
-	('The Reade Round Dining Table','A delicate balance of commanding proportions, The Reade’s handcrafted column legs and intricately designed tabletop create an unforgettable sculptural statement. Expertly crafted of solid ash wood and refined with exquisite artisanship.',2925,'Whitewash',42.0,40.0,30.0,48.0,'/assets/Furniture_Photos/Products_Photos/P0035'),
-	('The Stanton Stool','The hand-carved frame and natural materiality give The Stanton an organic, airy shape that’s effortlessly versatile. Expertly crafted of solid ash wood and paired with tailored upholstery for casual comfort.',525,'Driftwood',21.0,19.0,30.0,29.0,'/assets/Furniture_Photos/Products_Photos/P0036'),
-	('The Beekman Table','Handcrafted from richly grained oak, The Beekman has the presence of modern sculpture. Distinguished by its freeform shape, beveled edging, and tri-leg design, its organic silhouette is appealing from any angle.',2750,'Pecan Oak',68.0,32.0,29.0,43.0,'/assets/Furniture_Photos/Products_Photos/P0037'),
-	('The Breuer Modular Sectional','Italian modernist design of the 1960s informs The Breuer. The modular components are low and expansive, creating a vast landscape of inviting luxury and multifunctional design.',6075,'Agate',100.0,60.0,50.0,100.0,'/assets/Furniture_Photos/Products_Photos/P0038'),
-	('The Carmine Sectional','A fresh update on a beloved classic. The Carmine’s fan-pleated arms bring it understated elegance. The tailored seat and back offer a supportive sit.',4250,'Pecan',100.0,60.0,50.0,100.0,'/assets/Furniture_Photos/Products_Photos/P0039'),
-	('The Ludlow Sectional','Midcentury style meets classic polish in The Ludlow. Its deep, reclined seat is perfectly suited for lounging (or accidental naps).',4425,'Pecan',100.0,60.0,50.0,100.0,'/assets/Furniture_Photos/Products_Photos/P0040'),
-	('The Muir Sectional','Artisanal woodworking meets expertly tailored comfort in The Muir Sectional. Its asymmetrical silhouette with built-in side table form a mixed material work of art.',9895,'Handwaxed Ash',100.0,60.0,50.0,100.0,'/assets/Furniture_Photos/Products_Photos/P0041'),
-	('The Sullivan Sectional','A modern take on classic European forms, The Sullivan mixes gentle curves with tailored lines. The elegant profile and sloped arms nod to tradition; a deep seat and down-filled cushion offer luxurious comfort.',4100,'Pecan',100.0,60.0,50.0,100.0,'/assets/Furniture_Photos/Products_Photos/P0042'),
-	('The Varick Sectional','Bold proportions and comfort-driven curvature make The Varick a contemporary statement fit for everyday luxury. Its oversized arms and low-slung profile lend a relaxed, casual feel.',6500,'Dove',100.0,60.0,50.0,100.0,'/assets/Furniture_Photos/Products_Photos/P0043'),
-	('The Bond Settee Sofa','Evocative of postmodern curvature, The Bond’s generous proportions and soft contours inform its contemporary sensibility. Down-filled cushioning define its luxurious comfort.',3225,'Sail',77.0,37.0,29.0,70.0,'/assets/Furniture_Photos/Products_Photos/P0044'),
-	('The Chelsea Sofa','With fluid lines and sensual curves, The Chelsea Sofa pays tribute to the softer side of mid-century design. The U-shaped silhouette and wraparound arms subtly embrace, while a tightly upholstered seat and back lend polish.',3725,'Driftwood',75.0,36.5,30.0,75.0,'/assets/Furniture_Photos/Products_Photos/P0045'),
-	('The Dune Sofa','The Dune transports you to a cozy beachside abode with its deep seat, sumptuous cushioning, and relaxed, easy-to-clean slipcover. It’s hand-finished with flange seams that lend an elegant finish to the laid-back feel of the design.',2725,'Oyster',60.0,38.0,34.0,65.0,'/assets/Furniture_Photos/Products_Photos/P0046'),
-	('The Jones Modular Sofa','Our lowest, most laid-back silhouette, The Jones Modular is relaxed modernism at its finest. The silhouette commands presence and marries oversized proportions with down-filled comfort.',3950,'Bone',100.0,60.0,50.0,100.0,'/assets/Furniture_Photos/Products_Photos/P0047'),
-	('The Leonard Sofa','The sculptural curves of The Leonard Sofa offer refined elegance and luxurious comfort. Slipcovered in linen for a relaxed, textural feel.',3325,'Clamshell',60.0,39.0,31.0,58.0,'/assets/Furniture_Photos/Products_Photos/P0048'),
-	('The Varick Sofa','Bold proportions and comfort-driven curvature make The Varick a contemporary statement fit for everyday luxury. Its oversized arms and low-slung profile lend a relaxed, casual feel.',4625,'Dove',75.0,40.0,30.5,100.0,'/assets/Furniture_Photos/Products_Photos/P0049');
+	('The Bank Console Table','A striking design statement, The Bank is handcrafted of solid American white oak. Designed with a distinctive overlap, the faceted, conical legs add sculptural sensibility, supporting a white oak veneer top with carved beveled edging.',3150,'Natural Oak',60.0,20.0,30.0,60.0,'../assets/Furniture_Photos/Products_Photos/P0001'),
+	('The Bowery Table','Modern lines meet plush comfort in this beautifully tailored coffee table ottoman. With a movable solid ash table and subtle detailing throughout, The Bowery is a study in elegant yet functional design.',1675,'Driftwood',47.0,30.0,16.0,47.0,'../assets/Furniture_Photos/Products_Photos/P0002'),
+	('The Morro Table','Artisanal woodworking gives The Morro its shapely form and minimalist design. Handcrafted with solid ash wood, each table harmoniously nests together or stands alone, adding an artful presence to any room.',735,'Driftwood',50.0,30.0,30.0,40.0,'../assets/Furniture_Photos/Products_Photos/P0003'),
+	('The Reade Console Table','A delicate balance of commanding proportions, The Reade’s handcrafted column legs and intricately designed tabletop create an unforgettable sculptural statement. Expertly crafted of solid ash wood and finished with exquisite artisanship.',2475,'Pecan',60.0,21.0,30.0,72.0,'../assets/Furniture_Photos/Products_Photos/P0004'),
+	('The Reade Demilune Console Table','A delicate balance of commanding proportions, The Reade’s handcrafted column legs and intricately designed tabletop create an unforgettable sculptural statement. Expertly crafted of solid ash wood and finished with exquisite artisanship.',1950,'Pecan',42.0,21.0,30.0,50.0,'../assets/Furniture_Photos/Products_Photos/P0005'),
+	('The Vestry Table','Handcrafted of solid oak, The Vestry’s organic shape and soft curvature display an expansive statement of natural materiality. Designed to artfully nest together or stand alone in graceful proportion.',1775,'Pecan Oak',40.0,27.0,26.0,48.0,'../assets/Furniture_Photos/Products_Photos/P0006'),
+	('The Eldridge Bed','Lushly cushioned and upholstered all around, The Eldridge offers an enveloping experience. Its low, linear silhouette with extended headboard is softened by rounded corners traced with subtle flange seaming.',3885,'Agate',100.0,36.5,70.0,82.0,'../assets/Furniture_Photos/Products_Photos/P0007'),
+	('The Essex Bed','Clean lines, classic proportions, and subtle tailoring–the elegance of The Essex lies in its simplicity. A tapered headboard and sleek legs lend a modern edge to this striking shape.',2225,'Pecan',70.0,50.0,80.0,76.0,'../assets/Furniture_Photos/Products_Photos/P0008'),
+	('The Kent Bed','Marrying soft curves with tailored understatement, The Kent’s classic profile gives center stage to its meticulous detailing—from the headboard’s inset curvature to its rounded foot rail.',3250,'Pecan',70.0,42.0,90.0,50.0,'../assets/Furniture_Photos/Products_Photos/P0009'),
+	('The Smith Bed','With marked curvature and oversized stature, The Smith references the bold sophistication of 1970s Italian design. Sumptuous lines and a sheltering headboard embrace, accentuated by a solid wood plinth base that gives its low profile a floating effect.',3675,'Whitewash',80.0,40.0,70.0,80.0,'../assets/Furniture_Photos/Products_Photos/P0010'),
+	('The Thompson Canopy Bed','An organic, refined silhouette that allows natural materiality and subtle tailoring to shine. The Thompson makes an elegant statement in any bedroom.',3850,'Handwaxed Ash',80.0,84.0,95.0,75.0,'../assets/Furniture_Photos/Products_Photos/P0011'),
+	('The Wythe Bed','Featuring a down-filled headboard, The Wythe’s ultra-cool low profile belies its cozy comfort. Flange seams provide the perfect finishing touches to this modern shape.',2675,'Oyster',70.0,40.0,90.0,84.0,'../assets/Furniture_Photos/Products_Photos/P0012'),
+	('The Chelsea Ottoman','With fluid lines and sensual curves, The Chelsea Ottomans pay tribute to the softer side of mid-century design. The playful silhouettes sit atop recessed legs for an elegant floating effect.',985,'Charcoal',30.0,25.0,20.0,25.0,'../assets/Furniture_Photos/Products_Photos/P0013'),
+	('The Franklin Bench','Tailored in rich texture with a versatile design, The Franklin is beautifully timeless and effortlessly comfortable. Slipcovered in linen for a casual yet elegant addition to any room.',1075,'Dew',60.0,17.0,17.0,35.0,'../assets/Furniture_Photos/Products_Photos/P0014'),
+	('The Franklin Ottoman','Tailored in rich texture with a versatile design, The Franklin is beautifully timeless and effortlessly comfortable. Slipcovered in linen for a casual yet elegant addition to any room.',450,'Chambray',17.0,17.0,17.0,20.0,'../assets/Furniture_Photos/Products_Photos/P0015'),
+	('The Mulberry Ottoman','A sculptural pedestal base and plush seat make The Mulberry a versatile design statement. Expertly crafted with a solid ash wood base and tailored detailing.',575,'Driftwood',16.5,16.5,18.0,15.0,'../assets/Furniture_Photos/Products_Photos/P0016'),
+	('The Reyes Bench','Modern lines meet mixed materials in this sleek and minimal bench. The Reyes is expertly crafted with solid ash wood and delicate brass inset detailing. An optional seat cushion upholstered in soft nubuck leather adds textural interest.',1150,'Sail',60.0,18.0,16.25,40.0,'../assets/Furniture_Photos/Products_Photos/P0017'),
+	('The Bond Chair','A stylish nod to mod, The Bond balances generous proportions with its contemporary profile. Luxe, down-filled comfort makes it an everyday luxury.',2115,'Camel',38.0,34.0,29.0,30.0,'../assets/Furniture_Photos/Products_Photos/P0018'),
+	('The Chrystie Chair','Nodding to tradition, The Chrystie is a compelling take on the classic wingback. A high back and narrow sides slope seamlessly into low arms, while the canted seat back and angled back legs enhance its elegant lines.',1815,'Greywash',29.0,36.0,38.0,34.0,'../assets/Furniture_Photos/Products_Photos/P0019'),
+	('The Dune Chair and a Half','The Dune Chair and a Half invites relaxation into your living space with its deep seat, soft cushioning, and easy-to-clean slipcover. It’s hand-finished with flange seams, lending a touch of polished elegance to the laid-back design.',1975,'Creme',48.0,38.0,34.0,42.0,'../assets/Furniture_Photos/Products_Photos/P0020'),
+	('The Kenmare Chair','Designed with an organic ebb and flow, The Kenmare’s playful contours display artisanal craftsmanship in a petite silhouette. The handcarved solid ash frame lends a mixed material appeal to its contemporary design.',1650,'Driftwood',27.0,27.0,28.0,20.0,'../assets/Furniture_Photos/Products_Photos/P0021'),
+	('The Laight Chair','A contemporary take on the slipper chair, The Laight is defined by embracing curves and petite proportions. The playful silhouette offers considerable comfort with its wraparound back, bubbled seat, and lathe-turned legs.',1985,'Pecan',31.0,26.0,29.0,30.0,'../assets/Furniture_Photos/Products_Photos/P0022'),
+	('The Perry Chair','A nod to iconic midcentury design, The Perry Chair marries sophistication, craftsmanship, and comfort. The curved silhouette is timeless in feel, while the petite proportions make it perfect as a pair.',1850,'Coffee',32.0,32.0,32.0,40.0,'../assets/Furniture_Photos/Products_Photos/P0023'),
+	('The Clinton 1-Drawer Nightstand','Handcrafted of solid ash with an optional leather-clad inlay, The Clinton celebrates luxe materiality in functional form. Artistry is on display—from the rounded corners and custom drawer pulls to the fully finished interiors and hand-shaped legs.',1975,'Pecan Ash',27.0,15.0,22.0,20.0,'../assets/Furniture_Photos/Products_Photos/P0024'),
+	('The Clinton 2-Drawer Nightstand','Handcrafted of solid ash with an optional leather-clad inlay, The Clinton celebrates luxe materiality in functional form. Artistry is on display—from the rounded corners and custom drawer pulls to the fully finished interiors and hand-shaped legs.',2085,'Pecan Ash ',27.0,15.0,22.0,25.0,'../assets/Furniture_Photos/Products_Photos/P0025'),
+	('The Clinton 3-Drawer Dresser','Handcrafted of solid ash with an optional leather-clad inlay, The Clinton celebrates luxe materiality in functional form. Artistry is on display—from the rounded corners and custom drawer pulls to the fully finished interiors and hand-shaped legs.',2900,'Whitewash Ash',30.0,18.0,35.0,30.0,'../assets/Furniture_Photos/Products_Photos/P0026'),
+	('The Clinton 5-Drawer Dresser','Handcrafted of solid ash with an optional leather-clad inlay, The Clinton celebrates luxe materiality in functional form. Artistry is on display—from the rounded corners and custom drawer pulls to the fully finished interiors and hand-shaped legs.',3950,'Whitewash Ash',36.0,18.0,35.0,36.0,'../assets/Furniture_Photos/Products_Photos/P0027'),
+	('The Rivington 2-Drawer Nightstand','Inspired by the organic forms and bold contours of Postmodern design, The Rivington adds understated elegance. Sinuous curves coalesce with straight lines, highlighted by the defined grain of cerused white oak.',2215,'White Cerused Oak',27.0,15.0,47.5,30.0,'../assets/Furniture_Photos/Products_Photos/P0028'),
+	('The Rivington 5-Drawer Dresser','Inspired by the organic forms and bold contours of Postmodern design, The Rivington adds understated elegance. Sinuous curves coalesce with straight lines, highlighted by the defined grain of cerused white oak.',4125,'White Cerused Oak',36.0,21.0,47.5,40.0,'../assets/Furniture_Photos/Products_Photos/P0029'),
+	('The Allen Dining Chair','The hand-carved frame and natural materiality give The Allen an organic, refined silhouette. Expertly crafted of solid ash wood and paired with tailored upholstery for casual comfort.',485,'Driftwood',19.0,22.0,33.0,19.5,'../assets/Furniture_Photos/Products_Photos/P0030'),
+	('The Bedford Dining Table','Stunning in its simplicity, The Bedford’s subtle curves and timeless silhouette create a statement of elegance. Expertly crafted of solid ash wood and finished with exquisite artisanship.',2450,'Whitewash',80.0,40.0,30.0,96.0,'../assets/Furniture_Photos/Products_Photos/P0031'),
+	('The Delancey Stool','Mixed materiality and a beautifully curved frame give The Delancey a handcrafted design inspired by midcentury forms. Expertly crafted from solid ash with a roomy, plush seat for elevated comfort.',865,'Charcoal',18.0,20.0,37.0,20.0,'../assets/Furniture_Photos/Products_Photos/P0032'),
+	('The Jane Dining Chair','Playful contours and a bold, mixed material aesthetic give The Jane a stylish form that’s designed for lingering. Its elegantly curved back and refined curved legs add sculptural appeal.',755,'Pecan',21.0,22.0,29.5,19.5,'../assets/Furniture_Photos/Products_Photos/P0033'),
+	('The Reade Dining Table','A delicate balance of commanding proportions, The Reade’s handcrafted column legs and intricately designed tabletop create an unforgettable sculptural statement. Expertly crafted of solid ash wood and finished with exquisite artisanship.',4275,'Whitewash',72.0,40.0,30.0,96.0,'../assets/Furniture_Photos/Products_Photos/P0034'),
+	('The Reade Round Dining Table','A delicate balance of commanding proportions, The Reade’s handcrafted column legs and intricately designed tabletop create an unforgettable sculptural statement. Expertly crafted of solid ash wood and refined with exquisite artisanship.',2925,'Whitewash',42.0,40.0,30.0,48.0,'../assets/Furniture_Photos/Products_Photos/P0035'),
+	('The Stanton Stool','The hand-carved frame and natural materiality give The Stanton an organic, airy shape that’s effortlessly versatile. Expertly crafted of solid ash wood and paired with tailored upholstery for casual comfort.',525,'Driftwood',21.0,19.0,30.0,29.0,'../assets/Furniture_Photos/Products_Photos/P0036'),
+	('The Beekman Table','Handcrafted from richly grained oak, The Beekman has the presence of modern sculpture. Distinguished by its freeform shape, beveled edging, and tri-leg design, its organic silhouette is appealing from any angle.',2750,'Pecan Oak',68.0,32.0,29.0,43.0,'../assets/Furniture_Photos/Products_Photos/P0037'),
+	('The Breuer Modular Sectional','Italian modernist design of the 1960s informs The Breuer. The modular components are low and expansive, creating a vast landscape of inviting luxury and multifunctional design.',6075,'Agate',100.0,60.0,50.0,100.0,'../assets/Furniture_Photos/Products_Photos/P0038'),
+	('The Carmine Sectional','A fresh update on a beloved classic. The Carmine’s fan-pleated arms bring it understated elegance. The tailored seat and back offer a supportive sit.',4250,'Pecan',100.0,60.0,50.0,100.0,'../assets/Furniture_Photos/Products_Photos/P0039'),
+	('The Ludlow Sectional','Midcentury style meets classic polish in The Ludlow. Its deep, reclined seat is perfectly suited for lounging (or accidental naps).',4425,'Pecan',100.0,60.0,50.0,100.0,'../assets/Furniture_Photos/Products_Photos/P0040'),
+	('The Muir Sectional','Artisanal woodworking meets expertly tailored comfort in The Muir Sectional. Its asymmetrical silhouette with built-in side table form a mixed material work of art.',9895,'Handwaxed Ash',100.0,60.0,50.0,100.0,'../assets/Furniture_Photos/Products_Photos/P0041'),
+	('The Sullivan Sectional','A modern take on classic European forms, The Sullivan mixes gentle curves with tailored lines. The elegant profile and sloped arms nod to tradition; a deep seat and down-filled cushion offer luxurious comfort.',4100,'Pecan',100.0,60.0,50.0,100.0,'../assets/Furniture_Photos/Products_Photos/P0042'),
+	('The Varick Sectional','Bold proportions and comfort-driven curvature make The Varick a contemporary statement fit for everyday luxury. Its oversized arms and low-slung profile lend a relaxed, casual feel.',6500,'Dove',100.0,60.0,50.0,100.0,'../assets/Furniture_Photos/Products_Photos/P0043'),
+	('The Bond Settee Sofa','Evocative of postmodern curvature, The Bond’s generous proportions and soft contours inform its contemporary sensibility. Down-filled cushioning define its luxurious comfort.',3225,'Sail',77.0,37.0,29.0,70.0,'../assets/Furniture_Photos/Products_Photos/P0044'),
+	('The Chelsea Sofa','With fluid lines and sensual curves, The Chelsea Sofa pays tribute to the softer side of mid-century design. The U-shaped silhouette and wraparound arms subtly embrace, while a tightly upholstered seat and back lend polish.',3725,'Driftwood',75.0,36.5,30.0,75.0,'../assets/Furniture_Photos/Products_Photos/P0045'),
+	('The Dune Sofa','The Dune transports you to a cozy beachside abode with its deep seat, sumptuous cushioning, and relaxed, easy-to-clean slipcover. It’s hand-finished with flange seams that lend an elegant finish to the laid-back feel of the design.',2725,'Oyster',60.0,38.0,34.0,65.0,'../assets/Furniture_Photos/Products_Photos/P0046'),
+	('The Jones Modular Sofa','Our lowest, most laid-back silhouette, The Jones Modular is relaxed modernism at its finest. The silhouette commands presence and marries oversized proportions with down-filled comfort.',3950,'Bone',100.0,60.0,50.0,100.0,'../assets/Furniture_Photos/Products_Photos/P0047'),
+	('The Leonard Sofa','The sculptural curves of The Leonard Sofa offer refined elegance and luxurious comfort. Slipcovered in linen for a relaxed, textural feel.',3325,'Clamshell',60.0,39.0,31.0,58.0,'../assets/Furniture_Photos/Products_Photos/P0048'),
+	('The Varick Sofa','Bold proportions and comfort-driven curvature make The Varick a contemporary statement fit for everyday luxury. Its oversized arms and low-slung profile lend a relaxed, casual feel.',4625,'Dove',75.0,40.0,30.5,100.0,'../assets/Furniture_Photos/Products_Photos/P0049');
 GO
 
 INSERT INTO TAGS (Name)
@@ -2402,17 +2330,31 @@ VALUES
 	('Pine','#C5B358');
 GO
 
-INSERT INTO VOUCHERS (Name,Type,Value,ValidDate)
-VALUES
-	('1% discount','Percentage',0.01,'2400-12-31 00:00:00'),
-	('2% discount','Percentage',0.02,'2400-12-31 00:00:00'),
-	('5% discount','Percentage',0.05,'2400-12-31 00:00:00'),
-	('10% discount','Percentage',0.1,'2400-12-31 00:00:00'),
-	('100$ discount','Value',100.0,'2400-12-31 00:00:00'),
-	('200$ discount','Value',200.0,'2400-12-31 00:00:00'),
-	('500$ discount','Value',500.0,'2400-12-31 00:00:00'),
-	('1000$ discount','Value',1000.0,'2400-12-31 00:00:00'),
-	('2000$ discount','Value',2000.0,'2400-12-31 00:00:00');
+INSERT INTO VOUCHERS (Name,Type,Value,ValidDate) VALUES	('1% discount','Percentage',0.01,'2400-12-31 00:00:00');
+GO
+
+INSERT INTO VOUCHERS (Name,Type,Value,ValidDate) VALUES	('2% discount','Percentage',0.02,'2400-12-31 00:00:00');
+GO
+
+INSERT INTO VOUCHERS (Name,Type,Value,ValidDate) VALUES	('5% discount','Percentage',0.05,'2400-12-31 00:00:00');
+GO
+
+INSERT INTO VOUCHERS (Name,Type,Value,ValidDate) VALUES	('10% discount','Percentage',0.1,'2400-12-31 00:00:00');
+GO
+
+INSERT INTO VOUCHERS (Name,Type,Value,ValidDate) VALUES	('100$ discount','Value',100.0,'2400-12-31 00:00:00');
+GO
+
+INSERT INTO VOUCHERS (Name,Type,Value,ValidDate) VALUES	('200$ discount','Value',200.0,'2400-12-31 00:00:00');
+GO
+
+INSERT INTO VOUCHERS (Name,Type,Value,ValidDate) VALUES	('500$ discount','Value',500.0,'2400-12-31 00:00:00');
+GO
+
+INSERT INTO VOUCHERS (Name,Type,Value,ValidDate) VALUES	('1000$ discount','Value',1000.0,'2400-12-31 00:00:00');
+GO
+
+INSERT INTO VOUCHERS (Name,Type,Value,ValidDate) VALUES	('2000$ discount','Value',2000.0,'2400-12-31 00:00:00');
 GO
 
 INSERT INTO PERMISSIONS (Name)
