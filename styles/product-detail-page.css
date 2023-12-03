@@ -73,6 +73,11 @@
     padding-right: 80px;
 }
 
+#product-detail-page .ti-angle-right:hover,
+#product-detail-page .ti-angle-left:hover{
+    opacity: 0.5;
+    cursor: pointer;
+}
 #product-detail-page .product-name {
     font-family: Inter;
     font-size: 44px;
@@ -276,7 +281,7 @@
     padding-top: 25px;
 }
 
-#product-detail-page .border-first-img {
+#product-detail-page .detail-image .border-others-img:first-child {
     width: 104px;
     height: 104px;
     flex-shrink: 0;
@@ -286,6 +291,8 @@
     align-items: center;
     margin-left: 53px;
     cursor: pointer;
+    box-shadow: 10px 10px 20px grey;
+    transition: 0.3s;
 }
 
 #product-detail-page .others-img {

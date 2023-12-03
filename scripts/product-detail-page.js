@@ -36,8 +36,8 @@ window.onload = function() {
                 </div>
             </div>
             <div class="move-left-right">
-                <i class="ti-angle-left"></i>
-                <i class="ti-angle-right"></i>
+                <i class="ti-angle-left" onclick="prevImg()"></i>
+                <i class="ti-angle-right" onclick="nextImg()"></i>
             </div>
             </div>
  
@@ -104,7 +104,7 @@ window.onload = function() {
                 </div>
 
                 <div class="detail-image">
-                    <div class="border-first-img">
+                    <div class="border-others-img">
                         <img class="first-img" onclick = "switchImg(event,'${path1}')" src="${path1}" alt="${product.name}">
                     </div>
                     <div class="border-others-img">
@@ -225,37 +225,41 @@ function goBack() {
 // Change image
 function switchImg(event,source) {
     document.querySelector('.big-image').src = source;
-    var clickedImg = event.target;
-    var clickedDiv = clickedImg.parentNode;
-    var firstDiv = document.querySelector('.border-first-img');
-    var otherDivs = document.querySelectorAll('.border-others-img');
+    var borderImgs = document.querySelectorAll('.border-others-img');
     var bigNumberDiv = document.querySelector('.big-number');
+    borderImgs.forEach(function(borderImg) {
+        borderImg.style.border = '2px solid grey';
+        borderImg.style.boxShadow = 'none';
+    });
 
-    // Xác định số thứ tự của phần tử được nhấp vào
+    var selectedImg = event.target;
+    selectedImg.parentElement.style.border = '2px solid #3AA39F';
+    selectedImg.parentElement.style.boxShadow ='10px 10px 20px grey';
+    selectedImg.parentElement.style.transition = '0.3s';
     var newNumber;
-    if (clickedDiv === firstDiv) {
-        newNumber = '01';
-    } else {
-        newNumber = (Array.from(otherDivs).indexOf(clickedDiv) + 2).toString().padStart(2, '0');
-    }
-
-    // Cập nhật số thứ tự trong big-number
+    var clickedDiv = selectedImg.parentNode;
+    newNumber = (Array.from(borderImgs).indexOf(clickedDiv) + 1).toString().padStart(2, '0');
     bigNumberDiv.textContent = newNumber;
-    for (var i = 0; i < otherDivs.length; i++) {
-        if(clickedDiv !== firstDiv){
-            firstDiv.style.border = '2px solid grey';
-            if (otherDivs[i] !== clickedDiv) {
-                otherDivs[i].style.border = '2px solid grey';
-                } else {
-                otherDivs[i].style.border = '2px solid #3AA39F';
-                }
-        } else{
-            firstDiv.style.border = '2px solid #3AA39F'
-        }
-    }
-    
 }
-
+var currentImage = 1;
+var totalImages = 5;
+function prevImg() {
+    currentImage--;
+    if (currentImage < 1) {
+        currentImage = totalImages;
+    }
+    var prevImg = document.querySelector(`.border-others-img:nth-child(${currentImage}) img`);
+    switchImg({ target: prevImg }, prevImg.getAttribute('src'));
+        
+}
+function nextImg() {
+    currentImage++;
+    if (currentImage > totalImages) {
+        currentImage = 1;
+    }
+    var nextImg = document.querySelector(`.border-others-img:nth-child(${currentImage}) img`);
+    switchImg({ target: nextImg }, nextImg.getAttribute('src'));
+}
 //add to wishlist
 function addToWishList(curr) {
     let products=[];
