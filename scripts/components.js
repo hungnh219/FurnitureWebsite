@@ -154,7 +154,7 @@ function addFooter() {
                     <h2>Stay Updated</h2>
                     <ul>
                         <li>
-                            <a href="javascript:void(0)">Enter your email</a>
+                            <a href="javascript:void(0)">Enter your email</a> 
                         </li>
                         <i class="ti-check"></i>
                     </ul>
