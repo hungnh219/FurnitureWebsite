@@ -75,7 +75,7 @@ window.addEventListener('load', function() {
 
 //remove cart
 function removeCart(productt){
-    products=[];
+    let products=[];
     products=JSON.parse(localStorage.getItem("products"))
     products=products.filter(product=>product.productname!=productt);
     localStorage.setItem('products',JSON.stringify(products))
