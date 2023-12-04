@@ -80,11 +80,11 @@
 }
 #product-detail-page .product-name {
     font-family: Inter;
-    font-size: 44px;
+    font-size: 35px;
     font-style: normal;
     font-weight: 700;
     line-height: 56px;
-    padding-left: 100px;
+    padding-left: 2.7em;
 }
 
 #product-detail-page .price-rate {
@@ -223,12 +223,13 @@
     padding-left: 98px;
     padding-top: 35px;
     padding-bottom: 63px;
+    
 }
 
 #product-detail-page .big-image {
     position: relative;
-    max-width: 844px;
-    max-height: 461px;
+    max-width: 50em;
+    max-height: 50em;
     flex-shrink: 0;
     float: right;
     padding-right: 82px;
@@ -432,7 +433,7 @@
         justify-content: center;
     }
 
-    #product-detail-page .navigation-bar{
+    #product-detail-page .about-us-info{
         display: none;
     }
 
@@ -444,31 +445,107 @@
     #product-detail-page .about-product {
         padding-top: 30px;
         width: 80%;
+        word-wrap: break-word;
+    }
+
+    #product-detail-page .small-number,
+    #product-detail-page .big-number{
+        display: none;
+    }
+
+    #product-detail-page .about-product {
+        font-family: Inter;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 24px;
+        padding-top: 47px;
+        padding-left: 100px;
+        padding-bottom: 60px;
+    }
+    
+    #product-detail-page .product-notes {
+        font-family: Inter;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 24px;
+        padding-left: 98px;
+        padding-top: 35px;
+        padding-bottom: 63px;
     }
 
     #product-detail-page .price-rate{
         width: 80%;
     }
 
+    #product-detail-page .add-minus-button {
+        display: flex;
+        height: 36px;
+        padding: 16px;
+        align-items: center;
+        gap: 30px;
+        margin-left: 100px;
+        margin-right: 122px;
+        border-radius: 4px;
+        border: 1px solid gray;
+    }
+
+    #product-detail-page .add-product-button {
+        width: 161px;
+        height: 37px;
+        background-color: #FFF7E4;
+        border-radius: 9px;
+        color: #000;
+        text-align: center;
+        font-family: Inter;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 18px;
+    }
+
+    #product-detail-page .content-detail-image {
+        display: flex;
+        padding-left: 98px;
+        font-size: 14px;
+    }
+
     #product-detail-page .big-image {
         width: 100%;
         padding-bottom: 0%;
         padding-top: 20px;
-        padding-right: 80px;
+        padding-right: 210px;
         max-width: 90%;
     }
 
     #product-detail-page .detail-image{
         display: none;
     }
+
+    #product-detail-page .blur-text-wh {
+        color: #919191;
+        font-family: Inter;
+        font-size: 15px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 20px;
+        padding-right: 120px;
+        padding-left: 98px;
+    }
+
+    #product-detail-page .normal-text-wh {
+        color: #17183B;
+        font-family: Inter;
+        font-size: 15px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 20px;
+    }
 }
 
 /* Responsive Phone */
 @media only screen and (max-width: 739px) {
-    #product-detail-page {
-        /* justify-content: center; */
-    }
-
     #product-detail-page .navigation-bar{
         display: none;
     }
@@ -488,13 +565,63 @@
         padding-left: 100px;
     }
 
+    #product-detail-page .product-rate {
+        display: flex;
+        padding-left: 99px;
+        padding-top: 0px;
+    }
+
+    #product-detail-page .product-price {
+        font-family: Inter;
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 32px;
+        letter-spacing: 0.15px;
+        padding-left: 100px;
+        padding-top: 20px;
+    }
+
+    #product-detail-page .quantity-add-product {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #product-detail-page .add-product {
+        padding-left: 100px;
+        padding-top: 20px;
+    }
+
     #product-detail-page .price-rate{
-        width: 80%;
+        width: 100%;
+        display:inline-block
+    }
+
+    #product-detail-page .content-detail-image {
+        display: flex;
+        padding-left: 98px;
+        display: none;
+    }
+
+    #product-detail-page .product-notes {
+        font-family: Inter;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 24px;
+        padding-left: 98px;
+        padding-top: 60px;
+        padding-bottom: 0px;
     }
 
     #product-detail-page .about-product {
         padding-top: 30px;
-        width: 80%;
+        width: 99%;
+    }
+
+    #product-detail-page .warranty,
+    #product-detail-page .highlights {
+        display: none;
     }
 }
 /* End: Product detail page */

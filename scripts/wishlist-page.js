@@ -29,11 +29,11 @@ function getProducts() {
             document.getElementsByClassName('wishlist')[0].innerHTML+=`
             <div class="wishlist-product">
                     <i class="ti-close" onclick="removeProduct('${product.productname}')"></i>
-                    <img src="${product.img}" alt="The Chelsea">
-                    <p class="wishlish-name-product">${product.productname}</p>
+                    <img src="${product.img}" alt="The Chelsea" onclick="goToDetailProduct('product-detail-page.html','${product.id1}','${product.id2}')">
+                    <p class="wishlish-name-product" onclick="goToDetailProduct('product-detail-page.html','${product.id1}','${product.id2}')">${product.productname}</p>
                     <p class="wistlish-price">${product.productprice}</p>
-                    <p class="wishlist-to-cart" onclick="addtocart(this,'${product.img}','${product.productname}','${product.productprice}')">Add to cart</p>
-                    <div class="notification" >This product has been added to cart</div>
+                    <p class="wishlist-to-cart" onclick="addtocart(this,'${product.id1}','${product.id2}','${product.img}','${product.productname}','${product.productprice}')">Add to cart</p>
+                    <div class="notification" >This product has been added to cart</div>    
             </div>
             `
         })
@@ -59,27 +59,29 @@ window.addEventListener('load', function() {
 
 
 //add to cart
-function addtocart(curr,p_img,p_name,p_price) {
+function addtocart(curr,id1,id2,img,productname,productprice) {
     let products=[];
-    let img=p_img
-    let productname=p_name
-    let productprice=p_price
+    
     let productquan=1
+    productquan.toString();
     productprice=productprice.slice(1);
     productprice=productprice.replace(',','.');
     let producttotal=parseFloat(productquan)*parseFloat(productprice);
     if (localStorage.getItem("products")) {
         products.push(...JSON.parse(localStorage.getItem("products")));
       }
-    
+    console.log('id1: '+id1)
+    console.log('id2: '+id2)
     let product={
-    img:img,
-    productname:productname,
-    productprice:productprice,
-    productquan:productquan,
-    producttotal:producttotal
+        id1:id1,
+        id2:id2,
+        img:img,
+        productname:productname,
+        productprice:productprice,
+        productquan:productquan.toString(),
+        producttotal:producttotal.toString()
     };
-    let isExist=products.some(x=>x.img==product.img&&x.productname==product.productname&&x.productprice==product.productprice);
+    let isExist=products.some(x=>x.id2==product.id2);
     if(!isExist) {
         products.push(product);  
     }

@@ -3,7 +3,7 @@
     text-align: center;
     font-size: 30px;
     padding-bottom: 20px;
-    padding-top: 75px;
+    padding-top: 3.5em;
 }
 
 #about-us-page .about-us-info {
@@ -129,5 +129,118 @@
 #about-us-page .position {
     font-size: 16px;
     opacity: 50%;
+}
+
+/* Responsive Ipad */
+@media only screen and (min-width: 740px) and (max-width: 1023px) {
+    #about-us-page .about-us-info {
+        display: none;
+    }
+
+    #about-us-page .other-info {
+        display: flex;
+        padding-left: 32px;
+        padding-right: 50px;
+    }
+
+    #about-us-page .members-image {
+        width: 240px;
+        height: 260px;
+        padding-right: 20px;
+    }
+
+    #about-us-page .members-info {
+        justify-content: center;
+    }
+
+    #about-us-page .members-name {
+        font-size: 22px;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+}
+
+/* Responsive Phone */
+
+@media only screen and (max-width: 739px) {
+
+    #about-us-page .about-us-heading {
+        text-align: center;
+        font-size: 20px;
+        padding-bottom: 20px;
+        padding-top: 75px;
+    }
+
+    #about-us-page .about-us-image {
+        text-align: center;
+    }
+
+    #about-us-page .introduce {
+        text-align: center;
+        font-size: 31px;
+        padding-bottom: 20px;
+        padding-top: 50px;
+    }
+
+    #about-us-page .about-us-info {
+        display: none;
+    }
+
+    #about-us-page .guarantee {
+        text-align: center;
+        font-size: 24px;
+        padding-bottom: 20px;
+    }
+
+    #about-us-page .experience {
+        text-align: center;
+        padding-right: 23px;
+    }
+
+    #about-us-page .happy-client {
+        text-align: center;
+        padding-right: 23px;
+    }
+
+    #about-us-page .about-us-archive {
+        text-align: center;
+        display: none;
+        padding-top: 60px;
+        justify-content: center;
+    }
+    
+
+    #about-us-page .number {
+        font-size: 25px;
+        font-family: cursive;
+        padding-bottom: 0px;
+    }
+
+    #about-us-page .other-info {
+        display: flex;
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+
+    #about-us-page .members-image {
+        width: 300px;
+        height: 310px;
+        padding-bottom: 5px;
+    }
+
+    #about-us-page .members-name {
+        font-size: 19px;
+    }
+
+    #about-us-page .members-info {
+        padding-left: 10px;
+    }
+
+    #about-us-page .members2 {
+        flex-direction: column;
+    }
+
+    #about-us-page .members1 {
+        flex-direction: column;
+    }
 }
 /* End: About us page */

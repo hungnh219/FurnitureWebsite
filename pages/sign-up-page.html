@@ -14,7 +14,7 @@
 </head>
 <body>  
 
-    <script>addHeader()</script>
+    <!-- <script>addHeader()</script> -->
 
     <main>
 
@@ -27,19 +27,17 @@
                 <h2>Create an account</h2>
         
                 <div class="sign-up-info">
-        
-                    <div class="info-name">
-                        <input type="text" value="Name">
-                    </div>
-        
                     <div class="info-email">
-                        <input type="text" value="Email">
+                        <input type="text" placeholder="Email">
                     </div>
         
                     <div class="info-password">
-                        <input type="password" value="Password">
+                        <input type="password" placeholder="Password">
                     </div>
-        
+                    
+                    <div class="info-confirm-password">
+                        <input type="text" placeholder="Confirm Password">
+                    </div>
                 </div>
                 
                 <div class="sign-up-button">
@@ -60,7 +58,7 @@
         
                 <div class="login-link">
                     <p>Already have account?</p>
-                    <a href="#" onclick="goTo('login-screen.html')">Login</a>
+                    <a href="#" onclick="goTo('login-page.html')">Login</a>
                 </div>
             </div>
         </section>
@@ -68,6 +66,7 @@
     </main>
 
     <script>addFooter()</script>
+    <script src="../scripts/sign-up-page.js"></script>
 </body>
 
 </html>

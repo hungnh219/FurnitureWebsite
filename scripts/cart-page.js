@@ -27,15 +27,15 @@ function getProducts() {
                         <div class="product-total-heading">Total</div>
                     </div>
                 </div>
-        `
+        ` 
         let products=JSON.parse(localStorage.getItem("products"));
         console.log(products)
         products.forEach(product => {
-            total+=product.producttotal;
+            total+=parseFloat(product.producttotal);
             document.getElementsByClassName('cart-products')[0].innerHTML+=`
-            <div class="cart-product">
-                            <div class="product-detail">
-                                <img src=${product.img} alt="" class="product-image">
+            <div class="cart-product" >
+                            <div class="product-detail" onclick="goToDetailProduct('product-detail-page.html','${product.id1}','${product.id2}')">
+                                <img src=${product.img} alt="" class="product-image" >
                                 <div class="product-item">
                                     <p class="product-name">${product.productname}</p>
                                 </div>
@@ -82,11 +82,15 @@ window.addEventListener('load', function() {
 
 //remove cart
 function removeCart(productt){
-    products=[];
+    let products=[];
     products=JSON.parse(localStorage.getItem("products"))
     products=products.filter(product=>product.productname!=productt);
     localStorage.setItem('products',JSON.stringify(products))
     getProducts();
+    const listItem = JSON.parse(localStorage.getItem('products'));
+    var count = listItem ? listItem.length : 0;
+    console.log(count);
+    document.querySelector('.quantity').innerHTML = count;
 }
 
 //increase Product
