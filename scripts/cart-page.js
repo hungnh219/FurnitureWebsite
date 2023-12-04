@@ -31,7 +31,7 @@ function getProducts() {
         let products=JSON.parse(localStorage.getItem("products"));
         console.log(products)
         products.forEach(product => {
-            total+=product.producttotal;
+            total+=parseFloat(product.producttotal);
             document.getElementsByClassName('cart-products')[0].innerHTML+=`
             <div class="cart-product" >
                             <div class="product-detail" onclick="goToDetailProduct('product-detail-page.html','${product.id1}','${product.id2}')">
