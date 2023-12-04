@@ -167,4 +167,11 @@
         padding: 30px 0;
     }
 }
+.cart {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+}
 /* End: Wishlist screen */

@@ -179,6 +179,8 @@ window.onload = function() {
 //add product to localStorage
 function addtocart(curr) {
     let products=[];
+    let key=this.location.href
+    key =key.slice(key.indexOf('?')).slice(4)
     let img=curr.parentElement.parentElement.children[2].children[0].src;
     let productname=curr.parentElement.parentElement.children[1].textContent.trim();
     let productprice=curr.parentElement.parentElement.children[3].children[0].textContent.trim();
@@ -191,13 +193,14 @@ function addtocart(curr) {
       }
     
     let product={
-    img:img,
-    productname:productname,
-    productprice:productprice,
-    productquan:productquan,
-    producttotal:producttotal
+        key:key,
+        img:img,
+        productname:productname,
+        productprice:productprice,
+        productquan:productquan,
+        producttotal:producttotal.toString()
     };
-    let isExist=products.some(x=>x.img==product.img&&x.productname==product.productname&&x.productprice==product.productprice);
+    let isExist=products.some(x=>x.key==product.key);
     if(!isExist) {
         products.push(product);  
     }
@@ -266,8 +269,9 @@ function nextImg() {
 //add to wishlist
 function addToWishList(curr) {
     let products=[];
+    let key=this.location.href
+    key =key.slice(key.indexOf('?')).slice(4)
     let img=curr.parentElement.parentElement.children[2].children[0].src;
-
     let productname=curr.parentElement.parentElement.children[1].textContent.trim();
     let productprice=curr.parentElement.parentElement.children[3].children[0].textContent.trim();
     
@@ -276,11 +280,12 @@ function addToWishList(curr) {
       }
     
     let product={
+    key:key,
     img:img,
     productname:productname,
     productprice:productprice,
     };
-    let isExist=products.some(x=>x.img==product.img&&x.productname==product.productname&&x.productprice==product.productprice);
+    let isExist=products.some(x=>x.key==product.key);
     if(!isExist) {
         products.push(product);  
     }

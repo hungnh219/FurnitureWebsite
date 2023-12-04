@@ -27,15 +27,15 @@ function getProducts() {
                         <div class="product-total-heading">Total</div>
                     </div>
                 </div>
-        `
+        ` 
         let products=JSON.parse(localStorage.getItem("products"));
         console.log(products)
         products.forEach(product => {
             total+=product.producttotal;
             document.getElementsByClassName('cart-products')[0].innerHTML+=`
-            <div class="cart-product">
-                            <div class="product-detail">
-                                <img src=${product.img} alt="" class="product-image">
+            <div class="cart-product" >
+                            <div class="product-detail" onclick="goToDetailProduct('product-detail-page.html',${product.key})">
+                                <img src=${product.img} alt="" class="product-image" >
                                 <div class="product-item">
                                     <p class="product-name">${product.productname}</p>
                                 </div>

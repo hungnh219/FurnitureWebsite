@@ -29,10 +29,10 @@ function getProducts() {
             document.getElementsByClassName('wishlist')[0].innerHTML+=`
             <div class="wishlist-product">
                     <i class="ti-close" onclick="removeProduct('${product.productname}')"></i>
-                    <img src="${product.img}" alt="The Chelsea">
-                    <p class="wishlish-name-product">${product.productname}</p>
+                    <img src="${product.img}" alt="The Chelsea" onclick="goToDetailProduct('product-detail-page.html',${product.key})">
+                    <p class="wishlish-name-product" onclick="goToDetailProduct('product-detail-page.html',${product.key})">${product.productname}</p>
                     <p class="wistlish-price">${product.productprice}</p>
-                    <p class="wishlist-to-cart" onclick="addtocart(this,'${product.img}','${product.productname}','${product.productprice}')">Add to cart</p>
+                    <p class="wishlist-to-cart" onclick="addtocart(${product.key},'${product.img}','${product.productname}','${product.productprice}')">Add to cart</p>
                     <div class="notification" >This product has been added to cart</div>
             </div>
             `
@@ -59,12 +59,11 @@ window.addEventListener('load', function() {
 
 
 //add to cart
-function addtocart(curr,p_img,p_name,p_price) {
+function addtocart(key,img,productname,productprice) {
     let products=[];
-    let img=p_img
-    let productname=p_name
-    let productprice=p_price
+    key=key.toString()
     let productquan=1
+    productquan.toString();
     productprice=productprice.slice(1);
     productprice=productprice.replace(',','.');
     let producttotal=parseFloat(productquan)*parseFloat(productprice);
@@ -73,17 +72,18 @@ function addtocart(curr,p_img,p_name,p_price) {
       }
     
     let product={
-    img:img,
-    productname:productname,
-    productprice:productprice,
-    productquan:productquan,
-    producttotal:producttotal
+        key:key,
+        img:img,
+        productname:productname,
+        productprice:productprice,
+        productquan:productquan.toString(),
+        producttotal:producttotal.toString()
     };
-    let isExist=products.some(x=>x.img==product.img&&x.productname==product.productname&&x.productprice==product.productprice);
+    let isExist=products.some(x=>x.key==product.key);
     if(!isExist) {
         products.push(product);  
     }
-    else show_notification(curr)
+    else show_notification()
      
     localStorage.setItem("products", JSON.stringify(products));
     
