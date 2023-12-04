@@ -4,17 +4,17 @@ function addHeader() {
     <header>
         <section id="navigation">
             <div class="logo-navigation">
-                <a href="">Furnishity.</a>
+                <a href="#" onclick="goTo('home-page.html')">Furnishity.</a>
             </div>
 
             <div class="list-navigation">
                 <ul>
                     <li class="navigation-attribute">
                         <div class="text-navigation">
-                            <a href="">Home</a>
-                            <a href="">Products</a>
-                            <a href="">Blog</a>
-                            <a href="">About us</a>
+                            <a href="#" onclick="goTo('home-page.html')">Home</a>
+                            <a href="#" onclick="goTo('shop-all.html')">Products</a>
+                            <a href="#" onclick="goTo('blog.html')">Blog</a>
+                            <a href="#" onclick="goTo('about-us-page.html')">About us</a>
                         </div>
 
                         <div class="icon-navigation"> 
