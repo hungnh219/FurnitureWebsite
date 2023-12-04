@@ -52,4 +52,16 @@
     cursor: pointer;
     background-color: #FFE3DA;
 }
+
+@media only screen and (max-width: 739px) {
+    #shop-all {
+        padding-top: 100px;
+    }
+}
+
+@media only screen and (min-width: 740px) and (max-width: 1024px) {
+    #shop-all {
+        padding-top: 100px;
+    }
+}
 /* End: Shop all */

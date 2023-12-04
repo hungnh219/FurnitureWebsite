@@ -145,7 +145,7 @@
 }
 
 #billing-detail-page .voucher .voucher-button button{
-    background-color: #93cfa4;
+    background-color: #FFF7E4;
     padding: 8px 20px;
     font-weight: 800;
     border-radius: 12px;
@@ -156,7 +156,7 @@
 #billing-detail-page .place-order-button button,
 #billing-detail-page .back-to-cart-button button{
     width: 40%;
-    background-color: #93cfa4;
+    background-color: #FFF7E4;
     padding: 10px 16px;
     font-weight: 800;
     border-radius: 12px;

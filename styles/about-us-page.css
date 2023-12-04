@@ -242,5 +242,9 @@
     #about-us-page .members1 {
         flex-direction: column;
     }
+
+    #about-us-page {
+        padding-top: 50px;
+    }
 }
 /* End: About us page */

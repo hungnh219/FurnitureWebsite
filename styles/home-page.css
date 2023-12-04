@@ -261,11 +261,19 @@
         width: 100%;
     }
 
+    #home-page {
+        padding-top: 100px;
+    }
+
 }
 
 @media only screen and (min-width: 740px) and (max-width: 1239px){
     #home-page .slider {
         height: 450px;
+    }
+
+    #home-page {
+        padding-top: 100px;
     }
 }
 

@@ -117,6 +117,10 @@
         font-size: 20px;
         line-height: 20px;
     }    
+
+    #wishlist-screen {
+        padding-top: 20px;
+    }
 }
 
 @media only screen and (max-width: 739px) {
@@ -165,6 +169,10 @@
 
     .wishlist-product {
         padding: 30px 0;
+    }
+
+    #wishlist-screen {
+        padding-top: 20px;
     }
 }
 .cart {

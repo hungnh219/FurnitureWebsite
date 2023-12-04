@@ -114,6 +114,10 @@ h3 {
     #blog .our-blogs li {
         margin: 20px 20px;
     }
+
+    #blog {
+        padding-top: 100px;
+    }
 }
 
 @media only screen and (max-width: 739px) { 
@@ -139,6 +143,9 @@ h3 {
         margin: 0;
     }
 
+    #blog {
+        padding-top: 100px;
+    }
 }
 
 

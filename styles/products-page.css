@@ -185,6 +185,10 @@
         font-size: 17px;
         line-height: 30px;
     }
+
+    #product-screen {
+        padding-top: 100px;
+    }
 }
 
 @media only screen and (max-width: 739px) {
@@ -265,6 +269,10 @@
         position: relative;
         z-index: 1;
         line-height: 31px; 
+    }
+
+    #product-screen {
+        padding-top: 100px;
     }
 }
 /* End: Product page */
