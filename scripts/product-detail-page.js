@@ -193,7 +193,9 @@ window.onload = function() {
 function addtocart(curr) {
     let products=[];
     let key=this.location.href
-    key =key.slice(key.indexOf('?')).slice(4)
+    key=key.slice(key.indexOf('?')).slice(5)
+    let id1= key.slice(0,key.indexOf('&'))
+    let id2=key.slice(key.indexOf('&')+5)
     let img=curr.parentElement.parentElement.children[2].children[0].src;
     let productname=curr.parentElement.parentElement.children[1].textContent.trim();
     let productprice=curr.parentElement.parentElement.children[3].children[0].textContent.trim();
@@ -206,14 +208,15 @@ function addtocart(curr) {
       }
     
     let product={
-        key:key,
+        id1:id1,
+        id2:id2,
         img:img,
         productname:productname,
         productprice:productprice,
         productquan:productquan,
         producttotal:producttotal.toString()
     };
-    let isExist=products.some(x=>x.key==product.key);
+    let isExist=products.some(x=>x.id2==product.id2);
     if(!isExist) {
         products.push(product);  
     }
@@ -283,7 +286,9 @@ function nextImg() {
 function addToWishList(curr) {
     let products=[];
     let key=this.location.href
-    key =key.slice(key.indexOf('?')).slice(4)
+    key=key.slice(key.indexOf('?')).slice(5)
+    let id1= key.slice(0,key.indexOf('&'))
+    let id2=key.slice(key.indexOf('&')+5)
     let img=curr.parentElement.parentElement.children[2].children[0].src;
     let productname=curr.parentElement.parentElement.children[1].textContent.trim();
     let productprice=curr.parentElement.parentElement.children[3].children[0].textContent.trim();
@@ -293,12 +298,13 @@ function addToWishList(curr) {
       }
     
     let product={
-    key:key,
+    id1:id1,
+    id2:id2,
     img:img,
     productname:productname,
     productprice:productprice,
     };
-    let isExist=products.some(x=>x.key==product.key);
+    let isExist=products.some(x=>x.id2==product.id2);
     if(!isExist) {
         products.push(product);  
     }

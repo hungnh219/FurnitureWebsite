@@ -29,10 +29,10 @@ function getProducts() {
             document.getElementsByClassName('wishlist')[0].innerHTML+=`
             <div class="wishlist-product">
                     <i class="ti-close" onclick="removeProduct('${product.productname}')"></i>
-                    <img src="${product.img}" alt="The Chelsea" onclick="goToDetailProduct('product-detail-page.html',${product.key})">
-                    <p class="wishlish-name-product" onclick="goToDetailProduct('product-detail-page.html',${product.key})">${product.productname}</p>
+                    <img src="${product.img}" alt="The Chelsea" onclick="goToDetailProduct('product-detail-page.html','${product.id1}','${product.id2}')">
+                    <p class="wishlish-name-product" onclick="goToDetailProduct('product-detail-page.html','${product.id1}','${product.id2}')">${product.productname}</p>
                     <p class="wistlish-price">${product.productprice}</p>
-                    <p class="wishlist-to-cart" onclick="addtocart(${product.key},'${product.img}','${product.productname}','${product.productprice}')">Add to cart</p>
+                    <p class="wishlist-to-cart" onclick="addtocart(this,'${product.id1}','${product.id2}','${product.img}','${product.productname}','${product.productprice}')">Add to cart</p>
                     <div class="notification" >This product has been added to cart</div>
             </div>
             `
@@ -59,9 +59,9 @@ window.addEventListener('load', function() {
 
 
 //add to cart
-function addtocart(key,img,productname,productprice) {
+function addtocart(curr,id1,id2,img,productname,productprice) {
     let products=[];
-    key=key.toString()
+    
     let productquan=1
     productquan.toString();
     productprice=productprice.slice(1);
@@ -72,18 +72,19 @@ function addtocart(key,img,productname,productprice) {
       }
     
     let product={
-        key:key,
+        id1:id1,
+        id2:id2,
         img:img,
         productname:productname,
         productprice:productprice,
         productquan:productquan.toString(),
         producttotal:producttotal.toString()
     };
-    let isExist=products.some(x=>x.key==product.key);
+    let isExist=products.some(x=>x.id2==product.id2);
     if(!isExist) {
         products.push(product);  
     }
-    else show_notification()
+    else show_notification(curr)
      
     localStorage.setItem("products", JSON.stringify(products));
     
