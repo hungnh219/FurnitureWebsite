@@ -223,6 +223,10 @@ function addtocart(curr) {
     else show_notification()
      
     localStorage.setItem("products", JSON.stringify(products));
+    const listItem = JSON.parse(localStorage.getItem('products'));
+    var count = listItem ? listItem.length : 0;
+    console.log(count);
+    document.querySelector('.quantity').innerHTML = count;
     
 }
 
