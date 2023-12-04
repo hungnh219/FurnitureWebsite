@@ -31,13 +31,13 @@ function addHeader() {
                             </div>  
                             
                             <div class="cart-box"> 
-                                <button class="cart-button-navigation">
+                                <button class="cart-button-navigation" onclick= "goTo('cart-page.html')" >
                                     <i class="fa-solid fa-cart-shopping" style="color: #000000;"></i>
                                 </button>
                             </div>
 
                             <div class="heart-box">
-                                <button class="heart-button-navigation">
+                                <button class="heart-button-navigation" onclick= "goTo('wishlist-page.html')" >
                                     <i class="fa-regular fa-heart" style="color: #000000;"></i>
                                 </button>
                             </div>
