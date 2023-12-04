@@ -259,7 +259,7 @@
 .card-wrapper .pay-by-card-button button {
     height: 56px;
     width: 188px;
-    margin-left: 30px;
+    margin: 0 30px;
     border-radius: 9px;
     font-size: 18px;
 }
@@ -270,5 +270,51 @@
 
 .card-wrapper .pay-by-card-button .card-pay-button {
     background-color: #FFF7E4;
+}
+
+@media only screen and (min-width: 740px) and (max-width: 1024px) {
+    #pay-by-card-screen .card-wrapper {
+        width: 80%;
+    }
+}
+
+@media only screen and (max-width: 739px) {
+    #pay-by-card-screen .card-wrapper {
+        width: 90%;
+    }
+
+    #pay-by-card-screen .card-wrapper .card-box {
+        padding: 10px;
+    }
+
+    h5 {
+        display: none;
+    }
+
+    .card-bank-title, .card-nuber-title, .card-expiry-title {
+        display: flex;
+        align-items: center;
+        width: 40%;
+    }
+
+    .card-bank select {
+        width: 60%;
+    }
+
+    .card-number input {
+        width: 60%;
+    }
+
+    .card-expiry select {
+        width: 25%;
+    }
+
+    .card-bank, .card-number, .card-expiry {
+        margin-bottom: 5px;
+    }
+
+    .card-wrapper .pay-by-card-button button {
+        margin: 0 15px;
+    }
 }
 /* End: Pay by Card */
