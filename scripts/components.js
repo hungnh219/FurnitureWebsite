@@ -101,7 +101,7 @@ function addFooter() {
                 <i class="fa-solid fa-phone" style="color: #000000;"></i>
                 0987654321
             </div>
-            <div class="footer-address">
+            <div class="footer-address" onclick="goTo('https://uit.edu.vn')">
                 <i class="fa-solid fa-location-dot" style="color: #000000;"></i>
                 University of Information and Technology
             </div>
@@ -113,22 +113,22 @@ function addFooter() {
 
         <div class="footer-menu">
             <h3>Menu</h3>
-            <p>Products</p>
-            <p>Blog</p>
-            <p>About us</p>
+            <p onclick="goTo('shop-all.html')">Products</p>
+            <p onclick="goTo('blog.html')">Blog</p>
+            <p onclick="goTo('about-us-page.html')">About us</p>
         </div>
 
         <div class="footer-connect">
             <h3>Stay Connected</h3>
-            <div class="footer-fb">
+            <div class="footer-fb" onclick="goTo('https://facebook.com')">
                 <i class="fa-brands fa-facebook" style="color: #000000;"></i>
                 Facebook
             </div>
-            <div class="footer-ig">
+            <div class="footer-ig" onclick="goTo('https://instagram.com')">
                 <i class="fa-brands fa-square-instagram" style="color: #000000;"></i>
                 Instagram
             </div>
-            <div class="fotter-tw">
+            <div class="fotter-tw" onclick="goTo('https://twitter.com')">
                 <i class="fa-brands fa-twitter" style="color: #000000;"></i>
                 Twitter
             </div>
