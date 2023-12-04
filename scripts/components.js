@@ -72,10 +72,10 @@ const searchBtn = document.querySelector('.search-button-navigation');
 const searchInput = document.querySelector('.search-box #search');
 
 searchBtn.addEventListener('click', () => {
-    if (searchInput.style.opacity === '0') {
-        searchInput.style.opacity = '1';
+    if (searchInput.style.display === 'none') {
+        searchInput.style.display = 'block';
     } else {
-        searchInput.style.opacity = '0';
+        searchInput.style.display = 'none';
     }
 })
 /////

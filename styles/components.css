@@ -75,6 +75,7 @@
 }
 
 #search {
+    display: none;
     width: 100%;
     height: 100%;
     background-color: #FFF7E4;
@@ -83,7 +84,7 @@
     font-size: 15px;
     border: none;
     outline:none;
-    opacity: 0;
+    /* opacity: 0; */
     transition: all 0.3s ease-in-out; 
     
 }
