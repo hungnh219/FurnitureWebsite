@@ -332,9 +332,11 @@
 
 /* Start: Footer */
 footer {
+    position: sticky;
     display: flex;
     justify-content: space-between;
     margin: 0 10%;
+    
 }
 
 footer .footer-furnishity p {
