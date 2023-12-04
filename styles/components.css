@@ -87,7 +87,19 @@
     transition: all 0.3s ease-in-out; 
     
 }
-
+.cart-box .quantity{
+    background-color: red;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    position: absolute;
+    top: -6px;
+    left: 80%;
+    padding: 2px 4px;
+    font-size: 12px;
+}
 .search-button-navigation {
     position: absolute;
     right: 0;
@@ -335,6 +347,7 @@
 
 /* Start: Footer */
 footer {
+    padding-top: 2em;
     position: sticky;
     display: flex;
     justify-content: space-between;

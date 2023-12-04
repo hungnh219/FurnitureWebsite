@@ -33,6 +33,7 @@ function addHeader() {
                             <div class="cart-box"> 
                                 <button class="cart-button-navigation" onclick= "goTo('cart-page.html')" >
                                     <i class="fa-solid fa-cart-shopping" style="color: #000000;"></i>
+                                    <span class = "quantity">0</span>
                                 </button>
                             </div>
 
@@ -247,6 +248,25 @@ function isValidPassword(password) {
     return true;
 }
 
+document.addEventListener("DOMContentLoaded", function() {
+    // Cập nhật số lượng ban đầu
+    updateQuantity();
+
+    // Lắng nghe sự kiện storage khi có thay đổi trong localStorage
+    window.addEventListener('click', function(event) {
+    if (event.key === 'products') {
+        // Cập nhật số lượng khi có thay đổi trong danh sách sản phẩm
+        updateQuantity();
+    }
+    });
+
+    function updateQuantity() {
+    const listItem = JSON.parse(localStorage.getItem('products'));
+    var count = listItem ? listItem.length : 0;
+    console.log(count);
+    document.querySelector('.quantity').innerHTML = count;
+    }
+});
 
 // function removeProduct(curr) {
 //     products=[];
