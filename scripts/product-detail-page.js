@@ -1,13 +1,26 @@
 // load Product
 window.onload = function() {
     var urlParams = new URLSearchParams(window.location.search);
-    var id = urlParams.get('id');
-    const itemList = JSON.parse(localStorage.getItem("productList"));
+    var id1 = urlParams.get('id1');
+    var id2 = urlParams.get('id2');
+    var namePath;
+    console.log(id1);
+    console.log(id2);
+    if(id1 === 'bedroom' ){
+        var itemList = JSON.parse(localStorage.getItem("productList_Bedroom"));
+        namePath = "Bedroom";
+    } else if(id1 === 'living_room'){
+        var itemList = JSON.parse(localStorage.getItem("productList_Livingroom"));
+        namePath = "Living Room";
+    } else if(id1 === 'dining'){
+        var itemList = JSON.parse(localStorage.getItem("productList_Dining"));
+        namePath = "Dining";
+    }
     for (let key in itemList) {
         if (itemList.hasOwnProperty(key)) {
             const product = itemList[key];
             
-            if(product.id == id) {
+            if(product.id == id2) {
             var path1 = "../" + product.imgDirect + "/1.webp";
             var path2 = "../" + product.imgDirect + "/2.webp";
             var path3 = "../" + product.imgDirect + "/3.webp";
@@ -30,7 +43,7 @@ window.onload = function() {
                 </div>
                 <br>
                 <div class="text-nav">
-                    <div class="blur-text">Sofa</div>
+                    <div class="blur-text">${namePath}</div>
                     <p>/</p>
                     <div class="normal-text">${product.name}</div>
                 </div>

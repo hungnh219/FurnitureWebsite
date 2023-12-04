@@ -80,11 +80,11 @@
 }
 #product-detail-page .product-name {
     font-family: Inter;
-    font-size: 44px;
+    font-size: 35px;
     font-style: normal;
     font-weight: 700;
     line-height: 56px;
-    padding-left: 100px;
+    padding-left: 2.7em;
 }
 
 #product-detail-page .price-rate {
@@ -223,12 +223,13 @@
     padding-left: 98px;
     padding-top: 35px;
     padding-bottom: 63px;
+    
 }
 
 #product-detail-page .big-image {
     position: relative;
-    max-width: 844px;
-    max-height: 461px;
+    max-width: 50em;
+    max-height: 50em;
     flex-shrink: 0;
     float: right;
     padding-right: 82px;
@@ -444,6 +445,7 @@
     #product-detail-page .about-product {
         padding-top: 30px;
         width: 80%;
+        word-wrap: break-word;
     }
 
     #product-detail-page .small-number,

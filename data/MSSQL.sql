@@ -2114,6 +2114,25 @@ SET NOCOUNT ON;
 END
 GO
 
+CREATE PROCEDURE sp_GetUserProductAndReceiptByStatus(
+	@UserId		int,
+	@Status		varchar(25)
+)
+AS
+BEGIN
+SET NOCOUNT ON;
+
+	SELECT * 
+	FROM RECEIPTS a
+		INNER JOIN RECEIPT_DETAIL b ON a.ID = b.ReceiptID
+		INNER JOIN PRODUCTS c ON b.ProductID = c.ID
+	WHERE a.UserID = @UserId
+		AND a.Status LIKE '%' + @Status +'%'
+	ORDER BY a.ID ASC,
+			c.Name ASC
+END
+GO
+
 CREATE PROCEDURE sp_GetProductsByTagName(
 	@TagName		varchar(250)
 )

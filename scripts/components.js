@@ -194,11 +194,16 @@ window.addEventListener('scroll', function() {
 function goTo(x) {
     location.href=x;   
    }
-
-
-// go to detailProduct   
-function goToDetailProduct(x, id) {
+// go to Product page
+// function goToProduct(x, id1, id2) {
+//     location.href=x+ "?id1=" + id1 +"&id2=" + id2;
+// }
+function goToProduct(x, id) {
     location.href=x+ "?id=" + id;
+}
+// go to detailProduct   
+function goToDetailProduct(x, id1, id2) {
+    location.href=x+ "?id1=" + id1 +"&id2=" + id2;
 }
 
 // check valid gmail
