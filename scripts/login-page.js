@@ -208,7 +208,7 @@ function addToWishList(productList_Bedroom) {
     
     
     for(let key in productList_Bedroom) {
-        let id1= key
+        let id1= 'bedroom'
         let id2=productList_Bedroom[key].id
         let img="../" + productList_Bedroom[key].imgDirect + "/1.webp"
         let productname=productList_Bedroom[key].name

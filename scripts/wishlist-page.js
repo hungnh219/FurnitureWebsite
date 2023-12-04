@@ -33,7 +33,7 @@ function getProducts() {
                     <p class="wishlish-name-product" onclick="goToDetailProduct('product-detail-page.html','${product.id1}','${product.id2}')">${product.productname}</p>
                     <p class="wistlish-price">${product.productprice}</p>
                     <p class="wishlist-to-cart" onclick="addtocart(this,'${product.id1}','${product.id2}','${product.img}','${product.productname}','${product.productprice}')">Add to cart</p>
-                    <div class="notification" >This product has been added to cart</div>
+                    <div class="notification" >This product has been added to cart</div>    
             </div>
             `
         })
@@ -70,7 +70,8 @@ function addtocart(curr,id1,id2,img,productname,productprice) {
     if (localStorage.getItem("products")) {
         products.push(...JSON.parse(localStorage.getItem("products")));
       }
-    
+    console.log('id1: '+id1)
+    console.log('id2: '+id2)
     let product={
         id1:id1,
         id2:id2,
