@@ -42,6 +42,12 @@ create table USERS(
     RegDate		date			default (convert(date, getdate())) NOT NULL,
     BirthYear	int				NOT NULL,
     primary key (ID),
+	check (
+        LEN(PassWord) >= 8
+        AND PATINDEX('%[0-9]%', PassWord) > 0 
+        AND PATINDEX('%[A-Z]%', PassWord) > 0 
+        AND PATINDEX('%[^a-zA-Z0-9]%', PassWord) = 0
+    )
 );
 
  
@@ -410,6 +416,7 @@ GO
 
 CREATE PROCEDURE sp_UserLogin(
 	@UserName	varchar(25)		,
+	@Mail		varchar(50)		,
     @PassWord	varchar(250)			
 )
 AS
@@ -419,7 +426,7 @@ SET NOCOUNT ON;
 	IF EXISTS(
 		SELECT 1
 		FROM USERS 
-		WHERE UserName = @UserName
+		WHERE (UserName = @UserName OR Mail = @Mail)
 			AND PassWord = @PassWord
 		) BEGIN
 		RETURN 1
@@ -503,7 +510,7 @@ BEGIN
 SET NOCOUNT ON;
      
     SELECT * FROM USERS a
-    WHERE a.UserName LIKE @UserName;
+    WHERE a.UserName LIKE '%' + @UserName + '%';
 END;
 GO
 
@@ -516,7 +523,7 @@ BEGIN
 SET NOCOUNT ON;
      
     SELECT * FROM USERS a
-    WHERE a.ID LIKE @ID;
+    WHERE a.ID = @ID;
 END;
 GO
 
@@ -529,7 +536,7 @@ BEGIN
 SET NOCOUNT ON;
      
     SELECT * FROM USERS a
-    WHERE a.LastName LIKE @LastName;
+    WHERE a.LastName LIKE '%' + @LastName + '%';
 END;
 GO
 
@@ -542,7 +549,7 @@ BEGIN
 SET NOCOUNT ON;
      
     SELECT * FROM USERS a
-    WHERE a.FirstName LIKE @FirstName;
+    WHERE a.FirstName LIKE '%' + @FirstName+ '%';
 END;
 GO
 
@@ -2395,13 +2402,13 @@ GO
 
 INSERT INTO USERS (UserName,PassWord,FirstName,LastName,Address,Phone,Mail,RegDate,BirthYear)
 VALUES
-	('admin','hehehe','Hưng','Nguyễn Hoàng','Ở',948582732,'21520895gm.uit.edu.vn','2023-11-01 00:00:00',2003),
-	('tan','tan','Tân','Đặng Huỳnh Vĩnh ','đâu',948582733,'21520442gm.uit.edu.vn','2023-11-02 00:00:00',2003),
-	('hoang','hoang','Hoàng','Nguyễn Huy','cơ ',948582734,'21522093gm.uit.edu.vn','2023-11-03 00:00:00',2003),
-	('nhu','nhu','Như','Trần Thị Tâm','tôi',948582735,'21521247gm.uit.edu.vn','2023-11-04 00:00:00',2003),
-	('nhan','nhan','Nhân','Đỗ Trọng','cũng',948582736,'21521214gm.uit.edu.vn','2023-11-05 00:00:00',2003),
-	('thanh','thanh','Thành','Lê Nam','không',948582737,'21522596gm.uit.edu.vn','2023-11-06 00:00:00',2003),
-	('kha','kha','Kha','Nguyễn Viết','biết',948582738,'21520949gm.uit.edu.vn','2023-11-07 00:00:00',2003);
+	('admin','Ehehehe1','Hung','Nguyen Hoang','Duong Han Thuyen, khu pho 6 P, Thu Duc, Thanh pho Ho Chi Minh',948582732,'21520895gm.uit.edu.vn','2023-11-01 00:00:00',2003),
+	('tan','Tan31123','Tan','Dang Huynh Vinh ','6 Duong so 447, Tang Nhon Phu A, Thu Duc, Thanh pho Ho Chi Minh',948582733,'21520442gm.uit.edu.vn','2023-11-02 00:00:00',2003),
+	('hoang','HuyHoang1','Hoang','Nguyen Huy','VRG2+9GJ, D. Quang Truong Sang Tao, Dong Hoa, Di An, Binh Duong',948582734,'21522093gm.uit.edu.vn','2023-11-03 00:00:00',2003),
+	('nhu','TamNhu12','Nhu','Tran Thi Tam','VRJ5+JHP, Duong Ta Quang Buu, Dong Hoa, Di An, Binh Duong',948582735,'21521247gm.uit.edu.vn','2023-11-04 00:00:00',2003),
+	('nhan','TrongNhan1','Nhan','Do Trong','D. Mac Dinh Chi, Khu pho Tan Hoa, Di An, Binh Duong',948582736,'21521214gm.uit.edu.vn','2023-11-05 00:00:00',2003),
+	('thanh','NamThanh1','Thanh','Le Nam','Phuong Ben Thanh, Quan 1, Thanh pho Ho Chi Minh',948582737,'21522596gm.uit.edu.vn','2023-11-06 00:00:00',2003),
+	('kha','VietKha1','Kha','Nguyen Viet','01 Cong xa Paris, Ben Nghe, Quan 1, Thanh pho Ho Chi Minh',948582738,'21520949gm.uit.edu.vn','2023-11-07 00:00:00',2003);
 GO
 
 INSERT INTO RECEIPTS (Date,Paid,UserID,Status)
