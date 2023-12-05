@@ -43,7 +43,7 @@ window.onload = function() {
                 </div>
                 <br>
                 <div class="text-nav">
-                    <div class="blur-text">${namePath}</div>
+                    <div class="blur-text" onclick="goBack()">${namePath}</div>
                     <p>/</p>
                     <div class="normal-text">${product.name}</div>
                 </div>

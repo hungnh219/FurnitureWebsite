@@ -148,8 +148,8 @@ function onPhoneNumberInput() {
 
  // Create Bill PDF document
  function generatePDF(){
-    if (document.getElementById("first-name-input").value == "") {
-        alert("Please enter first name");
+    if (document.getElementById("first-name-input").value == "" || document.getElementById("last-name-input").value == "" || document.getElementById("numbers").value==""){
+        alert("Please fill in all information");
       } else {
         var doc = new jsPDF();
     
@@ -229,4 +229,7 @@ function show_bank() {
 function close_screen_bank() {
     screen_bank.style.display='none'
     radio_bank.checked=false
+}
+function goBack() {
+    window.history.back();
 }

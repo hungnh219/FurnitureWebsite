@@ -149,8 +149,9 @@
     padding: 8px 20px;
     font-weight: 800;
     border-radius: 12px;
-    font-size: 16px;
+    font-size: 15px;
     width: 100%;
+    cursor: pointer;
 }
 
 #billing-detail-page .place-order-button button,
@@ -161,6 +162,7 @@
     font-weight: 800;
     border-radius: 12px;
     margin-top: 24px;
+    cursor: pointer;
 }
 
 /* End: Billing detail page */
