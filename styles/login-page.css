@@ -87,6 +87,11 @@
     color: rgb(103, 103, 255);
 }
 
+.notification {
+    display: none;
+    color: red;
+}
+
 @media only screen and (min-width: 740px) and (max-width: 1024px) {
     .login-img img {
         flex: 1;

@@ -47,11 +47,25 @@ function checkAccount(userName, password) {
     }
     else {
         // thông báo username, password sai
-        alert('There\'s something wrong!');
+        // alert('There\'s something wrong!');
+        show_notification()
     }
 }
 
-
+//show notification
+function show_notification() {
+    notification=document.getElementsByClassName('notification')[0]
+    notification.style.display='flex'
+    setTimeout(() => {
+        close_notification()
+    }, 2000);
+}
+//close notification
+function close_notification() {
+    notification=document.getElementsByClassName('notification')[0]
+    notification.style.display='none'
+//    location.reload()
+}
 
 
 const productList_Bedroom = {
