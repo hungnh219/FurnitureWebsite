@@ -6,16 +6,15 @@ function loginButton() {
     // dam bao username, password la kieu string
     userName = userName.toString();
     password = password.toString();
-    console.log(document.querySelector('.info-email input'), document.querySelector('.info-password input'));
     console.log(userName, password);
 
-    checkAccount(userName, password);
-    
-    // if (preCheckAccount(userName, password)) {
-    // } else {
-    //     //alert('Co gi do sai sai!');
-    // }
-    
+    // acc nay de test
+    if (userName == '123' && password == 'asd') {
+        goTo('home-page.html');
+        return;
+    }
+
+    checkAccount(userName, password)
 }
 
 // kiem tra account truoc khi goi api
@@ -37,14 +36,43 @@ function preCheckAccount(userName, password) {
 }
 
 function checkAccount(userName, password) {
-    // gọi request tới server
-    // var result = true;
+    async function checkLogin(username, password) {
+        const apiUrl = 'http://localhost:5206/api/Furniture/login'; // Thay thế bằng URL thực tế của API
 
-    if (userName == '123' && password == 'asd') {
-        goTo('home-page.html');
+        const response = await fetch(apiUrl, {
+            method: 'POST',
+            headers: {
+            'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+            Username: username,
+            Password: password,
+            }),
+        });
+
+        if (response.ok) {
+            let responseData = await response.json();
+            responseData = responseData.toString();
+            console.log(typeof responseData);
+            console.log(responseData);
+
+            localStorage.setItem('userId', responseData);
+            return true; // Đăng nhập thành công
+        } else {
+            return false; // Đăng nhập thất bại
+        }
     }
-    else {
-        // thông báo username, password sai
-        alert('There\'s something wrong!');
-    }
+
+    checkLogin(userName, password)
+    .then((isLoggedIn) => {
+        if (isLoggedIn){
+            console.log('get api start');
+            getInfoApi(function() {
+            console.log('get api end');
+            goTo('home-page.html');
+            });
+        }
+        else
+            console.log('sai rui')
+    });    
 }

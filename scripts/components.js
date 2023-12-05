@@ -1,3 +1,60 @@
+// start Create data for cart and wishlist
+let userId = localStorage.getItem('userId') || '';
+let wishlistProducts = JSON.parse(localStorage.getItem('wishlistProducts')) || {};
+let cartProducts = JSON.parse(localStorage.getItem('cartProducts')) || {};
+
+
+// get by material
+function getInfoApi(callback) {
+    fetchApiMaterial()
+    async function fetchApiMaterial() {
+        const material = 'Pecan';
+
+        const responseAPI = await fetch(`http://localhost:5206/api/Furniture/ByMaterial${material}`)
+        .then(response => {
+            if (!response.ok) {
+                console.log('lay api that bai');
+            }
+
+            return response.json();
+        })
+        .then(data => {
+            console.log('wishlist products info:');
+            wishlistProducts = data;
+            localStorage.setItem('cartProducts', JSON.stringify(data));
+            console.log(wishlistProducts);
+        })  
+        .catch(error => console.error("Error fetching data:", error));
+    }
+
+    // get by name
+    fetchApiName()
+    async function fetchApiName() {
+        const productNameApi = 'bed'
+        const responseAPI = await fetch(`http://localhost:5206/api/Furniture/GetProductByName${productNameApi}`)
+        .then(response => response.json())
+        .then(data => {
+        if (data.length > 0) {
+            cartProducts = data;
+            localStorage.setItem('wishlistProducts', JSON.stringify(data));
+            console.log('cart products info:');
+            console.log(cartProducts);
+        } else {
+            console.error("No data received from the API");
+        }
+    })
+    .catch(error => console.error("Error fetching data:", error));
+    }
+
+    setTimeout(() => {
+        console.log('API call completed');
+        // Calling the callback function when the asynchronous operation is done
+        callback();
+    }, 5000);
+}
+
+
+// end   Create data for cart and wishlist
 //add header
 function addHeader() {
     document.write(`
@@ -262,7 +319,6 @@ function isValidPassword(password) {
 
     return true;
 }
-
 
 // function removeProduct(curr) {
 //     products=[];

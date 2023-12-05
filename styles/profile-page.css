@@ -10,20 +10,21 @@
     justify-content: center;
 }
 
-#profile-screen .first-name {
-    /* padding-left: 309px;  */
-}
-
 #profile-screen .profile-title {
     color: #B48400;
     font-family: Inter;
-    font-size: 30px;
+    font-size: 60px;
     font-style: normal;
     font-weight: 500;
     line-height: 24px;
-    padding-left: 309px;
+    /* padding-left: 309px;
     padding-bottom: 30px;
-    padding-top: 30px;
+    padding-top: 30px; */
+    padding: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 60px;
 }
 
 #profile-screen .input-text {
@@ -44,22 +45,23 @@
     padding-bottom: 9px;
 }
 
-#profile-screen .email {
-    /* padding-left: 309px; */
+#profile-screen .email,
+#profile-screen .phone-number,
+#profile-screen .address,
+#profile-screen .register-date
+{
     padding-top: 40px;
 }
 
-#profile-screen .phone-number {
-    padding-top: 40px;
-}
-
-#profile-screen .address {
-    /* padding-left: 309px; */
-    padding-top: 40px;
-}
-
-#profile-screen .password {
-    padding-top: 40px;
+#profile-screen .first-name input,
+#profile-screen .last-name input,
+#profile-screen .email input,
+#profile-screen .phone-number input,
+#profile-screen .address input,
+#profile-screen .register-date input
+{
+    padding-left: 12px;
+    font-size: 16px;
 }
 
 #profile-screen .button-profile {
