@@ -149,7 +149,8 @@ function onPhoneNumberInput() {
  // Create Bill PDF document
  function generatePDF(){
     if (document.getElementById("first-name-input").value == "" || document.getElementById("last-name-input").value == "" || document.getElementById("numbers").value==""){
-        alert("Please fill in all information");
+        // alert("Please fill in all information");
+        show_notification();
       } else {
         var doc = new jsPDF();
     
@@ -232,4 +233,18 @@ function close_screen_bank() {
 }
 function goBack() {
     window.history.back();
+}
+//show notification
+function show_notification() {
+    notification=document.getElementsByClassName('notification')[0]
+    notification.style.display='flex'
+    setTimeout(() => {
+        close_notification()
+    }, 2000);
+}
+//close notification
+function close_notification() {
+    notification=document.getElementsByClassName('notification')[0]
+    notification.style.display='none'
+//    location.reload()
 }
