@@ -167,7 +167,9 @@
 .user-box {
     position: relative; 
 }
-
+.user-box:hover .ti-user-attribute {
+    display: block;
+}
 .ti-user-attribute {
     display: none;
     position: absolute;
@@ -263,7 +265,9 @@
         transition: all 0.3s ease-in-out; 
     }
 }   
+ .user-box:hover  {
 
+ }
 @media only screen and (max-width: 739px) {
     #navigation {
         display: flex;

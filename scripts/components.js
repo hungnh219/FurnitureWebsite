@@ -55,7 +55,7 @@ function addHeader() {
                                         <a href="">My order</a>
                                     </li>
                                     <li class="log-out">
-                                        <button>Logout</button>
+                                        <button onclick="logOut()">Logout</button>
                                     </li>
                                 </ul>
                             </div>
@@ -443,6 +443,27 @@ document.addEventListener("DOMContentLoaded", function() {
 // }
 
 
+//logout
+function logOut() {
+    goTo('login-page.html')
+    localStorage.removeItem('user')
+}
+
+//check log in
+
+function checkLogIn() {
+    if(localStorage.getItem('user')) {
+        console.log('đã đăng nhập')
+    }
+    else {
+        console.log('chưa đăng nhập')
+        document.getElementsByClassName('cart-box')[0].style.display='none'
+        document.getElementsByClassName('heart-box')[0].style.display='none'
+        document.getElementsByClassName('profile-page')[0].style.display='none'
+        document.getElementsByClassName('my-order')[0].style.display='none'
+        document.getElementsByClassName('log-out')[0].innerHTML=`<button onclick="logOut()">Login</button>`
+    }
+}
 
 
 

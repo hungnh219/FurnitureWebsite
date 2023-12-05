@@ -44,6 +44,7 @@ function checkAccount(userName, password) {
     if (userName == '123' && password == 'asd') {
         addToWishList(productList_Bedroom)
         goTo('home-page.html');
+        localStorage.setItem('user',JSON.stringify('is login'))
     }
     else {
         // thông báo username, password sai
@@ -248,3 +249,9 @@ function addToWishList(productList_Bedroom) {
     
 }
 
+
+//logout
+function logOut() {
+    goTo('login-page.html')
+    localStorage.removeItem('user')
+}
