@@ -1,4 +1,8 @@
 /* Start: Wishlist screen */
+#wishlist-screen {
+    padding-bottom: 10%;
+}
+
 .wishlist {
     padding-top: 100px;
 }

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/transportation-management.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../assets/fonts/themify-icons/themify-icons.css">
+    <title>IE104</title>
+</head>
+<body>
+    <section id="transportation-management-screen">
+
+        <div class="management-menu">
+            <ul>
+                <li><a href="">Transportation management</a></li>
+                <li><a href="">Products management</a></li>
+                <li><a href="">Revenue management</a></li>
+                <li><a href="">User management</a></li>
+            </ul>
+        </div>
+
+        <div class="transportation-main">
+            <div class="transportation-info">
+                <div class="id-order">
+                    ID
+                    <input type="text" placeholder="ID Order">
+                </div>
+
+                <div class="time">
+                    Time
+                    <input type="date" id="time">
+                </div>
+            </div>
+
+            <div class="transportation-button">
+                <button class="find-button">Find</button>
+            </div>
+
+            <div class="transportation-detail">
+                <table class="detail-info">
+                    <thead>
+                        <tr>
+                            <td>Name Product</td>
+                            <td>Total</td>
+                            <td>Status</td>
+                            <td>Name Customer</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="transportation-info-row">
+                            <td class="name-product">The Chelsea</td>  
+                            <td class="total">1</td>
+                            <td class="status">On shipping</td>
+                            <td class="name-customer">Nguyen Huy Hoang</td>
+                        </tr>
+                        <tr class="transportation-info-row">
+                            <td class="name-product">The Bond Settee</td>  
+                            <td class="total">1</td>
+                            <td class="status">In transit</td>
+                            <td class="name-customer">Nguyen Hoang Huy</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

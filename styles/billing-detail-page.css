@@ -149,7 +149,7 @@
     padding: 8px 20px;
     font-weight: 800;
     border-radius: 12px;
-    font-size: 16px;
+    font-size: 15px;
     width: 100%;
     cursor: pointer;
 }
@@ -273,7 +273,6 @@
 .card-wrapper .pay-by-card-button .card-pay-button {
     background-color: #FFF7E4;
 }
-
 .notification {
     display: none;
     z-index: 1;
@@ -305,7 +304,6 @@
     border-right:10px solid  #f2c96a;
     border-bottom: 10px solid transparent;
 }
-
 @media only screen and (min-width: 740px) and (max-width: 1024px) {
     #pay-by-card-screen .card-wrapper {
         width: 80%;
@@ -350,5 +348,6 @@
     .card-wrapper .pay-by-card-button button {
         margin: 0 15px;
     }
+    
 }
 /* End: Pay by Card */

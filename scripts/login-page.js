@@ -31,13 +31,10 @@ function checkAccount(userName, password) {
         if (response.ok) {
             let responseData = await response.json();
             responseData = responseData.toString();
-            console.log(typeof responseData);
-            console.log(responseData);
-
             localStorage.setItem('userId', responseData);
-            return true; // Đăng nhập thành công
+            return true; 
         } else {
-            return false; // Đăng nhập thất bại
+            return false;
         }
     }
 

@@ -37,7 +37,7 @@ function getProductManage() {
     let product_manage=JSON.parse(localStorage.getItem('product_manage'))
     document.getElementsByClassName('detail-info')[0].children[1].innerHTML=``
     for(let x in product_manage) {
-
+        
         document.getElementsByClassName('detail-info')[0].children[1].innerHTML+=` 
         <tr class="product-info">
             <td class="Product name">${product_manage[x].product_name}</td>
@@ -59,7 +59,7 @@ getProductManage()
 //remove product
 function deleteProduct(curr) {
     let name=curr.parentElement.parentElement.children[0].textContent
-
+    
     let product_manage=JSON.parse(localStorage.getItem('product_manage'))
     for (let x in product_manage) {
         if(product_manage[x].product_name==name) {

@@ -235,7 +235,10 @@ function close_screen_bank() {
     screen_bank.style.display='none'
     radio_bank.checked=false
 }
-
+function goBack() {
+    window.history.back();
+}
+//show notification
 function show_notification() {
     notification=document.getElementsByClassName('notification')[0]
     notification.style.display='flex'
