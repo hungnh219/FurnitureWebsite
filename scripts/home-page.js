@@ -1,10 +1,3 @@
-console.log('api info start')
-console.log(JSON.parse(localStorage.getItem(cartProducts)));
-console.log(localStorage.getItem('userId'));
-console.log(JSON.parse(localStorage.getItem(wishlistProducts)));
-console.log('api info end')
-
-//Slider 
 let slider = document.querySelector('.slider .list');
 let items = document.querySelectorAll('.slider .list .item');
 let next = document.getElementById('next');
@@ -45,3 +38,8 @@ dots.forEach((li, key) => {
 window.onresize = function(event) {
     reloadSlider();
 };
+
+checkLogIn()
+
+// get product
+getProductInfoApi(function(){});

@@ -1,0 +1,127 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#user-management-screen {
+    display: flex;
+}
+
+#user-management-screen .management-menu {
+    margin-left: 10%; 
+    margin-top: 10vh;
+}
+
+#user-management-screen .management-menu ul {
+    background-color: #FFF;
+    width: 334px;
+    list-style-type: none;
+}
+
+#user-management-screen .management-menu li {
+    width: auto;
+    height: 40px;
+    line-height: 40px;
+    border-bottom: 1px solid #000;
+    border-left: 1px solid #000;
+    border-right: 1px solid #000;
+    padding: 0 1em;
+}
+
+.management-menu a {
+    text-decoration: none;
+    font-size: 20px;
+    color: #000;
+    line-height: 40px;
+    font-weight: 500;
+}
+.management-menu li:first-child {
+    border-top: 1px solid #000;
+}
+
+.management-menu li:last-child {
+    background-color: #FFF0CB;
+}
+
+.management-menu li:last-child a {
+    color: #B48400;
+}
+
+.management-menu li:hover {
+    background-color:#FFF0CB;
+}
+
+#user-management-screen .user-main {
+    margin-top: 15vh;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#user-management-screen .user-info input {
+    width: 220px;
+    height: 22px;
+    color: rgba(0, 0, 0, 0.5);
+    border: 0.5px solid rgba(0, 0, 0, 0.1);
+}
+
+.user-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.user-info .id,
+.user-info .user-name {
+    margin-right: 5em;
+}
+
+.user-main .user-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.user-button button {
+    background-color: #FFF7E4;
+    width: 120px;
+    height: 40px;
+    font-weight: bold;
+    border: 0.4px solid #000;
+    border-radius: 7px;
+    margin: 3vh;
+}
+
+.user-detail .detail-info {
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+}
+
+.user-detail .detail-info table, tr, td {
+    border: 2px solid #000;
+    padding: 5px;
+    background-color: #FFF;
+}
+
+.user-detail .detail-info thead td {
+    font-weight: bold;
+    background-color: #f5f5f5;
+}
+
+.user-detail .detail-info button {
+    border-radius: 5px;
+    border: 0.5px solid #000;
+}
+
+.user-detail .detail-info .delete-button {
+    background-color: #FFF7E4;
+}
+
+.user-detail .detail-info .changes-button {
+    background-color: #FFF;
+}

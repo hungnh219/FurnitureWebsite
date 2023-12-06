@@ -3,7 +3,7 @@
     text-align: center;
     font-size: 30px;
     padding-bottom: 20px;
-    padding-top: 75px;
+    padding-top: 3.5em;
 }
 
 #about-us-page .about-us-info {
@@ -134,37 +134,80 @@
 /* Responsive Ipad */
 @media only screen and (min-width: 740px) and (max-width: 1023px) {
     #about-us-page .about-us-info {
-        font-size: 17px;
+        display: none;
+    }
+
+    #about-us-page .other-info {
+        display: flex;
+        padding-left: 32px;
+        padding-right: 50px;
     }
 
     #about-us-page .members-image {
-        width: 300px;
-        height: 300px;
+        width: 240px;
+        height: 260px;
         padding-right: 20px;
     }
 
     #about-us-page .members-info {
         justify-content: center;
     }
+
+    #about-us-page .members-name {
+        font-size: 22px;
+        font-family: Arial, Helvetica, sans-serif;
+    }
 }
 
 /* Responsive Phone */
 
 @media only screen and (max-width: 739px) {
+
+    #about-us-page .about-us-heading {
+        text-align: center;
+        font-size: 20px;
+        padding-bottom: 20px;
+        padding-top: 75px;
+    }
+
     #about-us-page .about-us-image {
         text-align: center;
     }
 
     #about-us-page .introduce {
         text-align: center;
-        font-size: 42px;
+        font-size: 31px;
         padding-bottom: 20px;
         padding-top: 50px;
     }
 
     #about-us-page .about-us-info {
-        font-size: 12px;
+        display: none;
     }
+
+    #about-us-page .guarantee {
+        text-align: center;
+        font-size: 24px;
+        padding-bottom: 20px;
+    }
+
+    #about-us-page .experience {
+        text-align: center;
+        padding-right: 23px;
+    }
+
+    #about-us-page .happy-client {
+        text-align: center;
+        padding-right: 23px;
+    }
+
+    #about-us-page .about-us-archive {
+        text-align: center;
+        display: none;
+        padding-top: 60px;
+        justify-content: center;
+    }
+    
 
     #about-us-page .number {
         font-size: 25px;
@@ -179,36 +222,29 @@
     }
 
     #about-us-page .members-image {
-        width: 200px;
-        height: 210px;
+        width: 300px;
+        height: 310px;
+        padding-bottom: 5px;
     }
 
     #about-us-page .members-name {
         font-size: 19px;
     }
 
-    #about-us-page .big-word {
-        font-size: 16px;
-        font-family: Arial, Helvetica, sans-serif;
-        padding-bottom: 5px;
-    }
-
-    #about-us-page .small-word {
-        font-size: 11px;
-        font-family: Arial, Helvetica, sans-serif;
-        opacity: 50%;
-    }
-
-    #about-us-page .ti-headphone-alt,
-    #about-us-page .ti-check,
-    #about-us-page .ti-truck,
-    #about-us-page .ti-cup {
-    font-size: 30px;
-    padding-right: 10px;
-    }
-
     #about-us-page .members-info {
         padding-left: 10px;
+    }
+
+    #about-us-page .members2 {
+        flex-direction: column;
+    }
+
+    #about-us-page .members1 {
+        flex-direction: column;
+    }
+
+    #about-us-page {
+        padding-top: 50px;
     }
 }
 /* End: About us page */

@@ -6,6 +6,7 @@
     <script src="../scripts/components.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="../assets/fonts/themify-icons/themify-icons.css">
     <link rel="stylesheet" href="../styles/components.css">
@@ -29,7 +30,7 @@
                     <img src="../assets/Furniture_Photos/Background_Photos/All_Product/Main_Photo/livingroom.png" alt="Living room" class="wall-img">
                     <div class="cate-product-title">
                         <h3 class="cate-name">Living Room</h3>
-                        <p class="button-shop" onclick="CheckSectionDisplay(1)">Shop Sofas</p>
+                        <p class="button-shop" onclick="goToProduct('products-page.html','living_room')">Shop Living</p>
                     </div>
                 </div>
     
@@ -37,7 +38,7 @@
                     <img src="../assets/Furniture_Photos/Background_Photos/All_Product/Main_Photo/bedroom.png" alt="Bedroom" class="wall-img">
                     <div class="cate-product-title">
                         <h3 class="cate-name">Bedroom</h3>
-                        <p class="button-shop" onclick="goTo('products-page.html')">Shop Beds</p>
+                        <p class="button-shop" onclick="goToProduct('products-page.html','bedroom')">Shop Bed</p>
                     </div>
                 </div>
     
@@ -45,7 +46,7 @@
                     <img src="../assets/Furniture_Photos/Background_Photos/All_Product/Main_Photo/dining.png" alt="Dining room" class="wall-img">
                     <div class="cate-product-title">
                         <h3 class="cate-name">Dining Room</h3>
-                        <p class="button-shop" onclick="CheckSectionDisplay(1)">Shop Dining</p>
+                        <p class="button-shop" onclick="goToProduct('products-page.html','dining')">Shop Dining</p>
                     </div>
                 </div>
             </div>
@@ -53,7 +54,7 @@
     
         <script>addToTop()</script>
     </main>
-
+    <script>checkLogIn()</script>
     <script>addFooter()</script>
 </body>
 

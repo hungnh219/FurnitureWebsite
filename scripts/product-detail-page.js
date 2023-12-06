@@ -1,13 +1,26 @@
 // load Product
 window.onload = function() {
     var urlParams = new URLSearchParams(window.location.search);
-    var id = urlParams.get('id');
-    const itemList = JSON.parse(localStorage.getItem("productList"));
+    var id1 = urlParams.get('id1');
+    var id2 = urlParams.get('id2');
+    var namePath;
+    console.log(id1);
+    console.log(id2);
+    if(id1 === 'bedroom' ){
+        var itemList = JSON.parse(localStorage.getItem("productList_Bedroom"));
+        namePath = "Bedroom";
+    } else if(id1 === 'living_room'){
+        var itemList = JSON.parse(localStorage.getItem("productList_Livingroom"));
+        namePath = "Living Room";
+    } else if(id1 === 'dining'){
+        var itemList = JSON.parse(localStorage.getItem("productList_Dining"));
+        namePath = "Dining";
+    }
     for (let key in itemList) {
         if (itemList.hasOwnProperty(key)) {
             const product = itemList[key];
             
-            if(product.id == id) {
+            if(product.id == id2) {
             var path1 = product.imgDirect + "/1.webp";
             var path2 = product.imgDirect + "/2.webp";
             var path3 = product.imgDirect + "/3.webp";
@@ -30,7 +43,7 @@ window.onload = function() {
                 </div>
                 <br>
                 <div class="text-nav">
-                    <div class="blur-text">Sofa</div>
+                    <div class="blur-text">${namePath}</div>
                     <p>/</p>
                     <div class="normal-text">${product.name}</div>
                 </div>
@@ -81,7 +94,7 @@ window.onload = function() {
                     <button class="ti-plus" onclick="increasequan(this)"></button>
                 </div>
                 <div class="add-product" onclick="addtocart(this)">
-                    <button class="add-product-button" >
+                    <button class="add-product-button" style="cursor: pointer">
                         Add to Cart
                     </button>
                     <div class="notification" >This product has been added to cart</div>
@@ -96,7 +109,7 @@ window.onload = function() {
             </div>
 
             <div class="content-detail-image">
-                <i class="ti-heart" onclick="addToWishList(this)"></i> Add to wishlist 
+                <i class="ti-heart" onclick="addToWishList(this)" style="cursor: pointer"></i> Add to wishlist 
                 <div class="notification_wishlist" >This product has been added to wishlist</div>
                 <i class="ti-reload"></i> Add to Compare 
                 <div class="share">Share Product: 
@@ -179,6 +192,10 @@ window.onload = function() {
 //add product to localStorage
 function addtocart(curr) {
     let products=[];
+    let key=this.location.href
+    key=key.slice(key.indexOf('?')).slice(5)
+    let id1= key.slice(0,key.indexOf('&'))
+    let id2=key.slice(key.indexOf('&')+5)
     let img=curr.parentElement.parentElement.children[2].children[0].src;
     let productname=curr.parentElement.parentElement.children[1].textContent.trim();
     let productprice=curr.parentElement.parentElement.children[3].children[0].textContent.trim();
@@ -191,28 +208,33 @@ function addtocart(curr) {
       }
     
     let product={
-    img:img,
-    productname:productname,
-    productprice:productprice,
-    productquan:productquan,
-    producttotal:producttotal
+        id1:id1,
+        id2:id2,
+        img:img,
+        productname:productname,
+        productprice:productprice,
+        productquan:productquan,
+        producttotal:producttotal.toString()
     };
-    let isExist=products.some(x=>x.img==product.img&&x.productname==product.productname&&x.productprice==product.productprice);
+    let isExist=products.some(x=>x.id2==product.id2);
     if(!isExist) {
         products.push(product);  
     }
     else show_notification()
      
     localStorage.setItem("products", JSON.stringify(products));
+    const listItem = JSON.parse(localStorage.getItem('products'));
+    var count = listItem ? listItem.length : 0;
+    console.log(count);
+    document.querySelector('.quantity').innerHTML = count;
     
 }
 
-//increase quantity
 function increasequan(curr) {
     quantity=curr.parentElement.children[1];
     quantity.innerHTML=Number(quantity.textContent)+1;
 }
-//decrease quantity
+
 function decreasequan(curr) {
     quantity=curr.parentElement.children[1];
     if(Number(quantity.textContent)>1) {
@@ -244,6 +266,7 @@ function switchImg(event,source) {
     newNumber = (Array.from(borderImgs).indexOf(clickedDiv) + 1).toString().padStart(2, '0');
     bigNumberDiv.textContent = newNumber;
 }
+
 var currentImage = 1;
 var totalImages = 5;
 function prevImg() {
@@ -255,6 +278,7 @@ function prevImg() {
     switchImg({ target: prevImg }, prevImg.getAttribute('src'));
         
 }
+
 function nextImg() {
     currentImage++;
     if (currentImage > totalImages) {
@@ -266,28 +290,33 @@ function nextImg() {
 //add to wishlist
 function addToWishList(curr) {
     let products=[];
+    let key=this.location.href
+    key=key.slice(key.indexOf('?')).slice(5)
+    let id1= key.slice(0,key.indexOf('&'))
+    let id2=key.slice(key.indexOf('&')+5)
     let img=curr.parentElement.parentElement.children[2].children[0].src;
-
     let productname=curr.parentElement.parentElement.children[1].textContent.trim();
     let productprice=curr.parentElement.parentElement.children[3].children[0].textContent.trim();
     
     if (localStorage.getItem("WishList")) {
         products.push(...JSON.parse(localStorage.getItem("WishList")));
-      }
+    }
     
     let product={
-    img:img,
-    productname:productname,
-    productprice:productprice,
+        id1:id1,
+        id2:id2,
+        img:img,
+        productname:productname,
+        productprice:productprice,
     };
-    let isExist=products.some(x=>x.img==product.img&&x.productname==product.productname&&x.productprice==product.productprice);
+
+    let isExist=products.some(x=>x.id2==product.id2);
     if(!isExist) {
         products.push(product);  
     }
     else show_notification_wishlist()
      
     localStorage.setItem("WishList", JSON.stringify(products));
-    
 }
 
 //show notification
@@ -321,3 +350,5 @@ function close_notification_wishlist() {
     notification.style.display='none'
 //    location.reload()
 }
+
+checkLogIn();

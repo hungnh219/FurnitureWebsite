@@ -6,6 +6,7 @@
     <script src="../scripts/components.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="../assets/fonts/themify-icons/themify-icons.css">
     <link rel="stylesheet" href="../styles/components.css">
@@ -27,13 +28,13 @@
                     <div class="text">
                         First Name
                     </div>
-                    <input class="input-text" type="text" placeholder="Chris">
+                    <input class="input-text" type="text" placeholder="Your FIrst Name" disabled>
                 </div>
                 <div class="last-name">
                     <div class="text">
                         Last Name
                     </div>
-                    <input class="input-text" type="text" placeholder="Evan">
+                    <input class="input-text" type="text" placeholder="Your Last Name" disabled>
                 </div>
             </div>
             <div class="info">
@@ -41,13 +42,13 @@
                     <div class="text">
                         Email
                     </div>
-                    <input class="input-text" type="text" placeholder="chrisevanhandsome@gmail.com">
+                    <input class="input-text" type="text" placeholder="Your Email" disabled>
                 </div>
                 <div class="phone-number">
                     <div class="text">
                         Phone Number
                     </div>
-                    <input class="input-text" type="text" placeholder="0123456789">
+                    <input class="input-text" type="text" placeholder="Your Phone Number" disabled>
                 </div>
             </div>
             <div class="address-pass">
@@ -55,33 +56,36 @@
                     <div class="text">
                         Address
                     </div>
-                    <input class="input-text" type="text"  placeholder="6th Quarter, Linh Trung Ward, Thu Duc">
+                    <input class="input-text" type="text"  placeholder="Your Address" disabled>
                 </div>
                 <div class="register-date">
                     <div class="text">
                         Register date
                     </div>
-                    <input class="input-text" type="text" placeholder="21/09/2023">
+                    <input class="input-text" type="text" placeholder="Your Register Date" disabled>
                 </div>
             </div>
 
             <div class="button-update-pass">
                 <div class="update-pass">
-                    <button class="button-profile">
-                        Update Your Profile
+                    <button class="button-profile" onclick="toggleEditMode()">
+                        Update Your Profile                        
                     </button>
+                    <div class="notification" >Update successful!</div>
                 </div>
     
                 <div class="update-pass">
-                    <button class="button-profile">
+                    <button class="button-profile" onclick="goTo('forget-password-email-page.html')">
                         Change Password
                     </button>
                 </div>
             </div>
+
         </section>
         <script>addToTop()</script>
     </main>
 
+    <script>checkLogIn()</script>
     <script>addFooter()</script>
     <script src="../scripts/profile-page.js"></script>
 </body>

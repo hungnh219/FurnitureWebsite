@@ -7,6 +7,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <script type="module" src="../scripts/product-page.js"></script>
+    <script src="../scripts/product-page.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="../assets/fonts/themify-icons/themify-icons.css">
     <link rel="stylesheet" href="../styles/components.css">
@@ -29,9 +31,9 @@
                     <p>CATEGORY</p>
                     <ul class="product-category-nav">
                         <li>
-                            <a href="">
+                            <a href="#" onclick="changeProductPage('bedroom')">
                                 BEDROOM
-                                <i class="ti-angle-down"></i>
+                                <!-- <i class="ti-angle-down"></i> -->
                             </a>
     
                             <ul class="product-category-subnav">
@@ -43,9 +45,9 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="">
+                            <a href="#" onclick="changeProductPage('living_room')">
                                 LIVING ROOM
-                                <i class="ti-angle-down"></i>
+                                <!-- <i class="ti-angle-down"></i> -->
                             </a>
     
                             <ul class="product-category-subnav">
@@ -57,21 +59,35 @@
                                 <li><a href="">Offices</a></li>
                             </ul>
                         </li>
-                        <li><a href="">DINING</a></li>
+                        <li><a href="#" onclick="changeProductPage('dining')">DINING</a></li>
                     </ul>
                 </div>
     
                 <div class="product-box">
                     <div class="product-box-header">
-                        <div class="product-name-room">
-                            <a href="">BEDROOM</a>
+                        <div class="product-menu">
+                            <i class="fa-solid fa-list" style="color: #000000;"></i>
                         </div>
+                        <div class="product-name-room">
+                            <a href="" id="address">BEDROOM</a>
+                        </div>
+
+                        <div class="search-box">
+                            <input type="text" id="search-product-page" placeholder="Search" style="display: block;">
+                            <button class="search-button-navigation" >
+                                <i class="fa-solid fa-magnifying-glass" style="color: #000000;"></i>
+                            </button>
+                        </div>  
+
                         <div class="product-sort-by">
                             <p>Sort by</p>
-                            <select name="sortby" id="sort-by">
-                                <option value="Best Seller">Best Seller</option>
-                                <option value="Low-High">Price: Low-High</option>
-                                <option value="High-Low">Price: High-Low</option>
+                            <select name="sortby" id="sort-by" onchange="sortProductList(this.value)">
+                                <!-- <option value="Best Seller">Best Seller</option> -->
+                                <option value='default' >Default</option>
+                                <option value='low-high' >Price: Low-High</option>
+                                <option value='high-low' >Price: High-Low</option>
+                                <option value='a-z' >Name: A-Z</option>
+                                <option value='z-a' >Name: Z-A</option>
                             </select>
                         </div>
                     </div>
@@ -137,7 +153,15 @@
         <script>addToTop()</script>
     </main>
 
+    <script>checkLogIn()</script>
     <script>addFooter()</script>
 </body>
+<script>
+    $(document).ready(function() {
+    $('.fa-solid.fa-list').click(function() {
+        $('.product-category').slideToggle();
+    })
+})
+</script>
 
 </html>

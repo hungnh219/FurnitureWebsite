@@ -3,58 +3,13 @@ let userId = localStorage.getItem('userId') || '';
 let wishlistProducts = JSON.parse(localStorage.getItem('wishlistProducts')) || {};
 let cartProducts = JSON.parse(localStorage.getItem('cartProducts')) || {};
 
+{/* <div class="search-box">
+    <input type="text" id="search" placeholder="Search">
+    <button class="search-button-navigation">
+        <i class="fa-solid fa-magnifying-glass" style="color: #000000;"></i>
+    </button>
+</div>   */}
 
-// get by material
-function getInfoApi(callback) {
-    fetchApiMaterial()
-    async function fetchApiMaterial() {
-        const material = 'Pecan';
-
-        const responseAPI = await fetch(`http://localhost:5206/api/Furniture/ByMaterial${material}`)
-        .then(response => {
-            if (!response.ok) {
-                console.log('lay api that bai');
-            }
-
-            return response.json();
-        })
-        .then(data => {
-            console.log('wishlist products info:');
-            wishlistProducts = data;
-            localStorage.setItem('cartProducts', JSON.stringify(data));
-            console.log(wishlistProducts);
-        })  
-        .catch(error => console.error("Error fetching data:", error));
-    }
-
-    // get by name
-    fetchApiName()
-    async function fetchApiName() {
-        const productNameApi = 'bed'
-        const responseAPI = await fetch(`http://localhost:5206/api/Furniture/GetProductByName${productNameApi}`)
-        .then(response => response.json())
-        .then(data => {
-        if (data.length > 0) {
-            cartProducts = data;
-            localStorage.setItem('wishlistProducts', JSON.stringify(data));
-            console.log('cart products info:');
-            console.log(cartProducts);
-        } else {
-            console.error("No data received from the API");
-        }
-    })
-    .catch(error => console.error("Error fetching data:", error));
-    }
-
-    setTimeout(() => {
-        console.log('API call completed');
-        // Calling the callback function when the asynchronous operation is done
-        callback();
-    }, 5000);
-}
-
-
-// end   Create data for cart and wishlist
 //add header
 function addHeader() {
     document.write(`
@@ -75,21 +30,27 @@ function addHeader() {
                         </div>
 
                         <div class="icon-navigation"> 
+
+                            <div class="menu">
+                                <i class="fa-solid fa-bars" style="color: #000000;"></i>
+                            </div>
+
                             <div class="search-box">
                                 <input type="text" id="search" placeholder="Search">
                                 <button class="search-button-navigation">
                                     <i class="fa-solid fa-magnifying-glass" style="color: #000000;"></i>
                                 </button>
-                            </div>  
+                            </div>                            
                             
-                            <div class="cart-box" onclick="goTo('cart-page.html')"> 
-                                <button class="cart-button-navigation">
+                            <div class="cart-box"> 
+                                <button class="cart-button-navigation" onclick= "goTo('cart-page.html')" >
                                     <i class="fa-solid fa-cart-shopping" style="color: #000000;"></i>
+                                    <span class = "quantity">0</span>
                                 </button>
                             </div>
 
                             <div class="heart-box">
-                                <button class="heart-button-navigation" onclick="goTo('wishlist-page.html')">
+                                <button class="heart-button-navigation" onclick= "goTo('wishlist-page.html')" >
                                     <i class="fa-regular fa-heart" style="color: #000000;"></i>
                                 </button>
                             </div>
@@ -106,7 +67,7 @@ function addHeader() {
                                         <a href="#" onclick="goTo('my-order-page.html')">My order</a>
                                     </li>
                                     <li class="log-out">
-                                        <button onclick="goTo('login-page.html')">Logout</button>
+                                        <button onclick="logOut()">Logout</button>
                                     </li>
                                 </ul>
                             </div>
@@ -123,99 +84,73 @@ const searchBtn = document.querySelector('.search-button-navigation');
 const searchInput = document.querySelector('.search-box #search');
 
 searchBtn.addEventListener('click', () => {
-    if (searchInput.style.opacity === '0') {
-        searchInput.style.opacity = '1';
+    if (searchInput.style.display === 'none') {
+        searchInput.style.display = 'block';
     } else {
-        searchInput.style.opacity = '0';
+        searchInput.style.display = 'none';
     }
 })
+/////
+$(document).ready(function() {
+    $('.fa-solid.fa-bars').click(function() {
+        $('.text-navigation').slideToggle();
+    })
+})
+
 }
 
 // add footer
 function addFooter() {
     document.write(`
     <footer>
-        <div class="footer-web">
-            <div class="footer-row">
-                <div class="footer-part a">
-                    <h2>Furnishity</h2>
-                    <p>We sell over 3000+ branded products since 2018</p>
-                    <ul class="footer-a">
-                        <li>
-                            <a href="javascript:void(0)">
-                                <i class="ti-mobile"></i>
-                                0987654321
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://uit.edu.vn">
-                                <i class="ti-location-pin"></i>
-                                University of Information and Technology
-                            </a>
-                        </li>
-                        <li>
-                            <a href="home-page.html">
-                                <i class="ti-world"></i>
-                                www.furnishity.com
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+        <div class="footer-furnishity">
+            <h3>Furnishity.</h3>
+            <p>
+                Worldwide furniture store since 2020. 
+                We sell over 1000+ branded products on our website
+            </p>
+            <div class="footer-phone-number">
+                <i class="fa-solid fa-phone" style="color: #000000;"></i>
+                0987654321
+            </div>
+            <div class="footer-address" onclick="goTo('https://uit.edu.vn')">
+                <i class="fa-solid fa-location-dot" style="color: #000000;"></i>
+                University of Information and Technology
+            </div>
+            <div class="footer-web-site">
+                <i class="fa-solid fa-globe" style="color: #000000;"></i>
+                www.furnishity.com
+            </div>
+        </div>
 
-                <div class="footer-part b">
-                    <h2>Menu</h2>
-                    <ul class="footer-b">
-                        <li>
-                            <a href="#" onclick="goTo('shop-all.html')">
-                                Products
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0)" >
-                                Blog
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#"onclick="goTo('about-us-page.html')">
-                                About us
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+        <div class="footer-menu">
+            <h3>Menu</h3>
+            <p onclick="goTo('shop-all.html')">Products</p>
+            <p onclick="goTo('blog.html')">Blog</p>
+            <p onclick="goTo('about-us-page.html')">About us</p>
+        </div>
 
-                <div class="footer-part c">
-                    <h2>Stay Connected</h2>
-                    <ul class="footer-a">
-                        <li>
-                            <a href="https://facebook.com">
-                                <i class="ti-facebook"></i>
-                                Facebook
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://www.instagram.com/">
-                                <i class="ti-instagram"></i>
-                                Instagram
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://twitter.com/">
-                                <i class="ti-twitter-alt"></i>
-                                Twitter
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+        <div class="footer-connect">
+            <h3>Stay Connected</h3>
+            <div class="footer-fb" onclick="goTo('https://facebook.com')">
+                <i class="fa-brands fa-facebook" style="color: #000000;"></i>
+                Facebook
+            </div>
+            <div class="footer-ig" onclick="goTo('https://instagram.com')">
+                <i class="fa-brands fa-square-instagram" style="color: #000000;"></i>
+                Instagram
+            </div>
+            <div class="fotter-tw" onclick="goTo('https://twitter.com')">
+                <i class="fa-brands fa-twitter" style="color: #000000;"></i>
+                Twitter
+            </div>
+        </div>
 
-                <div class="footer-part d">
-                    <h2>Stay Updated</h2>
-                    <ul>
-                        <li>
-                            <a href="javascript:void(0)">Enter your email</a> 
-                        </li>
-                        <i class="ti-check"></i>
-                    </ul>
-                </div>
+        <div class="footer-update">
+            <h3>Stay update</h3>
+            <div class="footer-mail">
+                <input type="text" placeholder="Email">
+                <i class="fa-solid fa-paper-plane" style="color: #000000;"></i>
             </div>
         </div>
     </footer>
@@ -271,12 +206,144 @@ window.addEventListener('scroll', function() {
 //change page
 function goTo(x) {
     location.href=x;   
-   }
+}
 
-
-// go to detailProduct   
-function goToDetailProduct(x, id) {
+function goToProduct(x, id) {
     location.href=x+ "?id=" + id;
+}
+// go to detailProduct   
+function goToDetailProduct(x, id1, id2) {
+    location.href=x+ "?id1=" + id1 +"&id2=" + id2;
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+    // Cập nhật số lượng ban đầu
+    updateQuantity();
+
+    // Lắng nghe sự kiện storage khi có thay đổi trong localStorage
+    window.addEventListener('click', function(event) {
+    if (event.key === 'products') {
+        // Cập nhật số lượng khi có thay đổi trong danh sách sản phẩm
+        updateQuantity();
+    }
+    });
+
+    function updateQuantity() {
+    const listItem = JSON.parse(localStorage.getItem('products'));
+    var count = listItem ? listItem.length : 0;
+    if (document.querySelector('.quantity') != null)
+        document.querySelector('.quantity').innerHTML = count;
+    }
+});
+
+function logOut() {
+    goTo('login-page.html')
+    localStorage.removeItem('user')
+}
+
+//check log in
+
+function checkLogIn() {
+    if(localStorage.getItem('user')) {
+    }
+    else {
+        document.getElementsByClassName('cart-box')[0].style.display='none'
+        document.getElementsByClassName('heart-box')[0].style.display='none'
+        document.getElementsByClassName('profile-page')[0].style.display='none'
+        document.getElementsByClassName('my-order')[0].style.display='none'
+        document.getElementsByClassName('log-out')[0].innerHTML=`<button onclick="logOut()">Login</button>`
+    }
+}
+
+
+// get products api
+function getProductInfoApi(callback) {
+    fetchApiBedroomProducts()
+    async function fetchApiBedroomProducts() {
+        let tagName = 'Bedroom';
+        const responseAPI = await fetch(`http://localhost:5206/api/Furniture/GetProductByTagName${tagName}`)
+        .then(response => {
+            if (!response.ok) {
+                console.log('lay api that bai');
+            }
+
+            return response.json();
+        })
+        .then(data => {
+            localStorage.setItem('productList_Bedroom', JSON.stringify(data));
+        })  
+        .catch(error => console.error("Error fetching data:", error));
+    }
+
+    // get by name
+    fetchApiLivingroomProducts()
+    async function fetchApiLivingroomProducts() {
+        let tagName = 'Livingroom';
+        const responseAPI = await fetch(`http://localhost:5206/api/Furniture/GetProductByTagName${tagName}`)
+        .then(response => {
+            if (!response.ok) {
+                console.log('lay api that bai');
+            }
+
+            return response.json();
+        })
+        .then(data => {
+            localStorage.setItem('productList_Livingroom', JSON.stringify(data));
+        })  
+        .catch(error => console.error("Error fetching data:", error));
+    }
+
+    // get by name
+    fetchApiDiningroomProducts()
+    async function fetchApiDiningroomProducts() {
+        let tagName = 'Diningroom';
+        const responseAPI = await fetch(`http://localhost:5206/api/Furniture/GetProductByTagName${tagName}`)
+        .then(response => {
+            if (!response.ok) {
+                console.log('lay api that bai');
+            }
+
+            return response.json();
+        })
+        .then(data => {
+            localStorage.setItem('productList_Dining', JSON.stringify(data));
+        })  
+        .catch(error => console.error("Error fetching data:", error));
+    }
+
+    setTimeout(() => {
+        console.log('API call completed');
+        callback();
+    }, 500);
+}
+
+function show_notification() {
+    notification=document.getElementsByClassName('notification')[0]
+    notification.style.display='flex'
+    setTimeout(() => {
+        close_notification()
+    }, 2000);
+}
+//close notification
+function close_notification() {
+    notification=document.getElementsByClassName('notification')[0]
+    notification.style.display='none'
+//    location.reload()
+}
+
+function preCheckAccount(userName, password) {
+    if (userName == '' || password == '') {
+        document.querySelector('.notification').innerHTML = 'Email or Password can\'t be blank!';
+        show_notification();
+        return false;
+    } else if (!isValidGmail(userName)) {
+        document.querySelector('.notification').innerHTML = 'Invalid Email!';
+        show_notification();
+        return false;
+    } else if (!isValidPassword(password)) {
+        return false;
+    }
+    return true;
 }
 
 // check valid gmail
@@ -290,209 +357,41 @@ function isValidGmail(gmail) {
     return true;
 }
 
+
 // check valid password
 function isValidPassword(password) {
     if (password.length < 8) {
-        alert('Password must be at least 8 characters!');
+        document.querySelector('.notification').innerHTML = 'Password must be at least 8 characters!';
+        show_notification();
         return false;
     }
 
     if (!/[a-zA-Z]/.test(password)) {
-        alert('Password must contain at least one letter!');
+        document.querySelector('.notification').innerHTML = 'Password must contain at least one letter!';
+        show_notification();
         return false;
     }
 
     if (!/\d/.test(password)) {
-        alert('Password must contain at least one digit!');
+        document.querySelector('.notification').innerHTML = 'Password must contain at least one digit!';
+        show_notification();
         return false;
     }
 
     if (/[^a-zA-Z0-9]/.test(password)) {
-        alert('Password can\'t contain special characters!');
+        document.querySelector('.notification').innerHTML = 'Password can\'t contain special characters!';
+        show_notification();
         return false;
     }
 
     if (!/[A-Z]/.test(password)) {
-        alert('Password must contain at least one uppercase letter!');
+        document.querySelector('.notification').innerHTML = 'Password must contain at least one uppercase letter!';
+        show_notification();
         return false;
     }
 
     return true;
 }
-
-// function removeProduct(curr) {
-//     products=[];
-//     products=JSON.parse(localStorage.getItem("products"))
-//     products=products.filter(product=>product.img!=curr.parentElement.parentElement.children[0].src);
-//     localStorage.setItem('products',JSON.stringify(products))
-//     getProducts();
-// }
-
-// Check email
-// var isEmailFilled = false; // Trạng thái nhập liệu email
-// function checkEmail() {
-//     var email = document.getElementById('email-field').value;
-//     var pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-//     var emailMessage = document.getElementById('email-message');
-    
-//     if (isEmailFilled) { // Kiểm tra trạng thái nhập liệu email
-//     if (pattern.test(email) && email.endsWith('@gmail.com')) {
-//         emailMessage.textContent = 'Valid Email!';
-//         emailMessage.style.color = 'green';
-//     } else {
-//         emailMessage.textContent = 'Invalid Email!';
-//         emailMessage.style.color = 'red';
-//     }
-//     } else {
-//     emailMessage.textContent = ''; // Xóa nội dung thông báo
-//     }
-// }
-// function onEmailInput() {
-//     isEmailFilled = document.getElementById('email-field').value.trim() !== ''; // Cập nhật trạng thái nhập liệu email
-//     checkEmail();
-// }
-
-// // Check phone numbers
-// var isSdtFilled = false; // Trạng thái nhập liệu số điện thoại
-// function CheckPhoneNumbers() {
-//     var phoneNumbers = document.getElementById('numbers').value;
-//     var messageElement = document.getElementById('numbers-message');
-
-//     // Xóa khoảng trắng ở đầu và cuối số điện thoại
-//     phoneNumbers = phoneNumbers.trim();
-    
-//     if (isSdtFilled) { // Kiểm tra trạng thái nhập liệu số điện thoại
-//     if (phoneNumbers.length === 10 && phoneNumbers.startsWith('0')) {
-//         messageElement.textContent = 'Valid phone number!';
-//         messageElement.style.color = 'green';
-//     } else {
-//         messageElement.textContent = 'Invalid phone number!';
-//         messageElement.style.color = 'red';
-//     }
-//     } else {
-//     messageElement.textContent = ''; // Xóa nội dung thông báo
-//     }
-// }
-// function onPhoneNumberInput() {
-//     isSdtFilled = document.getElementById('numbers').value.trim() !== ''; // Cập nhật trạng thái nhập liệu số điện thoại
-//     CheckPhoneNumbers();
-// }
-
-// // function CheckSectionDisplay(num) {
-// //     var array = ['home-page', 'products-page', 'product-detail-page', 'about-us-page', 'cart-page', 'billing-detail-page', 'shop-all'];
-    
-// //     for (var i = 0; i < array.length; i++) {
-// //         if (i === num) {
-// //             if(num==4) { getProducts()};
-// //             document.getElementById(array[i]).style.display = 'block';
-// //             document.getElementById(array[i]).scrollIntoView({ behavior: 'smooth', block: 'start' });
-// //         } else {
-// //             document.getElementById(array[i]).style.display = 'none';
-// //         }
-// //     }
-// // }
-
-// // Hide all sections except for homepage section
-
-// // window.addEventListener('load', function() {
-// //     var sections = document.getElementsByTagName('section');
-// //     for (var i = 0; i < sections.length; i++) {
-// //         if (sections[i].id !== 'home-page') {
-// //             sections[i].style.display = 'none';
-// //         }
-// //     }
-// // });
-
-
-
-// // Add products 
-
-// // Demo data
-// const productList = {
-//     "1": { "name": 'Product A', "image": './assets/Furniture_Photos/Products_Photos/P0004/1.webp', "price": 1.223},
-//     "2": { "name": 'Product B', "image": './assets/Furniture_Photos/Products_Photos/P0005/1.webp', "price": 3.111 },
-//     "3": { "name": 'Product C', "image": './assets/Furniture_Photos/Products_Photos/P0006/1.webp', "price": 2.509 },
-//     /// n products
-// };
-// const productListnew = JSON.stringify(productList);
-// localStorage.setItem("productList", productListnew);
-// document.addEventListener("DOMContentLoaded", function() {
-//     addProduct();
-//  });
-//  function addProduct(){
-//     const itemList = JSON.parse(localStorage.getItem("productList"));
-//     for (let key in itemList) {
-//         if (itemList.hasOwnProperty(key)) {
-//             const product = itemList[key];
-//             document.getElementsByClassName('product-bed')[0].innerHTML += `
-//                 <div class="product-1" onclick="CheckSectionDisplay(2)">
-//                     <img src="${product.image}" alt="The Eldridge Bed" class="product-img">
-//                     <div class="product-intro">
-//                         <p class="product-name">${product.name}</p>
-//                         <p class="product-cost">$${product.price}</p>
-//                     </div>
-//                 </div>`;
-//         }
-//     }
-//  }
-
-//  // Create Bill PDF document
-//  function generatePDF(){
-//     if (document.getElementById("first-name-input").value == "") {
-//         alert("Please enter first name");
-//       } else {
-//         var doc = new jsPDF();
-    
-//         // Set font size and style for "Bill Details"
-//         doc.setFontSize(18);
-//         doc.setFontStyle("bold");
-    
-//         // Calculate the width of the text
-//         var textWidth = doc.getStringUnitWidth("Bill Details") * doc.internal.getFontSize();
-    
-//         // Calculate the center position of the page with an offset
-//         var pageWidth = doc.internal.pageSize.getWidth();
-//         var offsetX = 32; // Adjust the value to move the text to the right
-//         var centerX = (pageWidth - textWidth) / 2 + offsetX;
-    
-//         // Center the "Bill Details" text
-//         doc.text(centerX, 30, "Bill Details");
-//         doc.setFontSize(25);
-//         var textWidthLogo = doc.getStringUnitWidth("Furnishity.") * doc.internal.getFontSize();
-//         doc.text(10, 10,"Furnishity.");
-//         // Reset font size and style for other text
-//         doc.setFontSize(11);
-//         doc.setFontStyle("normal");
-        
-//         var fullName = document.getElementById("last-name-input").value + " " + document.getElementById("first-name-input").value;
-
-//     // Display
-        
-//         doc.text(pageWidth - 60, 40, "Brand: " + "Furnishity Store");
-//         doc.text(pageWidth - 75, 45, "University of Information and Technology");
-//         doc.text(pageWidth - 60, 50, "Phone Number: " + "0987654321");
-//         doc.text(pageWidth - 60, 55, "Website: " + "www.furnishity.com");
-//         doc.text(10, 60, "Full Name: " + fullName);
-//         doc.text(10, 65, "Address: " + document.getElementById("address-input").value);
-//         doc.text(10, 70, "Apartment: "+ document.getElementById("info-apartment-input").value);
-//         doc.text(10, 75, "Town/City: "+ document.getElementById("info-city-input").value);
-//         doc.text(10, 80, "Phone Number: "+ document.getElementById("numbers").value);
-//         doc.text(10, 85, "Email: "+ document.getElementById("email-field").value);
-//         doc.text(10, 95, "Product Name");
-//         doc.text(100, 95, "Quantity")
-//         doc.text(190, 95, "Price");
-//         var productName = document.querySelector('.shipment-product-name').textContent;
-//         var productPrice = document.querySelector('.shipment-product-price').textContent;
-//         doc.text(10, 105, productName);
-//         doc.text(105, 105, "1");
-//         doc.text(190, 105, productPrice);
-//         // Draw a line below the labels
-//         var lineY = 97; // Adjust the value to position the line
-//         var lineWidth = 190; // Adjust the value to set the width of the line
-//         doc.line(10, lineY, 10 + lineWidth, lineY);
-//         doc.save("invoice.pdf");
-//       }
-// }
 
 
 

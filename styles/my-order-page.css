@@ -72,3 +72,39 @@
 .my-order-info .my-order-info-box .my-order-product-price {
     margin-left: auto;
 }
+
+@media only screen and (min-width: 740px) and (max-width: 1024px) {
+    .my-order-detail{
+        display: flex;
+        justify-content: center;
+    }
+
+    .my-order-detail .my-order-detail-table table, tr, td {
+        font-size: 17px;
+        padding: 0.8rem 2.5rem;
+    }
+
+    #my-order-screen .my-order-info {
+        display: flex;
+        padding: 3rem;
+        margin-left: 0;
+    }
+}
+
+@media only screen and (max-width: 739px) {
+    .my-order-detail{
+        display: flex;
+        justify-content: center;
+    }
+
+    .my-order-detail .my-order-detail-table table, tr, td {
+        font-size: 15px;
+        padding: 0.5rem 1rem;
+    }
+
+    #my-order-screen .my-order-info {
+        display: flex;
+        padding: 3rem;
+        margin-left: 0;
+    }
+}

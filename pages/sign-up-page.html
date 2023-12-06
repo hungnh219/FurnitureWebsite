@@ -28,24 +28,25 @@
         
                 <div class="sign-up-info">
                     <div class="info-email">
-                        <input type="text" placeholder="Email">
+                        <input class="input-text" type="text" placeholder="Email">
                     </div>
         
                     <div class="info-password">
-                        <input type="password" placeholder="Password">
+                        <input class="input-text" type="text" placeholder="Password">
                     </div>
                     
                     <div class="info-confirm-password">
-                        <input type="text" placeholder="Confirm Password">
+                        <input class="input-text" type="text" placeholder="Confirm Password">
                     </div>
                 </div>
                 
                 <div class="sign-up-button">
         
                     <div class="create-account-button">
-                        <button>Create Account</button>
+                        <button onclick="createAccount()">Create Account</button>
+                        <div class="notification" >Update successful!</div>
                     </div>
-        
+                    
                     <div class="sign-up-gg-button">
                         <button><i class="ti-google"></i>Sign up with Google</button>
                     </div>
@@ -66,6 +67,7 @@
     </main>
 
     <script>addFooter()</script>
+    <script>checkLogIn()</script>
     <script src="../scripts/sign-up-page.js"></script>
 </body>
 

@@ -33,7 +33,7 @@
 
 .account-info input {
     margin-bottom: 10px;
-    padding: 12px;
+    padding: 12px 0 12px 12px;
     text-align: left;
     width: 420px;
     font-size: 18px;
@@ -59,11 +59,15 @@
 }
 
 .login-button button:hover {
-    border-width: 2px;
+    background-color: #ffd87c;
+}
+
+.login-button {
+    display: flex;
+    justify-content: space-between  ;
 }
 
 .login-button a {
-    margin-left: 117px;
     text-decoration: none;
     color: #000;
 }
@@ -81,5 +85,121 @@
 
 .sign-up-link a:hover {
     color: rgb(103, 103, 255);
+}
+
+.notification {
+    display: none;
+    z-index: 1;
+    position: absolute;
+    justify-content: center;
+    align-items: center; 
+    width: 200px;
+    height: 52px;
+    /* background-color: #FFF7E4; */background-color: #f2c96a;
+    border-color: #f2c96a;
+    border-radius:  9px;
+    color: #000;
+    text-align: center;
+    font-family: Inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 18px;
+    transform: translateX(110%) translateY(-100%);
+    margin-top: 10px;
+}
+.notification::before {
+    content: "";
+    position: absolute;
+    transform:translateY(40%) translateX(-100%);
+    top:0;
+    left: 0;
+    border-top: 10px solid transparent;
+    border-right:10px solid  #f2c96a;
+    border-bottom: 10px solid transparent;
+}
+
+
+.fa-regular {
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.fa-eye {
+    display: none;
+}
+
+@media only screen and (min-width: 740px) and (max-width: 1024px) {
+    .login-img img {
+        flex: 1;
+        width:350px;
+        height: auto;
+        margin: 0;
+        padding: 1rem;
+    }
+
+    .login {
+        padding: 1rem;
+        box-sizing: border-box;
+    }
+
+    .login h2 {
+        text-align: center;
+        font-size: 24px;
+    }
+
+    .account-info input {
+        margin-bottom: 10px;
+        padding: 12px 0;
+        text-align: left;
+        width: 350px;
+        font-size: 18px;
+        color: rgba(0, 0, 0, 0.5);
+        border: 0.4px solid rgba(0, 0, 0, 0.1);
+        outline: none;
+    }
+
+    .login-button button {
+        margin-bottom: 10px;
+        padding: 17px;
+        text-align: center;
+        width: 170px;
+        font-size: 18px;
+        border-radius: 9px;
+        border: 0.4px solid rgba(0, 0, 0, 0.7);
+        background-color: #FFE7AD;
+    }
+}
+
+@media only screen and (max-width: 739px) {
+    .login-img {
+        display: none;
+    }
+
+    .login {
+        justify-content: center;
+    }
+
+    .account-info input {
+        margin-bottom: 10px;
+        padding: 12px 0;
+        text-align: left;
+        width: 300px;
+        font-size: 18px;
+        color: rgba(0, 0, 0, 0.5);
+        border: 0.4px solid rgba(0, 0, 0, 0.1);
+        outline: none;
+    }
+
+    .login-button button {
+        margin-bottom: 10px;
+        padding: 13px;
+        text-align: center;
+        width: 150px;
+        font-size: 18px;
+        border-radius: 9px;
+        border: 0.4px solid rgba(0, 0, 0, 0.7);
+        background-color: #FFE7AD;
+    }
 }
 /* End: Login screen */

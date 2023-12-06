@@ -3,7 +3,7 @@ function addItemtoBill(){
     let total = 0;
     products.forEach(product => {
         var path = product.img + "/1.webp";
-        total+=product.producttotal;
+        total+=Number(product.producttotal);
         document.getElementsByClassName('shipment-products')[0].innerHTML+=`
         <div class="shipment-product">
                                 <img src="${product.img}" alt="" class="shipment-product-image">
@@ -148,8 +148,13 @@ function onPhoneNumberInput() {
 
  // Create Bill PDF document
  function generatePDF(){
-    if (document.getElementById("first-name-input").value == "") {
-        alert("Please enter first name");
+    if (document.getElementById("first-name-input").value == "" ||
+        document.getElementById("last-name-input").value == "" ||
+        document.getElementById("address-input").value == "" ||
+        document.getElementById("numbers").value == "" ||
+        document.getElementById("email-field").value == ""
+    ) {
+        show_notification();
       } else {
         var doc = new jsPDF();
     
@@ -229,4 +234,18 @@ function show_bank() {
 function close_screen_bank() {
     screen_bank.style.display='none'
     radio_bank.checked=false
+}
+
+function show_notification() {
+    notification=document.getElementsByClassName('notification')[0]
+    notification.style.display='flex'
+    setTimeout(() => {
+        close_notification()
+    }, 2000);
+}
+//close notification
+function close_notification() {
+    notification=document.getElementsByClassName('notification')[0]
+    notification.style.display='none'
+//    location.reload()
 }

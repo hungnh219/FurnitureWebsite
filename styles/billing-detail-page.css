@@ -145,22 +145,24 @@
 }
 
 #billing-detail-page .voucher .voucher-button button{
-    background-color: #93cfa4;
+    background-color: #FFF7E4;
     padding: 8px 20px;
     font-weight: 800;
     border-radius: 12px;
     font-size: 16px;
     width: 100%;
+    cursor: pointer;
 }
 
 #billing-detail-page .place-order-button button,
 #billing-detail-page .back-to-cart-button button{
     width: 40%;
-    background-color: #93cfa4;
+    background-color: #FFF7E4;
     padding: 10px 16px;
     font-weight: 800;
     border-radius: 12px;
     margin-top: 24px;
+    cursor: pointer;
 }
 
 /* End: Billing detail page */
@@ -259,7 +261,7 @@
 .card-wrapper .pay-by-card-button button {
     height: 56px;
     width: 188px;
-    margin-left: 30px;
+    margin: 0 30px;
     border-radius: 9px;
     font-size: 18px;
 }
@@ -270,5 +272,83 @@
 
 .card-wrapper .pay-by-card-button .card-pay-button {
     background-color: #FFF7E4;
+}
+
+.notification {
+    display: none;
+    z-index: 1;
+    position: absolute;
+    justify-content: center;
+    align-items: center; 
+    width: 200px;
+    height: 52px;
+    /* background-color: #FFF7E4; */background-color: #f2c96a;
+    border-color: #f2c96a;
+    border-radius:  9px;
+    color: #000;
+    text-align: center;
+    font-family: Inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 18px;
+    transform: translateX(110%) translateY(-100%);
+    margin-top: 10px;
+}
+.notification::before {
+    content: "";
+    position: absolute;
+    transform:translateY(40%) translateX(-100%);
+    top:0;
+    left: 0;
+    border-top: 10px solid transparent;
+    border-right:10px solid  #f2c96a;
+    border-bottom: 10px solid transparent;
+}
+
+@media only screen and (min-width: 740px) and (max-width: 1024px) {
+    #pay-by-card-screen .card-wrapper {
+        width: 80%;
+    }
+}
+
+@media only screen and (max-width: 739px) {
+    #pay-by-card-screen .card-wrapper {
+        width: 90%;
+    }
+
+    #pay-by-card-screen .card-wrapper .card-box {
+        padding: 10px;
+    }
+
+    h5 {
+        display: none;
+    }
+
+    .card-bank-title, .card-nuber-title, .card-expiry-title {
+        display: flex;
+        align-items: center;
+        width: 40%;
+    }
+
+    .card-bank select {
+        width: 60%;
+    }
+
+    .card-number input {
+        width: 60%;
+    }
+
+    .card-expiry select {
+        width: 25%;
+    }
+
+    .card-bank, .card-number, .card-expiry {
+        margin-bottom: 5px;
+    }
+
+    .card-wrapper .pay-by-card-button button {
+        margin: 0 15px;
+    }
 }
 /* End: Pay by Card */

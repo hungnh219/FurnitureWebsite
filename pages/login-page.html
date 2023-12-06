@@ -33,15 +33,21 @@
                     </div>
         
                     <div class="info-password">
-                        <input type="password" placeholder="Password">
+                        <input 
+                            id="password"
+                            type="password" 
+                            placeholder="Password">
+                            <i class="fa-regular fa-eye" onclick="changeTypePassword()"></i>
+                            <i class="fa-regular fa-eye-slash" onclick="changeTypePassword()"></i>
                     </div>
         
                 </div>
                 
                 <div class="login-button">
         
-                    <div class="-account-button">
+                    <div class="account-button">
                         <button onclick="loginButton()">Login</button>
+                        <div class="notification">Check Your Email or Password!</div>
                     </div>
         
                     <a href="#" onclick="goTo('forget-password-email-page.html')">Forget password?</a>
@@ -58,6 +64,7 @@
     </main>
 
     <script>addFooter()</script>
+    <script>checkLogIn()</script>
     <script src="../scripts/login-page.js"></script>
 </body>
 

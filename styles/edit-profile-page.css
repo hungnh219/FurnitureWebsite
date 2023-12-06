@@ -98,4 +98,8 @@
 #edit-profile-screen .button-update:hover {
     background-color: #f2c96a;
 }
+
+#edit-profile-screen {
+    padding-top: 100px;
+}
 /* End: Edit Profile Screen */
