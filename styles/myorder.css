@@ -5,6 +5,10 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
+#my-order-screen {
+    padding: 100px 0;
+}
+
 #my-order-screen .my-order-title {
     padding-left: 20%;
 }
@@ -40,9 +44,11 @@
 }
 
 #my-order-screen .my-order-info {
-    width: 100%;
-    margin-left: 25%;
-    margin-top: 3em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3rem;
+    padding: 0 25%;
 }
 
 #my-order-screen .my-order-info .my-order-info-box {  
@@ -102,3 +108,9 @@
         margin-left: 0;
     }
 }
+
+
+
+
+
+
