@@ -250,8 +250,3 @@ function addToWishList(productList_Bedroom) {
 }
 
 
-//logout
-function logOut() {
-    goTo('login-page.html')
-    localStorage.removeItem('user')
-}
